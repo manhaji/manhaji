@@ -3,7 +3,6 @@ import Script from "next/script";
 import "@manhaj/ui/globals.css";
 import "@manhaj/ui/tokens.css";
 import AdminNav from "./components/AdminNav";
-import AdminAnalyzeInputTabs from "./components/AdminAnalyzeInputTabs";
 import AskManhajDrawer from "./components/AskManhajDrawer";
 
 export const metadata: Metadata = {
@@ -38,9 +37,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="avatar" title="Principal">PR</div>
           </div>
         </header>
-        <div className="ai-tabs-wrapper">
-          <AdminAnalyzeInputTabs />
-        </div>
         <main id="main-content" tabIndex={-1}>{children}</main>
         <AskManhajDrawer />
       </body>

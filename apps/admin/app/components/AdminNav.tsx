@@ -11,13 +11,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS: Array<{ href: string; label: string }> = [
-  { href: "/admin",                 label: "Dashboard" },
-  { href: "/admin/faculty",         label: "Faculty" },
-  { href: "/admin/section-mapping", label: "Sections" },
-  { href: "/admin/students",        label: "Students" },
-  { href: "/admin/attendance",      label: "Attendance" },
-  { href: "/admin/schedule",        label: "Schedule" },
-  { href: "/admin/reports",         label: "Reports" },
+  { href: "/",                 label: "Dashboard" },
+  { href: "/faculty",          label: "Faculty" },
+  { href: "/section-mapping",  label: "Sections" },
+  { href: "/students",         label: "Students" },
+  { href: "/attendance",       label: "Attendance" },
+  { href: "/schedule",         label: "Schedule" },
+  { href: "/reports",          label: "Reports" },
+  { href: "/input",            label: "Input Data" },
 ];
 
 export default function AdminNav() {
@@ -26,8 +27,8 @@ export default function AdminNav() {
     <nav className="nav" aria-label="Primary">
       {LINKS.map(l => {
         // Exact match for Dashboard (root /admin), prefix match for sub-routes.
-        const isActive = l.href === "/admin"
-          ? pathname === "/admin"
+        const isActive = l.href === "/"
+          ? pathname === "/"
           : pathname.startsWith(l.href);
         return (
           <Link

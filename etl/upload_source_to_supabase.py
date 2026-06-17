@@ -14,21 +14,18 @@ WHAT THIS DOES (plain English):
   docs/data_storage_policy.md: code in git, data in Supabase.
 
   Re-runnable. Each run uploads with a new timestamp prefix so older
-  versions of the same file are preserved (Supabase versions files by
-  full path; same name + different timestamp = different object).
+  versions of the same file are preserved.
 
 REQUIRES:
   In .env:
-    SUPABASE_PROJECT_REF=dxrkbjftkfhlddqefmaq
-    SUPABASE_SERVICE_ROLE_KEY=<paste from Supabase Dashboard → Settings → API → service_role>
+    SUPABASE_URL=https://dxrkbjftkfhlddqefmaq.supabase.co
+    SUPABASE_SERVICE_ROLE_KEY=<service role key from Supabase Dashboard → Settings → API>
 
-  WARNING: the service_role key bypasses RLS and can do anything in the
-  database. Never commit it; never paste it in chat; keep it only in .env
-  on your laptop + later on the Vercel/Cloudflare environment-variables
-  panel as an encrypted secret.
+  WARNING: the service_role key bypasses RLS. Never commit it; keep it only
+  in .env and in your hosting platform's encrypted environment variables.
 
 SETUP:
-  pip install -r requirements.txt   (re-runs to pick up the new 'requests' dep)
+  pip install -r requirements.txt
 
 RUN:
   source .venv/bin/activate
@@ -41,17 +38,16 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 import requests
-import psycopg2
 from dotenv import load_dotenv
+from supabase import create_client, Client
 
-# Reuse connection logic from the loader
-sys.path.insert(0, str(Path(__file__).parent))
-from load_to_postgres import get_connection_kwargs
-
-ROOT = Path(__file__).resolve().parent.parent
+ROOT       = Path(__file__).resolve().parent.parent
 SOURCE_DIR = ROOT / "data" / "source"
-BUCKET = "raw-uploads"
+BUCKET     = "raw-uploads"
 SCHOOL_NAME = "International School of Oman"
+
+SUPABASE_URL: str = ""
+SERVICE_KEY:  str = ""
 
 
 def env(name, required=False, default=None):
@@ -61,9 +57,13 @@ def env(name, required=False, default=None):
     return v
 
 
+def get_client() -> Client:
+    return create_client(SUPABASE_URL, SERVICE_KEY)
+
+
 def sb_request(method, path, *, headers=None, **kwargs):
-    """Helper around requests with the Supabase Storage base URL pre-filled."""
-    url = f"https://{PROJECT_REF}.supabase.co/storage/v1{path}"
+    """Storage REST call — base URL derived from SUPABASE_URL."""
+    url = f"{SUPABASE_URL}/storage/v1{path}"
     h = {"Authorization": f"Bearer {SERVICE_KEY}", "apikey": SERVICE_KEY}
     if headers:
         h.update(headers)
@@ -100,16 +100,14 @@ def file_sha256(path):
 
 
 def upload_one(local_path, storage_path):
-    """Upload a single file. Returns response info."""
     with open(local_path, "rb") as f:
-        # Supabase Storage POST: x-upsert=true allows overwrite if path collides
         r = sb_request(
             "POST",
             f"/object/{BUCKET}/{storage_path}",
             data=f.read(),
             headers={
                 "Content-Type": "application/octet-stream",
-                "x-upsert": "false",  # we use unique timestamp paths, no overwrite needed
+                "x-upsert": "false",
                 "Cache-Control": "3600",
             },
         )
@@ -119,29 +117,26 @@ def upload_one(local_path, storage_path):
 
 
 def main():
-    global PROJECT_REF, SERVICE_KEY
+    global SUPABASE_URL, SERVICE_KEY
 
     load_dotenv(ROOT / ".env")
 
-    PROJECT_REF = env("SUPABASE_PROJECT_REF", required=True)
-    SERVICE_KEY = env("SUPABASE_SERVICE_ROLE_KEY", required=True)
+    SUPABASE_URL = env("SUPABASE_URL", required=True)
+    SERVICE_KEY  = env("SUPABASE_SERVICE_ROLE_KEY", required=True)
 
     if not SOURCE_DIR.exists():
         sys.exit(f"ERROR: source directory {SOURCE_DIR} doesn't exist.")
-    files = sorted([p for p in SOURCE_DIR.iterdir() if p.is_file() and not p.name.startswith('.')])
+    files = sorted([p for p in SOURCE_DIR.iterdir() if p.is_file() and not p.name.startswith(".")])
     if not files:
         sys.exit(f"ERROR: no files in {SOURCE_DIR}.")
 
-    # Look up school_id from Postgres
-    print("→ Connecting to Postgres to look up school_id...")
-    conn_kwargs = get_connection_kwargs()
-    with psycopg2.connect(**conn_kwargs) as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT id FROM schools WHERE name = %s", (SCHOOL_NAME,))
-            row = cur.fetchone()
-            if not row:
-                sys.exit(f"ERROR: school '{SCHOOL_NAME}' not found. Run schema/005_seed_iso_pilot.sql first.")
-            school_id = row[0]
+    sb = get_client()
+
+    print("→ Looking up school_id...")
+    res = sb.table("schools").select("id").eq("name", SCHOOL_NAME).execute()
+    if not res.data:
+        sys.exit(f"ERROR: school '{SCHOOL_NAME}' not found. Run schema/005_seed_iso_pilot.sql first.")
+    school_id = res.data[0]["id"]
     print(f"  school_id = {school_id}")
 
     print(f"→ Ensuring Storage bucket '{BUCKET}' exists...")
@@ -156,7 +151,7 @@ def main():
         print(f"  ↑ {f.name} ({f.stat().st_size / 1024:.1f} KB · sha {sha[:8]})")
         result = upload_one(f, storage_path)
         result["sha256"] = sha
-        result["bytes"] = f.stat().st_size
+        result["bytes"]  = f.stat().st_size
         result["local_name"] = f.name
         results.append(result)
         if not result["ok"]:
@@ -164,34 +159,25 @@ def main():
         else:
             print(f"    ✓ uploaded → {BUCKET}/{result['path']}")
 
-    print()
     n_ok = sum(1 for r in results if r["ok"])
-    print(f"✓ {n_ok} / {len(results)} uploaded")
+    print(f"\n✓ {n_ok} / {len(results)} uploaded")
 
-    # Record uploads in source_imports
     if n_ok:
-        print(f"→ Recording uploads in source_imports table...")
-        with psycopg2.connect(**conn_kwargs) as conn:
-            with conn.cursor() as cur:
-                for r in results:
-                    if not r["ok"]:
-                        continue
-                    cur.execute("""
-                        INSERT INTO source_imports
-                            (school_id, filename, file_sha256, notes)
-                        VALUES (%s, %s, %s, %s)
-                    """, (
-                        school_id,
-                        r["local_name"],
-                        r["sha256"],
-                        f"storage_path: {BUCKET}/{r['path']} · {r['bytes']} bytes",
-                    ))
-            conn.commit()
+        print("→ Recording uploads in source_imports table...")
+        import_rows = [
+            {
+                "school_id":   school_id,
+                "filename":    r["local_name"],
+                "file_sha256": r["sha256"],
+                "notes":       f"storage_path: {BUCKET}/{r['path']} · {r['bytes']} bytes",
+            }
+            for r in results if r["ok"]
+        ]
+        sb.table("source_imports").insert(import_rows).execute()
         print(f"  ✓ {n_ok} source_imports row(s) added")
 
-    print()
-    print("Storage URL pattern for retrieval (server-side only, requires service_role):")
-    print(f"  https://{PROJECT_REF}.supabase.co/storage/v1/object/{BUCKET}/{{path}}")
+    print(f"\nStorage URL pattern for retrieval (server-side only, requires service_role):")
+    print(f"  {SUPABASE_URL}/storage/v1/object/{BUCKET}/{{path}}")
     if results and results[0]["ok"]:
         print(f"  Example: {results[0]['path']}")
 

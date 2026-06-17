@@ -4,10 +4,10 @@
 # Excel reading (existing parser)
 openpyxl>=3.1,<4.0
 
-# Postgres driver (Supabase compat)
-psycopg2-binary>=2.9,<3.0
+# Supabase Python client (URL + service role key — no direct DB connection needed)
+supabase>=2.0,<3.0
 
-# Env-var loading from .env (so DATABASE_URL stays out of git)
+# Env-var loading from .env
 python-dotenv>=1.0,<2.0
 
 # HTTP client for Supabase Storage uploads (etl/upload_source_to_supabase.py)

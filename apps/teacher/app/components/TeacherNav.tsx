@@ -9,8 +9,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/teacher",       label: "Analyze" },
-  { href: "/teacher/input", label: "Input"   },
+  { href: "/",       label: "Analyze" },
+  { href: "/input",  label: "Input"   },
 ];
 
 export default function TeacherNav() {
@@ -18,8 +18,8 @@ export default function TeacherNav() {
   return (
     <nav className="nav" aria-label="Teacher mode">
       {LINKS.map(l => {
-        const isActive = l.href === "/teacher"
-          ? pathname === "/teacher"
+        const isActive = l.href === "/"
+          ? pathname === "/"
           : pathname.startsWith(l.href);
         return (
           <Link
