@@ -76,15 +76,20 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 700px) {
   .topbar { height: auto; padding: 0 16px; align-items: flex-start; }
-  .brand { flex: 1; flex-wrap: wrap; padding: 13px 0; gap: 0 12px; }
+  /* min-width:0 lets flex:1 actually constrain brand so inner nav can scroll */
+  .brand { flex: 1; min-width: 0; flex-wrap: wrap; padding: 13px 0; gap: 0 12px; }
   .brand-sub { display: none; }
   .nav {
-    flex: 0 0 100%; margin-left: 0; margin-top: 6px;
+    flex: 0 0 100%; min-width: 0; margin-left: 0; margin-top: 6px;
     overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
     padding: 8px 0 12px; gap: 20px; border-top: 1px solid var(--border);
+    /* fade hint that more tabs exist off-screen */
+    -webkit-mask-image: linear-gradient(to right, black 75%, transparent 100%);
+    mask-image: linear-gradient(to right, black 75%, transparent 100%);
   }
   .nav::-webkit-scrollbar { display: none; }
-  .nav a { flex-shrink: 0; }
+  /* prevent individual links from shrinking or wrapping */
+  .nav a { flex-shrink: 0; white-space: nowrap; }
   .top-right { flex-shrink: 0; padding-top: 13px; padding-bottom: 13px; }
 }
 

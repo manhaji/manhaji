@@ -25,7 +25,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="avatar" title="Principal">PR</div>
         </div>
       </header>
-      <main id="main-content" tabIndex={-1}>{children}</main>
+      <main id="main-content" tabIndex={-1} style={{ paddingBottom: "90px" }}>{children}</main>
       <AskManhajDrawer />
     </>
   );
