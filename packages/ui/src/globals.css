@@ -74,23 +74,32 @@ a:hover { text-decoration: underline; }
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-weight: 600; font-size: 11px; }
 
+/* 701–1100 px: keep single-row topbar but let nav scroll rather than compress */
+@media (min-width: 701px) and (max-width: 1100px) {
+  .brand { min-width: 0; }
+  .nav { min-width: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex-shrink: 0; white-space: nowrap; }
+}
+
+/* ≤700 px: wrap nav to its own scrollable row below logo */
 @media (max-width: 700px) {
   .topbar { height: auto; padding: 0 16px; align-items: flex-start; }
-  /* min-width:0 lets flex:1 actually constrain brand so inner nav can scroll */
   .brand { flex: 1; min-width: 0; flex-wrap: wrap; padding: 13px 0; gap: 0 12px; }
   .brand-sub { display: none; }
   .nav {
-    flex: 0 0 100%; min-width: 0; margin-left: 0; margin-top: 6px;
+    /* stretch to full topbar content width so fade reaches near the avatar */
+    flex: 0 0 calc(100vw - 32px); min-width: 0;
+    margin-left: 0; margin-top: 6px;
     overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
     padding: 8px 0 12px; gap: 20px; border-top: 1px solid var(--border);
-    /* fade hint that more tabs exist off-screen */
-    -webkit-mask-image: linear-gradient(to right, black 75%, transparent 100%);
-    mask-image: linear-gradient(to right, black 75%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, black 88%, transparent 100%);
   }
   .nav::-webkit-scrollbar { display: none; }
-  /* prevent individual links from shrinking or wrapping */
   .nav a { flex-shrink: 0; white-space: nowrap; }
-  .top-right { flex-shrink: 0; padding-top: 13px; padding-bottom: 13px; }
+  /* sit on top and mask the border line where nav underruns it */
+  .top-right { flex-shrink: 0; padding-top: 13px; padding-bottom: 13px; position: relative; z-index: 1; background: #fff; }
 }
 
 /* =========================================================================
