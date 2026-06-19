@@ -1,0 +1,19 @@
+{
+  "name": "@manhaj/auth",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./actions": "./src/actions.ts",
+    "./components": "./src/components.tsx"
+  },
+  "dependencies": {
+    "iron-session": "^8.0.1",
+    "next": "16.2.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}

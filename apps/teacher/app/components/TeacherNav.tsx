@@ -1,16 +1,12 @@
 "use client";
 
-/**
- * Teacher top-level tab nav.
- * Two tabs: Analyze (active on /teacher) and Input (active on /teacher/input).
- */
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LogoutButton } from "@manhaj/auth/components";
 
 const LINKS = [
-  { href: "/",       label: "Analyze" },
-  { href: "/input",  label: "Input"   },
+  { href: "/teacher",       label: "Analyze" },
+  { href: "/teacher/input", label: "Input"   },
 ];
 
 export default function TeacherNav() {
@@ -18,8 +14,8 @@ export default function TeacherNav() {
   return (
     <nav className="nav" aria-label="Teacher mode">
       {LINKS.map(l => {
-        const isActive = l.href === "/"
-          ? pathname === "/"
+        const isActive = l.href === "/teacher"
+          ? pathname === "/teacher"
           : pathname.startsWith(l.href);
         return (
           <Link
@@ -32,6 +28,7 @@ export default function TeacherNav() {
           </Link>
         );
       })}
+      <LogoutButton className="nav-logout" />
     </nav>
   );
 }

@@ -2,6 +2,9 @@
   "name": "@manhaj/admin",
   "version": "0.0.0",
   "private": true,
+  "exports": {
+    "./app/*": "./app/*"
+  },
   "scripts": {
     "dev": "next dev --port 3001",
     "build": "next build",
@@ -9,12 +12,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@manhaj/auth": "*",
     "@manhaj/lib": "*",
     "@manhaj/ui": "*",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "turbo": "^2.9.18"
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

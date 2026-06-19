@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LogoutButton } from "@manhaj/auth/components";
 
 const LINKS: Array<{ href: string; label: string }> = [
-  { href: "/",              label: "Dashboard" },
-  { href: "/schedule",      label: "My Schedule" },
-  { href: "/homework",      label: "Homework" },
-  { href: "/past-reports",  label: "Past Reports" },
-  { href: "/growth",        label: "My Growth" },
+  { href: "/student",               label: "Dashboard"    },
+  { href: "/student/schedule",      label: "My Schedule"  },
+  { href: "/student/homework",      label: "Homework"     },
+  { href: "/student/past-reports",  label: "Past Reports" },
+  { href: "/student/growth",        label: "My Growth"    },
 ];
 
 export default function StudentNav() {
@@ -16,8 +17,8 @@ export default function StudentNav() {
   return (
     <nav className="nav" aria-label="Primary">
       {LINKS.map(l => {
-        const isActive = l.href === "/"
-          ? pathname === "/"
+        const isActive = l.href === "/student"
+          ? pathname === "/student"
           : pathname.startsWith(l.href);
         return (
           <Link
@@ -30,6 +31,7 @@ export default function StudentNav() {
           </Link>
         );
       })}
+      <LogoutButton className="nav-logout" />
     </nav>
   );
 }

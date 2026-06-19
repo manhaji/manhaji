@@ -12,7 +12,12 @@
         "ANTHROPIC_API_KEY",
         "APP_NAME",
         "SCHOOL_NAME",
-        "ACADEMIC_YEAR"
+        "ACADEMIC_YEAR",
+        "SESSION_SECRET",
+        "DEMO_PASSWORD_ADMIN",
+        "DEMO_PASSWORD_TEACHER",
+        "DEMO_PASSWORD_STUDENT",
+        "DEMO_PASSWORD_PARENT"
       ]
     },
     "dev": {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "@manhaj/ui/globals.css";
 import "@manhaj/ui/tokens.css";
 import AdminNav from "./components/AdminNav";
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <Script src="/gate.js" strategy="beforeInteractive" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">Skip to main content</a>
