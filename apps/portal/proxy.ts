@@ -20,7 +20,7 @@ async function getRole(request: NextRequest): Promise<Role | null> {
   }
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Pass through Next.js internals and static files.
