@@ -1,4 +1,5 @@
 import TeacherNav from "@manhaj/teacher/app/components/TeacherNav";
+import { LogoutButton } from "@manhaj/auth/components";
 
 const SCHOOL_NAME = process.env.SCHOOL_NAME || "International School of Oman";
 const AY = process.env.ACADEMIC_YEAR || "2026-2027";
@@ -18,6 +19,7 @@ export default function TeacherLayout({ children }: { children: React.ReactNode 
           <TeacherNav />
         </div>
         <div className="top-right">
+          <LogoutButton />
           <span style={{ fontSize: 12 }}>AY {AY}</span>
           <div className="avatar" title="Ms Swart">MS</div>
         </div>

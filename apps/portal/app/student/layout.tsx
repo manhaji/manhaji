@@ -1,4 +1,5 @@
 import StudentNav from "@manhaj/student/app/components/StudentNav";
+import { LogoutButton } from "@manhaj/auth/components";
 
 const SCHOOL_NAME = process.env.SCHOOL_NAME || "International School of Oman";
 
@@ -17,6 +18,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
           <StudentNav />
         </div>
         <div className="top-right">
+          <LogoutButton />
           <span style={{ fontSize: 12 }}>Layla Al-Habsi · 10A</span>
           <div className="avatar" title="Student">LA</div>
         </div>

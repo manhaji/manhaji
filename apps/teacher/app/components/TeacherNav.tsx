@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogoutButton } from "@manhaj/auth/components";
 
 const LINKS = [
   { href: "/teacher",       label: "Analyze" },
@@ -28,7 +27,6 @@ export default function TeacherNav() {
           </Link>
         );
       })}
-      <LogoutButton className="nav-logout" />
     </nav>
   );
 }

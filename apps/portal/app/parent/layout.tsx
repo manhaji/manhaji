@@ -1,6 +1,7 @@
 import ParentNav from "@manhaj/parent/app/components/ParentNav";
 import ChildSwitcher from "@manhaj/parent/app/components/ChildSwitcher";
 import { ActiveChildProvider } from "@manhaj/lib/child";
+import { LogoutButton } from "@manhaj/auth/components";
 
 const SCHOOL_NAME = process.env.SCHOOL_NAME || "International School of Oman";
 
@@ -20,6 +21,7 @@ export default function ParentLayout({ children }: { children: React.ReactNode }
             <ParentNav />
           </div>
           <div className="top-right">
+            <LogoutButton />
             <span style={{ fontSize: 12 }}>Mr Al-Habsi</span>
             <div className="avatar" title="Parent">P</div>
           </div>

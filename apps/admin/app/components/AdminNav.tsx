@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogoutButton } from "@manhaj/auth/components";
 
 const LINKS: Array<{ href: string; label: string }> = [
   { href: "/admin",                 label: "Dashboard"  },
@@ -34,7 +33,6 @@ export default function AdminNav() {
           </Link>
         );
       })}
-      <LogoutButton className="nav-logout" />
     </nav>
   );
 }
