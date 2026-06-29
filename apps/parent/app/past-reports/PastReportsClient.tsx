@@ -1,33 +1,18 @@
 "use client";
 
-import { useActiveChild, ALL_CHILDREN_ID } from "@manhaj/lib/child";
-import { MOCK_ARCHIVE, archiveForChild, latestReport } from "@manhaj/lib/mock-reports-archive";
-import { useMemo } from "react";
+import type { ReportArchiveRow } from "@manhaj/lib/queries/reports";
+import KpiRow            from "./components/KpiRow";
+import ReportTimeline    from "./components/ReportTimeline";
+import ReportPreviewCard from "./components/ReportPreviewCard";
 
-import KpiRow             from "./components/KpiRow";
-import ReportTimeline     from "./components/ReportTimeline";
-import ReportPreviewCard  from "./components/ReportPreviewCard";
-
-export default function PastReportsClient() {
-  const { activeId } = useActiveChild();
-  const scoped  = useMemo(() => archiveForChild(MOCK_ARCHIVE, activeId), [activeId]);
-  const latest  = useMemo(
-    () => latestReport(MOCK_ARCHIVE, activeId === ALL_CHILDREN_ID ? undefined : activeId),
-    [activeId],
-  );
-
+export default function PastReportsClient({ reports }: { reports: ReportArchiveRow[] }) {
   return (
     <div className="container">
       <h1>Past Reports</h1>
-      <p className="sub">
-        {activeId === ALL_CHILDREN_ID
-          ? "Archive across all children · AY 2025–26"
-          : `Archive for ${latest?.child_name ?? "child"} · AY 2025–26`}
-      </p>
-
-      <KpiRow reports={scoped} />
-      <ReportPreviewCard report={latest} />
-      <ReportTimeline reports={scoped} />
+      <p className="sub">Archive · AY 2025–26</p>
+      <KpiRow reports={reports} />
+      <ReportPreviewCard report={reports[0] ?? null} />
+      <ReportTimeline reports={reports} />
     </div>
   );
 }

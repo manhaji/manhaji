@@ -25,3 +25,4 @@ export * from "./summary";
 export * from "./supabase-middleware";
 export * from "./supabase";
 export * from "./tokens";
+export type { Database } from "./types/supabase";

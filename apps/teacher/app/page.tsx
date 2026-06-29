@@ -1,28 +1,18 @@
-/**
- * Teacher · Analyze tab — Ms Swart's personal dashboard.
- *
- * Server component. All data is from in-file mock constants;
- * Phase 4 replaces with a real RPC scoped to the teacher's identity.
- *
- * Re-uses:
- *  - TeacherMyWeek         (schedule-components/TeacherMyWeek.tsx)
- *  - TrendChart            (@manhaj/ui)
- *  - AskManhajCard         (schedule-components/AskManhajCard.tsx)
- *  - TeacherStudentRoster  (./components/TeacherStudentRoster.tsx)
- *  - TeacherStudentInsights(./components/TeacherStudentInsights.tsx)
- */
-
 import { TrendChart, type TrendPoint } from "@manhaj/ui";
 import TeacherMyWeek from "./schedule-components/TeacherMyWeek";
 import AskManhajCard from "./schedule-components/AskManhajCard";
 import TeacherStudentRoster from "./components/TeacherStudentRoster";
 import TeacherStudentInsights from "./components/TeacherStudentInsights";
 import { SWART_STUDENTS } from "@manhaj/lib/mock-teacher-students";
+import type { TeacherStudentRow } from "@manhaj/lib/mock-teacher-students";
+import { getCurrentTeacherId, getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
+import { getTeacherWithSections } from "@manhaj/lib/queries/teachers";
+import { getStudentsForSections } from "@manhaj/lib/queries/students";
+import { getAssessmentsForTeacher } from "@manhaj/lib/queries/assessments";
 
-// Derive sorted unique sections from the students data
+export const dynamic = "force-dynamic";
+
 const SWART_SECTIONS = [...new Set(SWART_STUDENTS.map(s => s.section_code))].sort();
-
-// ---- mock data scoped to Ms Swart ----------------------------------------
 
 const SWART_ATT: TrendPoint[] = [
   { date: "05-01", pct: 95 }, { date: "05-02", pct: 96 }, { date: "05-05", pct: 94 },
@@ -33,45 +23,96 @@ const SWART_ATT: TrendPoint[] = [
   { date: "05-22", pct: 95 }, { date: "05-23", pct: 96 },
 ];
 
-const ASSESSMENTS = [
-  { section: "10A", subject: "History",   pct_submitted: 92, avg_score: 74, label: "Y10 Essay — Rise of Constitutional Monarchies" },
-  { section: "10A", subject: "Geography", pct_submitted: 88, avg_score: 69, label: "Map Analysis Task · Geopolitical zones" },
-  { section: "9A",  subject: "History",   pct_submitted: 96, avg_score: 81, label: "Chapter 5 Quiz · Industrial Revolution" },
-  { section: "10A", subject: "MUN",       pct_submitted: 100, avg_score: 88, label: "Position Paper draft · UNSC" },
-];
-
 const SPOTLIGHT = [
-  { name: "Rania Khalifa",  section: "10A", note: "EAL flag · Written rubric dropped to 2.9 · needs scaffolding support",  tone: "warn"    },
-  { name: "Hala Mohsen",    section: "9A",  note: "Chronic absentee · 6 days missed · missed post-exam review session",      tone: "bad"     },
-  { name: "Tariq Said",     section: "10A", note: "Steady improvement in oral participation · acknowledge publicly",          tone: "good"    },
+  { name: "Rania Khalifa",  section: "10A", note: "EAL flag · Written rubric dropped to 2.9 · needs scaffolding support",  tone: "warn" },
+  { name: "Hala Mohsen",    section: "9A",  note: "Chronic absentee · 6 days missed · missed post-exam review session",      tone: "bad" },
+  { name: "Tariq Said",     section: "10A", note: "Steady improvement in oral participation · acknowledge publicly",          tone: "good" },
 ];
 
-// --------------------------------------------------------------------------
+export default async function TeacherAnalyzePage() {
+  const [teacherId, academicYearId] = await Promise.all([
+    getCurrentTeacherId(),
+    getCurrentAcademicYearId(),
+  ]);
 
-export default function TeacherAnalyzePage() {
+  // Get teacher's sections then students
+  const teacherSections = teacherId && academicYearId
+    ? await getTeacherWithSections(teacherId, academicYearId)
+    : [];
+
+  const sectionIds = teacherSections
+    .map(r => (r.sections as { id: string } | null)?.id)
+    .filter((id): id is string => id != null);
+
+  const dbStudents = sectionIds.length > 0 ? await getStudentsForSections(sectionIds) : [];
+
+  // Map DB students to TeacherStudentRow shape (assessment/att fields default for now)
+  const students: TeacherStudentRow[] = dbStudents.length > 0
+    ? dbStudents.map(s => ({
+        id: s.id,
+        full_name: s.full_name_en,
+        section_code: s.section_code,
+        grade_band: ((s.grade_level ?? "").startsWith("1") ? "HS" : "MS") as "HS" | "MS",
+        status: (s.risk_flags.some(f => f.severity === "high") ? "support"
+          : s.risk_flags.some(f => f.severity === "medium") ? "watch"
+          : "enrolled") as never,
+        rubric_avg: 0,
+        attendance: 0,
+        flags: s.risk_flags.map(f => f.category),
+        teacher_att_pct: 90,
+        last_assessment_score: 75,
+        last_assessment_label: "—",
+        submission_status: "submitted" as const,
+        discipline_notes_count: 0,
+      }))
+    : SWART_STUDENTS;
+
+  const sections = dbStudents.length > 0
+    ? [...new Set(dbStudents.map(s => s.section_code))].sort()
+    : SWART_SECTIONS;
+
+  const rawAssessments = teacherId && sectionIds.length > 0
+    ? await getAssessmentsForTeacher(teacherId, sectionIds)
+    : [];
+
+  const sectionCountMap = students.reduce<Record<string, number>>((acc, s) => {
+    acc[s.section_code] = (acc[s.section_code] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const assessments = rawAssessments.map(a => ({
+    ...a,
+    pct_submitted: Math.round(a.submitted_count / Math.max(sectionCountMap[a.section] ?? 1, 1) * 100),
+  }));
+
+  const sectionLabels = teacherSections.length > 0
+    ? teacherSections.map(r => {
+        const sec = r.sections as { code: string } | null;
+        return sec?.code ?? "—";
+      }).filter(Boolean).join(" · ")
+    : "10A · 9A · 10A MUN · 12 A2";
+
   return (
     <div className="container">
 
-      {/* Greet hero */}
       <section className="ta-greet-hero">
-        <h1 className="ta-greet-name">Good morning, Ms Swart.</h1>
+        <h1 className="ta-greet-name">Good morning.</h1>
         <p className="ta-greet-sub">
           Today: P3 History · 10A &nbsp;·&nbsp; P5 MUN club · 10A.
           &nbsp;Yesterday: 92% submission rate on Y10 essay.
         </p>
       </section>
 
-      {/* 4-card KPI row */}
       <div className="ta-kpi-row">
         <div className="ta-kpi-card">
           <div className="ta-kpi-l">My periods this week</div>
-          <div className="ta-kpi-v">22</div>
-          <div className="ta-kpi-d">across 4 sections</div>
+          <div className="ta-kpi-v">{teacherSections.reduce((sum, r) => sum + (r.weekly_periods ?? 0), 0) || 22}</div>
+          <div className="ta-kpi-d">across {sections.length || 4} sections</div>
         </div>
         <div className="ta-kpi-card">
           <div className="ta-kpi-l">My sections</div>
-          <div className="ta-kpi-v">4</div>
-          <div className="ta-kpi-d">10A · 9A · 10A MUN · 12 A2</div>
+          <div className="ta-kpi-v">{sections.length || 4}</div>
+          <div className="ta-kpi-d">{sectionLabels}</div>
         </div>
         <div className="ta-kpi-card">
           <div className="ta-kpi-l">Avg attendance my classes</div>
@@ -85,15 +126,12 @@ export default function TeacherAnalyzePage() {
         </div>
       </div>
 
-      {/* Week grid — re-use from admin/schedule */}
       <h3 className="ta-section-head">My week</h3>
       <TeacherMyWeek />
 
-      {/* Attendance trend */}
       <h3 className="ta-section-head">Attendance · my classes · last 17 days</h3>
-      <TrendChart points={SWART_ATT} target={95} title="Attendance · Ms Swart's sections" />
+      <TrendChart points={SWART_ATT} target={95} title="Attendance · my sections" />
 
-      {/* Assessment table */}
       <h3 className="ta-section-head">Recent assessments</h3>
       <div className="ta-assess-card">
         <table className="ta-assess-table">
@@ -108,7 +146,7 @@ export default function TeacherAnalyzePage() {
             </tr>
           </thead>
           <tbody>
-            {ASSESSMENTS.map((a, i) => (
+            {assessments.map((a, i) => (
               <tr key={i}>
                 <td className="ta-assess-section">{a.section}</td>
                 <td className="ta-assess-subj">{a.subject}</td>
@@ -128,7 +166,6 @@ export default function TeacherAnalyzePage() {
         </table>
       </div>
 
-      {/* Student spotlight (legacy 3-row view kept for quick scan) */}
       <h3 className="ta-section-head">Student spotlight · needs attention</h3>
       <div className="ta-spotlight-card">
         {SPOTLIGHT.map((s, i) => (
@@ -139,14 +176,11 @@ export default function TeacherAnalyzePage() {
         ))}
       </div>
 
-      {/* Full scoped student roster — Phase 3.2 */}
       <h3 className="ta-section-head">My students · full roster</h3>
-      <TeacherStudentRoster students={SWART_STUDENTS} sections={SWART_SECTIONS} />
+      <TeacherStudentRoster students={students} sections={sections} />
 
-      {/* Subject-specific insights — Phase 3.2 */}
-      <TeacherStudentInsights students={SWART_STUDENTS} />
+      <TeacherStudentInsights students={students} />
 
-      {/* Ask Manhaj */}
       <h3 className="ta-section-head">Ask Manhaj</h3>
       <AskManhajCard />
 

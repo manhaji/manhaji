@@ -21,7 +21,7 @@ export type Role = "admin" | "teacher" | "student" | "parent";
 
 export interface SessionData {
   role: Role;
-  authMode: "demo";
+  authMode: "demo" | "supabase";
 }
 
 export const COOKIE_NAME = "manhaj_session";
@@ -51,11 +51,17 @@ export async function getSessionRole(): Promise<Role | null> {
   }
 }
 
+/** Write a role directly into the session (used after Supabase auth). */
+export async function setSessionRole(role: Role): Promise<void> {
+  const session = await getSession();
+  session.role = role;
+  session.authMode = "supabase";
+  await session.save();
+}
+
 /**
  * Validate a demo password and, on match, write the session cookie.
  * Returns the matched role, or null if the password is wrong.
- *
- * TODO (§4.1): replace with Supabase magic-link + invitations table lookup.
  */
 export async function login(password: string): Promise<Role | null> {
   // Build the map at call time so env vars are always read fresh.

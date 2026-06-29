@@ -20,6 +20,7 @@
 
 import { createBrowserClient, createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { Database } from "./types/supabase";
 
 const URL = process.env.SUPABASE_URL!;
 const ANON = process.env.SUPABASE_ANON_KEY!;
@@ -36,7 +37,7 @@ if (typeof window !== "undefined") {
 
 /** Browser-side client. Use in client components. RLS-enforced via user JWT. */
 export function browserClient() {
-  return createBrowserClient(URL, ANON);
+  return createBrowserClient<Database>(URL, ANON);
 }
 
 /**
@@ -56,7 +57,7 @@ export function browserClient() {
  */
 export async function serverClient() {
   const cookieStore = await cookies();
-  return createServerClient(URL, ANON, {
+  return createServerClient<Database>(URL, ANON, {
     cookies: {
       getAll() {
         return cookieStore.getAll();

@@ -1,37 +1,82 @@
 /**
  * Student Dashboard.
- *
- * Phase 2.11: rebuilt to match student-dashboard-v2.html mockup.
- * Layout: greet hero → today strip (2 col) → 4-card KPI row → divider → 2×2 sd-card grid.
- *
- * All data is drawn from MOCK_HOMEWORK and MOCK_STUDENT_SCHEDULE.
+ * Async server component. Fetches real homework + timetable from DB.
+ * Narrative section remains static (AI-generated content).
  */
 
 import Link from "next/link";
+import { getCurrentStudentId, getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
+import { getHomeworkForStudent } from "@manhaj/lib/queries/lessons";
+import { getStudentTimetable } from "@manhaj/lib/queries/timetable";
 import { MOCK_HOMEWORK } from "@manhaj/lib/mock-homework";
 import { DEMO_DAY, MOCK_PERIODS, periodsForDay } from "@manhaj/lib/mock-student-schedule";
 
 export const dynamic = "force-dynamic";
 
-// Find today's schedule
-const todayAll = periodsForDay(MOCK_PERIODS, DEMO_DAY);
-const todaySchedule = todayAll.filter(p => p.state == null);
-const p3Today = todaySchedule.find(p => p.period === "P3");
-const p4Today = todaySchedule.find(p => p.period === "P4");
+const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const;
 
-// Count homework due this week
-const hwDueCount = MOCK_HOMEWORK.filter(h =>
-  h.status === "due-today" || h.status === "not-started" || h.status === "in-progress" || h.status === "overdue"
-).length;
-const hwOverdue = MOCK_HOMEWORK.filter(h => h.status === "overdue");
+export default async function StudentDashboard() {
+  const [studentId, academicYearId] = await Promise.all([
+    getCurrentStudentId(),
+    getCurrentAcademicYearId(),
+  ]);
 
-export default function StudentDashboard() {
+  const today    = new Date();
+  const todayStr = today.toISOString().slice(0, 10);
+  const todayDow = DOW[today.getDay()];
+  const from     = new Date(today.getTime() - 3 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const to       = new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+  const [homework, periods] = await Promise.all([
+    studentId ? getHomeworkForStudent(studentId, from, to) : Promise.resolve([]),
+    studentId && academicYearId ? getStudentTimetable(studentId, academicYearId) : Promise.resolve([]),
+  ]);
+
+  const useReal = homework.length > 0 || periods.length > 0;
+
+  // Homework stats
+  const hwDueCount = useReal
+    ? homework.filter(h => !h.due || h.due >= todayStr).length
+    : MOCK_HOMEWORK.filter(h => ["due-today", "not-started", "in-progress", "overdue"].includes(h.status)).length;
+
+  const hwOverdue = useReal
+    ? homework.filter(h => h.due !== null && h.due < todayStr)
+    : MOCK_HOMEWORK.filter(h => h.status === "overdue");
+
+  const hwPreview = useReal
+    ? homework.slice(0, 2).map(h => ({
+        id: h.id,
+        subject: h.subject,
+        dueLabel: h.due ? h.due.slice(5, 10) : "—",
+        overdue: h.due ? h.due < todayStr : false,
+      }))
+    : MOCK_HOMEWORK.slice(0, 2).map(h => ({
+        id: h.id,
+        subject: h.subject,
+        dueLabel: h.due.slice(5, 10),
+        overdue: h.status === "overdue",
+      }));
+
+  // Today's schedule from DB
+  const mockTodayAll = periodsForDay(MOCK_PERIODS, DEMO_DAY);
+  const todayPeriods = periods.length > 0
+    ? periods.filter(p => p.day === todayDow && p.subject !== null)
+    : mockTodayAll.filter(p => p.state == null);
+
+  const p3Today = periods.length > 0
+    ? periods.find(p => p.day === todayDow && p.period === "P3")
+    : mockTodayAll.find(p => p.period === "P3");
+
+  const p4Today = periods.length > 0
+    ? periods.find(p => p.day === todayDow && p.period === "P4")
+    : mockTodayAll.find(p => p.period === "P4");
+
   return (
     <div className="container">
       {/* Hero greeting — monthly narrative */}
       <section className="greet-hero" aria-label="Monthly briefing">
         <div className="greet-hero-label">April 2026 · monthly</div>
-        <h1>Layla, here&apos;s how April went.</h1>
+        <h1>Here&apos;s how April went.</h1>
         <p className="greet-hero-sub">Three things you did well, one to build, two ideas for May.</p>
 
         <div className="greet-hero-narrative">
@@ -65,11 +110,11 @@ export default function StudentDashboard() {
         <div>
           <div className="today-strip-col-label">Right now · P3 starts in 6 min</div>
           <div className="today-strip-col-body">
-            {p3Today ? `${p3Today.subject} · ${p3Today.room ?? ""} · ${p3Today.teacher ?? ""}` : "Mathematics · R201 · Mr Faisal"}
+            {p3Today
+              ? `${p3Today.subject ?? "—"} · ${p3Today.room ?? ""} · ${p3Today.teacher ?? ""}`
+              : "Mathematics · R201 · Mr Faisal"}
             <small>
-              {p3Today?.bring
-                ? `Bring ${p3Today.bring.join(", ")}. Limits review for tomorrow's test.`
-                : "Bring calculator + chapter 7 textbook. Limits review for tomorrow's test."}
+              Bring calculator + chapter 7 textbook. Limits review for tomorrow&apos;s test.
             </small>
           </div>
         </div>
@@ -119,7 +164,7 @@ export default function StudentDashboard() {
             <span className="sd-card-arrow" aria-hidden="true">→</span>
           </div>
           <div className="sd-card-big">
-            {p3Today ? `P3 · ${p3Today.subject}` : "P3 · Maths"}
+            {p3Today ? `P3 · ${p3Today.subject ?? "—"}` : "P3 · Maths"}
           </div>
           <div className="sd-card-trend">
             {p3Today
@@ -129,9 +174,9 @@ export default function StudentDashboard() {
           <div className="sd-card-rows">
             <div className="sd-card-row">
               <span>Next</span>
-              <b>{p4Today ? `P4 · ${p4Today.subject}` : "P4 · Physics"}</b>
+              <b>{p4Today ? `P4 · ${p4Today.subject ?? "—"}` : "P4 · Physics"}</b>
             </div>
-            <div className="sd-card-row"><span>Today total</span><b>{todaySchedule.length} classes</b></div>
+            <div className="sd-card-row"><span>Today total</span><b>{todayPeriods.length} classes</b></div>
           </div>
         </Link>
 
@@ -147,11 +192,11 @@ export default function StudentDashboard() {
               : "▲ 1 due tomorrow · stay on track"}
           </div>
           <div className="sd-card-rows">
-            {MOCK_HOMEWORK.slice(0, 2).map(h => (
+            {hwPreview.map(h => (
               <div key={h.id} className="sd-card-row">
                 <span>{h.subject}</span>
-                <b style={h.status === "overdue" ? { color: "var(--color-danger)" } : undefined}>
-                  {h.status === "overdue" ? `overdue` : h.due.slice(5, 10)}
+                <b style={h.overdue ? { color: "var(--color-danger)" } : undefined}>
+                  {h.overdue ? "overdue" : h.dueLabel}
                 </b>
               </div>
             ))}

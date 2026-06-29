@@ -20,11 +20,10 @@ Welcome to the team. This guide explains how we work together on the code **with
 3. Make your changes. Run the app locally and confirm it works.
 4. Run the same checks the robots will run, before you push:
    ```bash
-   cd apps/web
    npm install
-   npm run lint     # code style
-   npm test         # tests
-   npm run build    # confirms the app compiles
+   npx turbo lint   # code style
+   npx turbo test   # tests
+   npx turbo build --filter=@manhaj/portal  # confirms the app compiles
    ```
 5. Commit and push your branch:
    ```bash

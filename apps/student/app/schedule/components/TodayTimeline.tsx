@@ -1,33 +1,44 @@
-import { periodsForDay, currentPeriod, MOCK_PERIODS, DEMO_NOW, DEMO_DAY } from "@manhaj/lib/mock-student-schedule";
+import type { PeriodSlot } from "@manhaj/lib/queries/timetable";
 
-export default function TodayTimeline() {
-  const periods = periodsForDay(MOCK_PERIODS, DEMO_DAY);
-  const { current } = currentPeriod(MOCK_PERIODS, DEMO_NOW);
-  const nowMs = Date.parse(DEMO_NOW);
-  const dateStr = DEMO_NOW.slice(0, 10);
+function todayDow(): string {
+  return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date().getDay()] ?? "Mon";
+}
+
+function nowHHMM(): string {
+  const now = new Date();
+  return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+}
+
+export default function TodayTimeline({ periods }: { periods: PeriodSlot[] }) {
+  const today = todayDow();
+  const now   = nowHHMM();
+
+  const todayPeriods = periods.filter(p => p.day === today);
+
   return (
     <section className="sc-tl-card" aria-label="Today timeline">
       <header className="sc-tl-head">
-        <h3>Today&apos;s classes · {DEMO_DAY}</h3>
+        <h3>Today&apos;s classes · {today}</h3>
       </header>
       <ol className="sc-tl-list">
-        {periods.map(p => {
-          const endMs   = Date.parse(`${dateStr}T${p.end}:00+04:00`);
-          const isNow   = current?.period === p.period;
-          const isDone  = endMs <= nowMs && !isNow;
+        {todayPeriods.map(p => {
+          const isNow  = p.start <= now && p.end > now;
+          const isDone = p.end <= now && !isNow;
+          const isBreak = !p.is_teaching;
           const cls = ["sc-tl-row"];
-          if (p.state === "break") cls.push("sc-tl-break");
-          if (p.state === "lunch") cls.push("sc-tl-lunch");
-          if (isDone)              cls.push("sc-tl-done");
-          if (isNow)               cls.push("sc-tl-now");
+          if (isBreak) cls.push("sc-tl-break");
+          if (isDone)  cls.push("sc-tl-done");
+          if (isNow)   cls.push("sc-tl-now");
           return (
             <li key={p.period} className={cls.join(" ")}>
               <span className="sc-tl-time">{p.start}–{p.end}</span>
               <span className="sc-tl-pkey">{p.period}</span>
               <span className="sc-tl-body">
-                <span className="sc-tl-subj">{p.subject}</span>
+                <span className="sc-tl-subj">{p.subject ?? p.period}</span>
                 {(p.teacher || p.room) && (
-                  <span className="sc-tl-meta">{p.teacher}{p.teacher && p.room ? " · " : ""}{p.room}</span>
+                  <span className="sc-tl-meta">
+                    {p.teacher}{p.teacher && p.room ? " · " : ""}{p.room}
+                  </span>
                 )}
               </span>
               {isDone && <span className="sc-tl-check">✓</span>}
@@ -35,6 +46,9 @@ export default function TodayTimeline() {
             </li>
           );
         })}
+        {todayPeriods.length === 0 && (
+          <li className="sc-tl-row"><span className="sc-tl-body">No classes today.</span></li>
+        )}
       </ol>
     </section>
   );

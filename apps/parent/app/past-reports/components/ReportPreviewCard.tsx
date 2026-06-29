@@ -1,6 +1,13 @@
-import type { ArchivedReport } from "@manhaj/lib/mock-reports-archive";
+import type { ReportArchiveRow } from "@manhaj/lib/queries/reports";
 
-export default function ReportPreviewCard({ report }: { report: ArchivedReport | null }) {
+function periodLabel(r: ReportArchiveRow): string {
+  if (r.generated_at) {
+    return new Date(r.generated_at).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+  }
+  return r.scope ?? r.report_kind;
+}
+
+export default function ReportPreviewCard({ report }: { report: ReportArchiveRow | null }) {
   if (!report) {
     return (
       <section className="pr-pv-card pr-pv-empty" aria-label="Latest report preview">
@@ -8,28 +15,17 @@ export default function ReportPreviewCard({ report }: { report: ArchivedReport |
       </section>
     );
   }
-  const top3 = [...report.axes].sort((a, b) => b.score - a.score).slice(0, 3);
   return (
     <section className="pr-pv-card" aria-label="Latest report preview">
       <header className="pr-pv-head">
-        <span className="pr-pv-tag">Latest · {report.period}</span>
-        <h3>{report.child_name}</h3>
+        <span className="pr-pv-tag">Latest · {periodLabel(report)}</span>
+        <h3>{report.student_name ?? "Student"}</h3>
       </header>
-      <p className="pr-pv-headline">{report.headline}</p>
-      <div className="pr-pv-axes">
-        {top3.map(a => (
-          <div key={a.name} className="pr-pv-axis">
-            <span className="pr-pv-axis-name">{a.name}</span>
-            <span className="pr-pv-axis-bar">
-              <span className="pr-pv-axis-fill" style={{ width: `${(a.score / 5) * 100}%` }} />
-            </span>
-            <span className="pr-pv-axis-score">{a.score.toFixed(1)}</span>
-          </div>
-        ))}
-      </div>
+      <p className="pr-pv-headline">{report.report_kind.replace("_", " ")} report</p>
       <div className="pr-pv-actions">
-        <button type="button" className="pr-pv-btn primary">Open full report</button>
-        <button type="button" className="pr-pv-btn ghost">Download PDF</button>
+        {report.storage_path
+          ? <a href={report.storage_path} target="_blank" rel="noopener noreferrer" className="pr-pv-btn primary">Open full report</a>
+          : <button type="button" className="pr-pv-btn primary" disabled>PDF not yet available</button>}
       </div>
     </section>
   );

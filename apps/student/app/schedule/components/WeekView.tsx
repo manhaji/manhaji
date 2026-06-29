@@ -1,12 +1,33 @@
-import { MOCK_PERIODS, DEMO_DAY, currentPeriod, DEMO_NOW, type StudentPeriod } from "@manhaj/lib/mock-student-schedule";
+import type { PeriodSlot } from "@manhaj/lib/queries/timetable";
 
-const DAYS: Array<"Mon" | "Tue" | "Wed" | "Thu" | "Fri"> = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"] as const;
 
-export default function WeekView() {
-  const { current } = currentPeriod(MOCK_PERIODS, DEMO_NOW);
-  // Group by day, in bell-order
-  const byDay: Record<string, StudentPeriod[]> = {};
-  for (const day of DAYS) byDay[day] = MOCK_PERIODS.filter(p => p.day === day);
+function todayDow(): string {
+  return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date().getDay()] ?? "Mon";
+}
+
+function nowHHMM(): string {
+  const now = new Date();
+  return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+}
+
+function abbrev(subject: string | null): string {
+  if (!subject) return "—";
+  const map: Record<string, string> = {
+    English: "Eng", Maths: "Mth", Mathematics: "Mth", Chemistry: "Chm",
+    Biology: "Bio", Physics: "Phy", History: "His", Geography: "Geo",
+    Arabic: "Ara", PE: "PE", ICT: "ICT", "MUN club": "MUN",
+  };
+  return map[subject] ?? subject.slice(0, 3);
+}
+
+export default function WeekView({ periods }: { periods: PeriodSlot[] }) {
+  const today = todayDow();
+  const now   = nowHHMM();
+
+  const byDay: Record<string, PeriodSlot[]> = {};
+  for (const day of DAYS) byDay[day] = periods.filter(p => p.day === day);
+
   return (
     <section className="sc-wv-card" aria-label="Week view">
       <header className="sc-wv-head">
@@ -14,45 +35,27 @@ export default function WeekView() {
       </header>
       <div className="sc-wv-grid">
         {DAYS.map(d => (
-          <div key={d} className={`sc-wv-col ${d === DEMO_DAY ? "sc-wv-today" : ""}`}>
-            <div className="sc-wv-dow">{d}{d === DEMO_DAY ? " · Today" : ""}</div>
+          <div key={d} className={`sc-wv-col ${d === today ? "sc-wv-today" : ""}`}>
+            <div className="sc-wv-dow">{d}{d === today ? " · Today" : ""}</div>
             {byDay[d].map(p => {
-              const isNow = p.day === DEMO_DAY && current?.period === p.period;
+              const isNow = d === today && p.start <= now && p.end > now;
               const cls = ["sc-wv-cell"];
-              if (p.state === "break") cls.push("sc-wv-break");
-              if (p.state === "lunch") cls.push("sc-wv-lunch");
-              if (isNow)               cls.push("sc-wv-now");
+              if (!p.is_teaching) cls.push("sc-wv-break");
+              if (isNow)          cls.push("sc-wv-now");
               return (
                 <div key={p.period} className={cls.join(" ")}>
                   <span className="sc-wv-key">{p.period}</span>
                   <span className="sc-wv-subj">{abbrev(p.subject)}</span>
-                  {p.room && !p.state && <span className="sc-wv-room">{p.room}</span>}
+                  {p.room && p.is_teaching && <span className="sc-wv-room">{p.room}</span>}
                 </div>
               );
             })}
+            {byDay[d].length === 0 && (
+              <div className="sc-wv-cell sc-wv-break"><span className="sc-wv-subj">—</span></div>
+            )}
           </div>
         ))}
       </div>
     </section>
   );
-}
-
-function abbrev(subject: string): string {
-  const map: Record<string, string> = {
-    "English":   "Eng",
-    "Maths":     "Mth",
-    "Chemistry": "Chm",
-    "Biology":   "Bio",
-    "Physics":   "Phy",
-    "History":   "His",
-    "Geography": "Geo",
-    "Arabic":    "Ara",
-    "PE":        "PE",
-    "ICT":       "ICT",
-    "MUN club":  "MUN",
-    "Study":     "Study",
-    "Break":     "Break",
-    "Lunch":     "Lunch",
-  };
-  return map[subject] ?? subject.slice(0, 3);
 }

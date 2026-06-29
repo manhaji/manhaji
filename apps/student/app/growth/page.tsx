@@ -1,16 +1,28 @@
-import RubricRadar                from "./components/RubricRadar";
-import AxisSparklines             from "./components/AxisSparklines";
-import StrengthsAndGrowth         from "./components/StrengthsAndGrowth";
-import GoalsList                  from "./components/GoalsList";
-import CurrentGrades              from "./components/CurrentGrades";
-import UniversityPlacementSignal  from "./components/UniversityPlacementSignal";
-import ImprovementPlan            from "./components/ImprovementPlan";
-import SubjectPercentiles         from "./components/SubjectPercentiles";
-import MonthOverMonthDelta        from "./components/MonthOverMonthDelta";
+import { getCurrentStudentId, getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
+import { getRubricScoresForStudent, getGoalsForStudent } from "@manhaj/lib/queries/growth";
+import RubricRadar               from "./components/RubricRadar";
+import AxisSparklines            from "./components/AxisSparklines";
+import StrengthsAndGrowth        from "./components/StrengthsAndGrowth";
+import GoalsList                 from "./components/GoalsList";
+import CurrentGrades             from "./components/CurrentGrades";
+import UniversityPlacementSignal from "./components/UniversityPlacementSignal";
+import ImprovementPlan           from "./components/ImprovementPlan";
+import SubjectPercentiles        from "./components/SubjectPercentiles";
+import MonthOverMonthDelta       from "./components/MonthOverMonthDelta";
 
 export const dynamic = "force-dynamic";
 
-export default function StudentGrowthPage() {
+export default async function StudentGrowthPage() {
+  const [studentId, academicYearId] = await Promise.all([
+    getCurrentStudentId(),
+    getCurrentAcademicYearId(),
+  ]);
+
+  const [scores, goals] = await Promise.all([
+    studentId ? getRubricScoresForStudent(studentId) : Promise.resolve([]),
+    studentId && academicYearId ? getGoalsForStudent(studentId, academicYearId) : Promise.resolve([]),
+  ]);
+
   return (
     <div className="container">
       <h1>My Growth</h1>
@@ -19,13 +31,11 @@ export default function StudentGrowthPage() {
         university placement signal · what changed this month.
       </p>
 
-      {/* ── Existing blocks ── */}
-      <RubricRadar />
-      <AxisSparklines />
-      <StrengthsAndGrowth />
-      <GoalsList />
+      <RubricRadar scores={scores} />
+      <AxisSparklines scores={scores} />
+      <StrengthsAndGrowth scores={scores} />
+      <GoalsList goals={goals} />
 
-      {/* ── Phase 3.3 new blocks ── */}
       <CurrentGrades />
       <UniversityPlacementSignal />
       <ImprovementPlan />
