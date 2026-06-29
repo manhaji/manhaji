@@ -55,6 +55,7 @@ export async function getSectionAttendanceStats(from: string, to: string): Promi
 
   const bySection = new Map<string, { code: string; total: number; absent: number }>();
   for (const row of data ?? []) {
+    if (!row.section_id) continue;
     const sec = row.sections as { code: string } | null;
     const d = bySection.get(row.section_id) ?? { code: sec?.code ?? row.section_id, total: 0, absent: 0 };
     d.total++;
@@ -107,15 +108,15 @@ export async function getChronicAbsentees(academicYearId: string, threshold = 10
 export async function getAttendanceForSection(
   sectionId: string,
   date: string,
-  period: number,
+  bellPeriodId: string,
 ) {
   const db = await serverClient();
   const { data, error } = await db
     .from("attendance_marks")
     .select("student_id, status, notes")
     .eq("section_id", sectionId)
-    .eq("date", date)
-    .eq("period", period);
+    .eq("marked_on", date)
+    .eq("bell_period_id", bellPeriodId);
   if (error) throw new Error(error.message);
   return data;
 }

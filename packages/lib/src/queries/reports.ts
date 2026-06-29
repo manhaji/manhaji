@@ -2,8 +2,8 @@ import { serverClient } from "../supabase";
 
 export type CommDraftRow = {
   id: string;
-  status: string;
-  created_at: string;
+  status: string | null;
+  created_at: string | null;
   sent_at: string | null;
   student_id: string | null;
   student_name: string | null;
@@ -60,6 +60,7 @@ export async function getCommDraftPipelineCounts() {
   if (error) throw new Error(error.message);
   const counts: Record<string, number> = {};
   for (const row of data ?? []) {
+    if (!row.status) continue;
     counts[row.status] = (counts[row.status] ?? 0) + 1;
   }
   return counts;

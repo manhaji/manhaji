@@ -5,37 +5,39 @@ import { revalidatePath } from "next/cache";
 
 export async function upsertLessonPlan(data: {
   id?: string;
-  timetable_slot_id: string;
-  date: string;
-  objectives?: string;
-  activities?: string;
-  resources?: string;
-  notes?: string;
+  section_id: string;
+  subject_id: string;
+  teacher_id: string;
+  held_on: string;
+  topic?: string;
+  plan_kind?: "standard" | "cover" | "assessment" | "trip";
+  homework_description?: string;
+  homework_due_date?: string;
+  planned_for_week?: string;
 }) {
   const db = await serverClient();
-  // Upsert on (timetable_slot_id, date) if no id provided
-  const { data: plan, error } = await db
-    .from("lesson_plans")
-    .upsert(data as never, { onConflict: data.id ? "id" : "timetable_slot_id,date" })
+  const { data: lesson, error } = await db
+    .from("lessons")
+    .upsert(data as never, { onConflict: data.id ? "id" : "section_id,subject_id,held_on" })
     .select("id")
     .single();
   if (error) throw new Error(error.message);
   revalidatePath("/teacher/input");
-  return plan;
+  return lesson;
 }
 
 export async function saveLessonSummary(data: {
-  lesson_plan_id: string;
-  coverage_notes?: string;
-  student_engagement?: "low" | "medium" | "high";
-  follow_up_needed?: boolean;
+  id: string;
+  topic?: string;
+  homework_description?: string;
+  homework_due_date?: string;
 }) {
   const db = await serverClient();
-  // Summary is written post-lesson; updates the plan row
+  const { id, ...updates } = data;
   const { error } = await db
-    .from("lesson_plans")
-    .update(data as never)
-    .eq("id", data.lesson_plan_id);
+    .from("lessons")
+    .update(updates as never)
+    .eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath("/teacher/input");
 }

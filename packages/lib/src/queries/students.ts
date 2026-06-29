@@ -119,7 +119,7 @@ export async function getStudentsBySection(sectionId: string) {
   const { data, error } = await db
     .from("students")
     .select("id, full_name_en, full_name_ar, gender, date_of_birth, external_ref")
-    .eq("section_id", sectionId)
+    .eq("current_section_id", sectionId)
     .is("withdrawn_on", null)
     .order("full_name_en");
   if (error) throw new Error(error.message);

@@ -5,6 +5,7 @@ import TeacherStudentRoster from "./components/TeacherStudentRoster";
 import TeacherStudentInsights from "./components/TeacherStudentInsights";
 import { SWART_STUDENTS } from "@manhaj/lib/mock-teacher-students";
 import type { TeacherStudentRow } from "@manhaj/lib/mock-teacher-students";
+import type { StudentStatus } from "@manhaj/lib/mock-students";
 import { getCurrentTeacherId, getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
 import { getTeacherWithSections } from "@manhaj/lib/queries/teachers";
 import { getStudentsForSections } from "@manhaj/lib/queries/students";
@@ -55,8 +56,10 @@ export default async function TeacherAnalyzePage() {
         grade_band: ((s.grade_level ?? "").startsWith("1") ? "HS" : "MS") as "HS" | "MS",
         status: (s.risk_flags.some(f => f.severity === "high") ? "support"
           : s.risk_flags.some(f => f.severity === "medium") ? "watch"
-          : "enrolled") as never,
+          : "good") as StudentStatus,
+        rubric: { analytical: 0, creative: 0, oral: 0, written: 0, participation: 0, homework: 0 },
         rubric_avg: 0,
+        risk_score: 0,
         attendance: 0,
         flags: s.risk_flags.map(f => f.category),
         teacher_att_pct: 90,

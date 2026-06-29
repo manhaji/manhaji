@@ -37,7 +37,8 @@ export async function listThreadsForParent(
   parentEmail: string = DEMO_PARENT_EMAIL,
 ): Promise<Thread[]> {
   const sb = await serverClient();
-  const { data, error } = await sb.rpc("manhaj_threads_for_parent_public", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (sb as any).rpc("manhaj_threads_for_parent_public", {
     p_school_name:  SCHOOL_NAME,
     p_parent_email: parentEmail,
   });
@@ -60,7 +61,8 @@ export async function createReply(
   parentName: string = "Mr Al-Habsi",
 ): Promise<string | null> {
   const sb = await serverClient();
-  const { data, error } = await sb.rpc("manhaj_append_message_public", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (sb as any).rpc("manhaj_append_message_public", {
     p_thread_id:  threadId,
     p_role:       "parent",
     p_from_name:  parentName,
@@ -80,7 +82,8 @@ export async function createThread(
   parentEmail: string = DEMO_PARENT_EMAIL,
 ): Promise<string | null> {
   const sb = await serverClient();
-  const { data, error } = await sb.rpc("manhaj_create_thread_public", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (sb as any).rpc("manhaj_create_thread_public", {
     p_school_name:  SCHOOL_NAME,
     p_parent_email: parentEmail,
     p_student_id:   payload.student_id,
@@ -100,7 +103,8 @@ export async function createThread(
 /** Clear the unread flag on a thread. */
 export async function markThreadRead(threadId: string): Promise<void> {
   const sb = await serverClient();
-  const { error } = await sb.rpc("manhaj_mark_thread_read_public", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await (sb as any).rpc("manhaj_mark_thread_read_public", {
     p_thread_id: threadId,
   });
   if (error) {

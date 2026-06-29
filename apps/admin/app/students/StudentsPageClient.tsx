@@ -14,6 +14,7 @@ import { useState, useMemo } from "react";
 
 import {
   MOCK_STUDENTS, MOCK_INCIDENTS, MOCK_ADMISSIONS, cohortHeat,
+  type StudentStatus,
 } from "@manhaj/lib/mock-students";
 import { studentsCohortSummary } from "@manhaj/lib/summary";
 import type { AdminStudentRow } from "@manhaj/lib/queries/students";
@@ -45,9 +46,11 @@ export default function StudentsPageClient({ dbStudents }: { dbStudents: AdminSt
         grade_band: (s.grade_level?.startsWith("1") ? "HS" : "MS") as "HS" | "MS",
         status: (s.risk_flags.some(f => f.severity === "high") ? "support"
           : s.risk_flags.some(f => f.severity === "medium") ? "watch"
-          : "enrolled") as never,
+          : "good") as StudentStatus,
+        rubric: { analytical: 0, creative: 0, oral: 0, written: 0, participation: 0, homework: 0 },
         rubric_avg: 0,
         attendance: 0,
+        risk_score: 0,
         flags: s.risk_flags.map(f => f.category),
       }))
     : MOCK_STUDENTS;

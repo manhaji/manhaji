@@ -71,7 +71,7 @@ export async function getTimetableForSection(sectionId: string, academicYearId: 
       subject_code: sub?.code ?? null,
       teacher: tch ? (tch.display_name ?? tch.full_name) : null,
       room: rm?.code ?? null,
-      is_teaching: b.is_teaching,
+      is_teaching: b.is_teaching ?? true,
     };
   });
 }

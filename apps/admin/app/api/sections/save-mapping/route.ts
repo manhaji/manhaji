@@ -92,7 +92,8 @@ export async function POST(req: NextRequest) {
   }
 
   const sb = await serverClient();
-  const { data, error } = await sb.rpc("manhaj_save_section_mapping_public", {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (sb as any).rpc("manhaj_save_section_mapping_public", {
     p_school_name: SCHOOL_NAME,
     p_sections: sections,
   });

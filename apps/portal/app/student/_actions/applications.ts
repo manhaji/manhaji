@@ -59,7 +59,7 @@ export async function upsertPersonalStatementDraft(data: {
 }) {
   const db = await serverClient();
   const { data: draft, error } = await db
-    .from("ps_drafts")
+    .from("personal_statements")
     .upsert(data as never, { onConflict: data.id ? "id" : "application_id" })
     .select("id")
     .single();
