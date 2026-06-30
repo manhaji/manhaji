@@ -19,10 +19,10 @@ const EMAILS: Record<Role, string> = {
 };
 
 export async function demoLogin(role: Role) {
-  // Iron-session gate (role cookie for app routing)
-  await login(PASSWORDS[role]);
+  const matched = await login(PASSWORDS[role]);
+  if (!matched) redirect("/login?error=credentials");
 
-  // Supabase session so JWT is set and RLS policies pass
+  // Attempt Supabase session — ignored if demo users don't exist in auth.users.
   const db = await serverClient();
   await db.auth.signInWithPassword({ email: EMAILS[role], password: PASSWORDS[role] });
 
