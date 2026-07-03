@@ -26,7 +26,7 @@ export default async function StudentHomeworkPage() {
         subject: h.subject,
         title: h.title,
         due: h.due.slice(0, 10),
-        lesson_date: null,
+        lesson_date: h.due.slice(0, 10),
         ai_estimate: h.ai_estimate || null,
       }));
 
