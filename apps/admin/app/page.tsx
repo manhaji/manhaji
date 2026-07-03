@@ -11,6 +11,7 @@ import { getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
 import { getStudentsForAdmin } from "@manhaj/lib/queries/students";
 import { getDailyAttendanceTrend, getSectionAttendanceStats, getChronicAbsentees } from "@manhaj/lib/queries/attendance";
 import { getCommDraftPipelineCounts } from "@manhaj/lib/queries/reports";
+import { getApprovedAbsencesNeedingCoverage } from "@manhaj/lib/queries/teachers";
 import { MOCK_ACTIONS } from "@manhaj/lib/mock-schedule";
 
 export const dynamic = "force-dynamic";
@@ -21,16 +22,19 @@ export default async function AdminDashboard() {
     getCurrentAcademicYearId(),
   ]);
 
-  const today   = new Date();
-  const to      = today.toISOString().slice(0, 10);
-  const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const today      = new Date();
+  const to         = today.toISOString().slice(0, 10);
+  const weekAgo    = new Date(today.getTime() -  7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const twoWeeksAgo = new Date(today.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
-  const [dbStudents, dailyTrend, sectionStats, chronicAbsentees, pipelineCounts] = await Promise.all([
+  const [dbStudents, dailyTrend, priorWeekTrend, sectionStats, chronicAbsentees, pipelineCounts, uncoveredAbsences] = await Promise.all([
     academicYearId ? getStudentsForAdmin(academicYearId) : Promise.resolve([]),
     academicYearId ? getDailyAttendanceTrend(academicYearId, weekAgo, to) : Promise.resolve([]),
+    academicYearId ? getDailyAttendanceTrend(academicYearId, twoWeeksAgo, weekAgo) : Promise.resolve([]),
     getSectionAttendanceStats(weekAgo, to),
     academicYearId ? getChronicAbsentees(academicYearId, 10) : Promise.resolve([]),
     getCommDraftPipelineCounts(),
+    getApprovedAbsencesNeedingCoverage(to),
   ]);
 
   const summary = composeSummary("admin", data);
@@ -46,6 +50,14 @@ export default async function AdminDashboard() {
   const weekPct = dailyTrend.length > 0
     ? Math.round(dailyTrend.reduce((acc, d) => acc + d.pct, 0) / dailyTrend.length * 10) / 10
     : 0;
+  const priorWeekPct = priorWeekTrend.length > 0
+    ? Math.round(priorWeekTrend.reduce((acc, d) => acc + d.pct, 0) / priorWeekTrend.length * 10) / 10
+    : 0;
+  const attDiff = (weekPct > 0 && priorWeekPct > 0) ? Math.round((weekPct - priorWeekPct) * 10) / 10 : 0;
+  const attTrendText = attDiff > 0 ? `▲ +${attDiff}% vs last week`
+    : attDiff < 0 ? `▼ ${attDiff}% vs last week`
+    : "— flat vs last week";
+  const attTrendTone: "up" | "down" | "flat" = attDiff > 0 ? "up" : attDiff < 0 ? "down" : "flat";
   const worstSection = [...sectionStats].sort((a, b) => a.week_pct - b.week_pct)[0];
   const chronicCount = chronicAbsentees.length;
 
@@ -54,9 +66,10 @@ export default async function AdminDashboard() {
   const openedCount = pipelineCounts["opened"] ?? 0;
   const openRate    = sentCount > 0 ? Math.round((openedCount / sentCount) * 100) : 0;
 
-  // Schedule still uses mock (no DB tracking for conflicts/gaps yet)
-  const conflicts = MOCK_ACTIONS.filter(a => a.kind === "conflict").length;
-  const gaps      = MOCK_ACTIONS.filter(a => a.kind === "gap").length;
+  // Schedule — conflict/gap tracking not in DB yet; sub-coverage from DB
+  const conflicts     = MOCK_ACTIONS.filter(a => a.kind === "conflict").length;
+  const gaps          = MOCK_ACTIONS.filter(a => a.kind === "gap").length;
+  const subNeededToday = uncoveredAbsences.length;
 
   const cards: TabSummary[] = [
     {
@@ -81,7 +94,7 @@ export default async function AdminDashboard() {
         : { text: "All on track", tone: "up" },
       rows: [
         { label: "HS roster",       value: String(hsRoster) },
-        { label: "Course-sel done", value: "14" },
+        { label: "Course-sel done", value: "—" },
       ],
     },
     {
@@ -89,7 +102,7 @@ export default async function AdminDashboard() {
       href: "/attendance",
       big: weekPct > 0 ? String(weekPct) : "—",
       big_suffix: weekPct > 0 ? "%" : undefined,
-      trend: { text: "— flat vs last week", tone: "flat" },
+      trend: { text: attTrendText, tone: attTrendTone },
       rows: [
         { label: `${worstSection?.section_code ?? "—"} hotspot`, value: worstSection ? `${worstSection.week_pct}%` : "—" },
         { label: "Chronic absentees", value: String(chronicCount) },
@@ -103,8 +116,8 @@ export default async function AdminDashboard() {
         ? { text: `▲ ${conflicts} conflict${conflicts !== 1 ? "s" : ""} · ${gaps} gap${gaps !== 1 ? "s" : ""}`, tone: "down" }
         : { text: "No conflicts", tone: "up" },
       rows: [
-        { label: "Sub-needed today", value: "0" },
-        { label: "Next free period", value: "P5 Tue" },
+        { label: "Sub-needed today", value: String(subNeededToday) },
+        { label: "Next free period", value: "—" },
       ],
     },
     {
