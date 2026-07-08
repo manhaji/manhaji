@@ -13,6 +13,13 @@ type Props = {
 const TABS = ["Today", "This week", "Master timetable", "Cover history"] as const;
 type Tab = typeof TABS[number];
 
+const TAB_TITLE: Record<Tab, string> = {
+  "Today":            "Today's schedule",
+  "This week":        "This week's schedule",
+  "Master timetable": "Master schedule",
+  "Cover history":    "Cover history",
+};
+
 const TODAY = new Date().toLocaleDateString("en-GB", {
   weekday: "long", day: "numeric", month: "long", year: "numeric",
 });
@@ -24,7 +31,7 @@ export default function SchedulerClient({ absences, weekSlots }: Props) {
     <div className="sch-page">
       <div className="sch-header">
         <div>
-          <h1 className="sch-title">Today&rsquo;s schedule</h1>
+          <h1 className="sch-title">{TAB_TITLE[tab]}</h1>
           <p className="sch-subtitle">{TODAY} · check coverage, find substitutes, see the full school day.</p>
         </div>
       </div>

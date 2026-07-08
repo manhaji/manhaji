@@ -1248,3 +1248,116 @@ getTeacherName(teacherId: string): Promise<string>  // display_name ?? full_name
 
 - `apps/student/app/layout.tsx` — wired in §27 (standalone student layout)
 - `apps/parent/app/layout.tsx` — already fully wired in a prior session
+
+---
+
+## 38. Admin Students Page — At-Risk / Retention Dashboard (2026-07-08)
+
+Replaced the old students page (StudentsPageClient + 13 component files) with a new "A3 At-Risk / Retention Dashboard" design matching the mockup PDF page 46. All old files deleted; 3 new files created.
+
+### Files changed
+
+**Deleted (14 files):**
+`StudentsPageClient.tsx` + `components/AdmissionsInbox.tsx`, `BulkParentComms.tsx`, `CohortHeatmap.tsx`, `DemographicBreakdown.tsx`, `IncidentsTimeline.tsx`, `InterventionLog.tsx`, `PeerGroupComparison.tsx`, `QuickSearch.tsx`, `ReEnrollmentFunnel.tsx`, `RiskRoster.tsx`, `StudentSearchFilter.tsx`, `TeacherFeedback.tsx`
+
+**Created:**
+- `apps/admin/app/students/page.tsx` — fetches `getStudentsWithRiskFlags(academicYearId)` + `getStudentsForAdmin(academicYearId)` (for total enrolled count); passes to `AtRiskDashboardClient`.
+- `apps/admin/app/students/AtRiskDashboardClient.tsx` — client component with filter chip state + search input, 4 KPI cards (Total Flagged / High+Critical / Medium / Low), students grouped by severity (critical→high→medium→low), mock fallback with 7 realistic students.
+- `apps/admin/app/students/components/RiskStudentCard.tsx` — card component: colored avatar with initials, name + grade/section + "flagged Nd ago", risk score bar (mapped from severity: critical=95, high=82, medium=54, low=22), category signal chips, AI brief from `risk_flags.reason`, owner label, "Message parent" + "Open profile" action buttons.
+
+**`packages/lib/src/queries/students.ts`** — `getStudentsWithRiskFlags` updated to include `created_at` and `owner_id` in the `risk_flags!inner` select.
+
+**`packages/ui/src/globals.css`** — `.ars-` CSS block appended (page layout, KPI strip, filter bar, severity section headings, card grid, signal chips, score bar, footer actions).
+
+### DB wiring
+
+- Student names, section/grade, flag categories, `risk_flags.reason` (used as AI brief), `risk_flags.created_at` (days-ago label), `risk_flags.owner_id` (owner display).
+- Mock: risk score number, action button behaviour.
+
+### Centering fix
+
+After initial build, `.ars-page` lacked `margin: 0 auto` — content was left-aligned. Added to match all other admin pages.
+
+---
+
+## 39. Admin Schedule Page — Scheduler & Substitute Finder (2026-07-08)
+
+Replaced the old schedule page (SchedulePageClient + 10 component files) with a new "A8 Scheduler & Substitute Finder" design matching the mockup PDF page 52. All old files deleted; 4 new files created.
+
+### Files changed
+
+**Deleted (11 files):**
+`SchedulePageClient.tsx` + `components/ActionQueue.tsx`, `AskManhajCard.tsx`, `ChangeLog.tsx`, `CurriculumCoverage.tsx`, `KpiRow.tsx`, `RoomUtilization.tsx`, `TeacherLoadHeatmap.tsx`, `TeacherMyWeek.tsx`, `TimetableGrid.tsx`
+
+**Bonus fix:** `apps/admin/app/faculty/FacultyPageClient.tsx` imported `TeacherLoadHeatmap` from the schedule components folder — removed that import and its usage (the component no longer exists).
+
+**New query file: `packages/lib/src/queries/schedule.ts`**
+- `getTodayAbsences()` → `AbsenceRow[]` — queries `staff_absences` where `starts_on = today`. Due to an ambiguous FK (`staff_absences` has both `teacher_id` and `sub_teacher_id` → `teachers`), the teacher name lookup is done as a separate `teachers` query to avoid the Supabase TypeScript `SelectQueryError`. Fetches substitutions via `substitutions!absence_id` join. Real column names (discovered from TS errors): `starts_on`, `reason_notes`, `absence_id`, `substitute_teacher_id`, `slot_id`.
+- `getAbsentTeacherPeriods(teacherId, absenceId, academicYearId)` → `AbsentTeacherPeriod[]` — timetable slots for the absent teacher on today's day-of-week, matched with substitution assignments.
+- `getWeekTimetableGrid(academicYearId)` → `WeekSlot[]` — all timetable slots with day/period/subject/teacher/section for the week grid.
+
+**Created:**
+- `apps/admin/app/schedule/page.tsx` — fetches `getTodayAbsences()` + `getWeekTimetableGrid(academicYearId)`; passes to `SchedulerClient`.
+- `apps/admin/app/schedule/SchedulerClient.tsx` — 4 tabs (Today / This week / Master timetable / Cover history). Date subtitle. Cover history tab shows 5 mock historical rows.
+- `apps/admin/app/schedule/components/TodayView.tsx` — AI banner, 4 KPI cards (Classes today/Teachers absent/Cover assigned/Open gaps), absent teacher block with period-by-period timeline (08:00–13:30), ranked substitute candidate cards with compatibility scores (98/74/61), footer actions (View handoff sheet / Message sub / Mark returned). Period breakdown uses mock data (complex join not worth doing for display-only). DB-wired: absent teacher name/reason/sub counts and names.
+- `apps/admin/app/schedule/components/MasterTimetableView.tsx` — day×period grid (Sun–Thu, P1–P6), shows real DB slots when available, falls back to mock grid. "Plan next week" AI banner at bottom.
+
+**`packages/ui/src/globals.css`** — `.sch-` CSS block appended (page, tabs, AI banner, KPI strip, teacher row, period rows, candidate cards, master timetable grid, cover history table).
+
+### DB wiring
+
+- Today's absences: `staff_absences.starts_on = today` + teacher name via separate `teachers` query.
+- Substitutions for each absence: `substitutions!absence_id` with `substitute_teacher_id → teachers`.
+- Week timetable grid: `timetable_slots` with all joins, day+period grouping.
+- Mock: period-by-period breakdown (requires knowing the absent teacher's bell_period schedule on today's day — feasible but left for a future pass), candidate ranking scores, AI text.
+
+---
+
+## 40. Admin Admission Page — Admissions + Re-Enrolment (2026-07-08)
+
+Renamed the "Attendance" tab to "Admission" and replaced the entire page with a new "A4 Admissions + Re-enrolment" design matching the mockup PDF page 48. All old files deleted; 2 new files created.
+
+### Nav rename
+
+`apps/admin/app/components/AdminNav.tsx` — changed label from `"Attendance"` to `"Admission"`. Route stays `/admin/attendance` (no Next.js route change needed).
+
+### Files changed
+
+**Deleted (13 files):**
+`AttendancePageClient.tsx` + `components/AiCausesCards.tsx`, `BenchmarkBars.tsx`, `ChronicAbsenteesTable.tsx`, `DayOfWeekHeatmap.tsx`, `LessonsMissedList.tsx`, `PerStudentCalendarHeat.tsx`, `PeriodBars.tsx`, `ReEngagementDraft.tsx`, `SectionHeatStrip.tsx`, `SubjectCorrelation.tsx`, `TakeAttendanceUI.tsx`
+
+**Created:**
+- `apps/admin/app/attendance/page.tsx` — fetches `getApplicantsForYear(academicYearId)` for pipeline + table data, and `getStudentsForAdmin(academicYearId)` for total enrolled count; passes to `AdmissionsClient`.
+- `apps/admin/app/attendance/AdmissionsClient.tsx` — full page:
+  - **AI banner** — re-enrolment briefing (mock text, DB-driven count).
+  - **4 KPI cards** — Currently Enrolled (from DB `getStudentsForAdmin` count) / Re-Families 88.4% / Not Yet Decided 47 / Confirmed Leaving 18 (last three mock).
+  - **Re-Enrolment families** — 5 mock family rows with risk chips (ALL DISMISSED RISK / BACK-TO-SCH RISK / COMPETITION RISK / CREDIT RISK / FRIENDLY CONTACT) + action buttons per family.
+  - **Confirmed Leaving** — horizontal bar chart (Graduated/Moving/Competition Losing/Dissatisfied) with note breakdown.
+  - **New Applicant Pipeline** — 6-stage bar chart (INQUIRY→TOUR BOOKED→ASSESSMENT→INTERVIEW→OFFER SENT→ENROLLED); counts from DB `applicants.stage` when available, mock fallback (142→84→61→38→31→22).
+  - **Needs You This Week** — 2×3 grid of 6 action cards with Preview/Send/Open buttons (all mock).
+  - **All Applicants table** — DB-wired; searchable by name/grade/source, filterable by stage; colored initials avatars, stage chips (`admission_stage` enum: new/review/interview/offer/accepted/rejected/withdrawn), days-in-stage computed from `created_at`, mock owner "Ms. Salwa". Mock fallback with 8 representative applicants.
+
+**`packages/ui/src/globals.css`** — `.adm-` CSS block appended (page, banner, KPI strip, section wrappers, family rows, leaving bars, pipeline funnel, needs grid, table).
+
+### DB wiring
+
+- Total enrolled: `getStudentsForAdmin` length.
+- Pipeline bar chart counts: `applicants.stage` grouped.
+- All Applicants table: full `applicants` rows for the year (id, full_name, target_grade, stage, source, notes, created_at).
+- Mock: re-enrolment family rows (no re-enrolment tracking table in DB), confirmed leaving breakdown (no leaving-reason column in DB), needs-this-week action cards (AI-generated), owner per applicant (no admissions_owner field in DB), AI signal (no scoring table).
+
+---
+
+## 41. Minor Polish — Nav Label + Schedule Dynamic Title (2026-07-08)
+
+Two small fixes applied after the main page rebuilds.
+
+**`apps/admin/app/components/AdminNav.tsx`** — "Admission" → "Admissions" (typo fix, plural form).
+
+**`apps/admin/app/schedule/SchedulerClient.tsx`** — Added `TAB_TITLE` map so the `<h1>` updates with the active tab:
+- Today → "Today's schedule"
+- This week → "This week's schedule"
+- Master timetable → "Master schedule"
+- Cover history → "Cover history"
+
+Previously the title was hardcoded to "Today's schedule" regardless of which tab was active.
