@@ -174,12 +174,26 @@ export async function getStudentsWithRiskFlags(academicYearId: string) {
     .from("students")
     .select(`
       id, full_name_en,
+      sections:current_section_id ( code, grade_level ),
       risk_flags!inner (
-        id, severity, category, reason, status
+        id, severity, category, reason, status, created_at, owner_id
       )
     `)
     .eq("risk_flags.academic_year_id", academicYearId)
     .eq("risk_flags.status", "open");
   if (error) throw new Error(error.message);
-  return data;
+  return (data ?? []).map(s => {
+    const sec   = s.sections as { code: string; grade_level: string } | null;
+    const flags = s.risk_flags as Array<{
+      id: string; severity: string; category: string; reason: string;
+      status: string; created_at: string; owner_id: string | null;
+    }>;
+    return {
+      id: s.id,
+      full_name_en: s.full_name_en,
+      section_code: sec?.code ?? null,
+      grade_level:  sec?.grade_level ?? null,
+      risk_flags: flags,
+    };
+  });
 }

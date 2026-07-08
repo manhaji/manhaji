@@ -4449,4 +4449,127 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
 .reg-compliance-status.good { color: #276749; }
 .reg-compliance-status.warn { color: #C05621; }
 .reg-compliance-status.bad  { color: var(--color-danger); }
+
+/* =========================================================================
+   At-Risk / Retention Dashboard  (.ars-)
+   ========================================================================= */
+.ars-page { padding: 28px 32px; max-width: 1100px; }
+
+.ars-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.ars-title  { font-size: 20px; font-weight: 800; color: var(--color-ink); margin: 0 0 2px; }
+.ars-subtitle { font-size: 11.5px; color: var(--color-muted); margin: 0; }
+.ars-export-btn {
+  font-size: 12px; font-weight: 600; padding: 7px 14px;
+  border: 1.5px solid var(--color-border); border-radius: 7px;
+  background: #fff; color: var(--color-ink); cursor: pointer;
+}
+
+/* KPI strip */
+.ars-kpi-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+@media (max-width: 800px) { .ars-kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+.ars-kpi-card {
+  border: 1px solid var(--color-border); border-radius: 10px;
+  padding: 14px 18px; background: #fff;
+}
+.ars-kpi-card.critical { border-left: 4px solid #C53030; }
+.ars-kpi-card.medium   { border-left: 4px solid #C05621; }
+.ars-kpi-card.low      { border-left: 4px solid #2F855A; }
+.ars-kpi-val   { font-size: 28px; font-weight: 800; color: var(--color-ink); line-height: 1; margin-bottom: 4px; }
+.ars-kpi-label { font-size: 11px; font-weight: 700; color: var(--color-ink); text-transform: uppercase; letter-spacing: .06em; }
+.ars-kpi-sub   { font-size: 10.5px; color: var(--color-muted); margin-top: 2px; }
+
+/* Filter bar */
+.ars-filter-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+.ars-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.ars-chip {
+  padding: 5px 12px; border-radius: 20px; font-size: 11.5px; font-weight: 600;
+  border: 1.5px solid var(--color-border); background: #fff;
+  color: var(--color-muted); cursor: pointer; transition: all .15s;
+}
+.ars-chip.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.ars-search {
+  margin-left: auto; padding: 6px 12px; border-radius: 7px;
+  border: 1.5px solid var(--color-border); font-size: 12px;
+  color: var(--color-ink); background: #fff; outline: none; min-width: 200px;
+}
+.ars-search:focus { border-color: var(--color-accent); }
+
+/* Section groupings */
+.ars-section { margin-bottom: 28px; }
+.ars-section-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--color-border);
+}
+.ars-sev-badge {
+  font-size: 10px; font-weight: 800; letter-spacing: .08em;
+  padding: 3px 10px; border-radius: 20px; text-transform: uppercase;
+}
+.ars-sev-critical { background: #FED7D7; color: #C53030; }
+.ars-sev-high     { background: #FEEBC8; color: #C05621; }
+.ars-sev-medium   { background: #FEFCBF; color: #975A16; }
+.ars-sev-low      { background: #C6F6D5; color: #276749; }
+.ars-section-sub  { font-size: 11.5px; color: var(--color-muted); }
+.ars-section-count { margin-left: auto; font-size: 11px; color: var(--color-muted); }
+
+/* Student cards grid */
+.ars-cards { display: flex; flex-direction: column; gap: 10px; }
+
+.ars-card {
+  border: 1px solid var(--color-border); border-radius: 10px;
+  padding: 16px 18px; background: #fff;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ars-card-critical { border-left: 4px solid #C53030; }
+.ars-card-high     { border-left: 4px solid #C05621; }
+.ars-card-medium   { border-left: 4px solid #D69E2E; }
+.ars-card-low      { border-left: 4px solid #2F855A; }
+
+.ars-card-top { display: flex; align-items: flex-start; gap: 12px; }
+.ars-card-avatar {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: #fff;
+}
+.ars-card-identity { flex: 1; }
+.ars-card-name { font-size: 13.5px; font-weight: 700; color: var(--color-ink); }
+.ars-card-meta { font-size: 11px; color: var(--color-muted); margin-top: 2px; }
+.ars-card-flagged { color: var(--color-muted); }
+
+.ars-card-score-wrap { text-align: right; flex-shrink: 0; min-width: 60px; }
+.ars-card-score-val { font-size: 18px; font-weight: 800; line-height: 1; }
+.ars-card-score-bar {
+  width: 60px; height: 4px; border-radius: 2px;
+  background: var(--color-soft); margin-top: 4px; overflow: hidden;
+}
+.ars-card-score-fill { height: 100%; border-radius: 2px; transition: width .3s; }
+
+/* Signal chips */
+.ars-card-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.ars-signal-chip {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+}
+.ars-signal-chip.critical { background: #FED7D7; color: #C53030; }
+.ars-signal-chip.high     { background: #FEEBC8; color: #C05621; }
+.ars-signal-chip.medium   { background: #FEFCBF; color: #975A16; }
+.ars-signal-chip.low      { background: #C6F6D5; color: #276749; }
+
+/* Brief */
+.ars-card-brief { font-size: 11.5px; color: var(--color-ink); line-height: 1.5; }
+.ars-brief-label { font-weight: 700; color: var(--color-muted); }
+
+/* Footer */
+.ars-card-footer { display: flex; justify-content: space-between; align-items: center; }
+.ars-card-owner { font-size: 10.5px; color: var(--color-muted); }
+.ars-card-actions { display: flex; gap: 6px; }
+.ars-action-btn {
+  padding: 5px 11px; border-radius: 6px; font-size: 11px; font-weight: 600;
+  border: 1.5px solid var(--color-border); background: transparent;
+  color: var(--color-ink); cursor: pointer;
+}
+.ars-action-btn.primary {
+  background: var(--color-primary); color: #fff; border-color: var(--color-primary);
+}
+
+.ars-empty { text-align: center; padding: 48px; color: var(--color-muted); font-size: 13px; }
 .reg-compliance-desc { font-size: 11px; color: var(--color-muted); line-height: 1.5; }

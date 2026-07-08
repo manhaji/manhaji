@@ -1,17 +1,21 @@
 import { getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
-import { getStudentsForAdmin, getApplicantsForYear, getBehaviourNotes } from "@manhaj/lib/queries/students";
-import StudentsPageClient from "./StudentsPageClient";
+import { getStudentsWithRiskFlags, getStudentsForAdmin } from "@manhaj/lib/queries/students";
+import AtRiskDashboardClient from "./AtRiskDashboardClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminStudentsPage() {
-  const academicYearId = await getCurrentAcademicYearId();
+  const academicYearId = await getCurrentAcademicYearId().catch(() => null);
 
-  const [dbStudents, applicants, behaviourNotes] = await Promise.all([
+  const [flaggedStudents, allStudents] = await Promise.all([
+    academicYearId ? getStudentsWithRiskFlags(academicYearId).catch(() => []) : Promise.resolve([]),
     academicYearId ? getStudentsForAdmin(academicYearId).catch(() => []) : Promise.resolve([]),
-    academicYearId ? getApplicantsForYear(academicYearId).catch(() => []) : Promise.resolve([]),
-    getBehaviourNotes(undefined, 50).catch(() => []),
   ]);
 
-  return <StudentsPageClient dbStudents={dbStudents} applicants={applicants} behaviourNotes={behaviourNotes} />;
+  return (
+    <AtRiskDashboardClient
+      flaggedStudents={flaggedStudents}
+      totalStudents={allStudents.length}
+    />
+  );
 }
