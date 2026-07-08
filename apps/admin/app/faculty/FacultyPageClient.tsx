@@ -21,8 +21,6 @@ import ContractsDashboard   from "./components/ContractsDashboard";
 import OnboardingFunnel     from "./components/OnboardingFunnel";
 import PerformanceComposite from "./components/PerformanceComposite";
 import FacultyAskManhaj     from "./components/FacultyAskManhaj";
-import TeacherLoadHeatmap   from "../schedule/components/TeacherLoadHeatmap";
-
 export default function FacultyPageClient({ teachers, loads }: { teachers: TeacherWithLoad[]; loads: TeacherDayLoad[] }) {
   const source = teachers.length > 0 ? teachers : null;
 
@@ -109,7 +107,7 @@ export default function FacultyPageClient({ teachers, loads }: { teachers: Teach
 
       <DepartmentBreakdown teachers={source ?? undefined} />
       <FacultyRoster teachers={source ?? undefined} />
-      <TeacherLoadHeatmap loads={loads.length > 0 ? loads : undefined} />
+
       <ContractsDashboard />
       <OnboardingFunnel />
       <PerformanceComposite />

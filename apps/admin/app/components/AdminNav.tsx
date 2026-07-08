@@ -8,7 +8,7 @@ const LINKS: Array<{ href: string; label: string }> = [
   { href: "/admin/faculty",         label: "Faculty"    },
   { href: "/admin/section-mapping", label: "Sections"   },
   { href: "/admin/students",        label: "Students"   },
-  { href: "/admin/attendance",      label: "Attendance" },
+  { href: "/admin/attendance",      label: "Admission"  },
   { href: "/admin/schedule",        label: "Schedule"   },
   { href: "/admin/reports",         label: "Reports"    },
   { href: "/admin/input",           label: "Input Data" },

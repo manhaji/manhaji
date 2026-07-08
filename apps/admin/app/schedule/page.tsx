@@ -1,17 +1,17 @@
 import { getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
-import { getSchoolTimetable, getTeacherDailyLoads, getRoomUtilization } from "@manhaj/lib/queries/timetable";
-import SchedulePageClient from "./SchedulePageClient";
+import { getTodayAbsences } from "@manhaj/lib/queries/schedule";
+import { getWeekTimetableGrid } from "@manhaj/lib/queries/schedule";
+import SchedulerClient from "./SchedulerClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminSchedulePage() {
-  const academicYearId = await getCurrentAcademicYearId();
+  const academicYearId = await getCurrentAcademicYearId().catch(() => null);
 
-  const [schoolSlots, loads, rooms] = await Promise.all([
-    academicYearId ? getSchoolTimetable(academicYearId).catch(() => []) : Promise.resolve([]),
-    academicYearId ? getTeacherDailyLoads(academicYearId).catch(() => []) : Promise.resolve([]),
-    academicYearId ? getRoomUtilization(academicYearId).catch(() => []) : Promise.resolve([]),
+  const [absences, weekSlots] = await Promise.all([
+    getTodayAbsences().catch(() => []),
+    academicYearId ? getWeekTimetableGrid(academicYearId).catch(() => []) : Promise.resolve([]),
   ]);
 
-  return <SchedulePageClient schoolSlots={schoolSlots} loads={loads} rooms={rooms} />;
+  return <SchedulerClient absences={absences} weekSlots={weekSlots} />;
 }
