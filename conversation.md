@@ -1361,3 +1361,297 @@ Two small fixes applied after the main page rebuilds.
 - Cover history → "Cover history"
 
 Previously the title was hardcoded to "Today's schedule" regardless of which tab was active.
+
+---
+
+## 42. Teacher App — One-Tap Attendance (T1) (2026-07-08)
+
+### Nav restructure
+
+**`apps/teacher/app/components/TeacherNav.tsx`** — Three tabs in new order:
+1. Dashboard (was "Analyze")
+2. One-Tap Attendance (new, `/teacher/attendance`)
+3. Input (moved to last)
+
+### New query functions — `packages/lib/src/queries/attendance.ts`
+
+Three functions appended:
+
+- `getAttendanceForPeriod(sectionId, date, bellPeriodId)` → `RollCallMark[]` — today's marks for this class/period.
+- `getYesterdayAttendanceForSection(sectionId, date)` → `RollCallMark[]` — previous day's marks for "copy from yesterday" feature.
+- `getCurrentSlotForTeacher(teacherId, academicYearId)` → `CurrentSlotInfo | null` — finds the teacher's currently active period by comparing `HH:MM` against `bell_periods.starts_at`/`ends_at` for today's `day_of_week`. Falls back to first teaching slot of the day if no period is currently active.
+
+`RollCallMark` type: `{ student_id, status, reason, notes }`.
+`CurrentSlotInfo` type: full slot details (slotId, sectionId, sectionCode, gradeLevel, subjectName, roomCode, bellPeriodId, periodLabel, periodNumber, startsAt, endsAt, isNow).
+
+Note: `bell_periods.starts_at` / `ends_at` are `time` columns stored as `HH:MM:SS` strings; sliced to 5 chars for display. `bell_periods.day_of_week` is a `text` field with values like `"Mon"`, `"Tue"`, etc.
+
+### Server actions — `apps/teacher/app/actions/attendance.ts`
+
+New file with two server actions:
+- `saveAttendanceMark(data)` — upserts a single mark with `onConflict: "student_id,marked_on,bell_period_id"`.
+- `bulkSaveAttendance(marks[])` — bulk upsert for "mark all present".
+
+Both call `revalidatePath("/teacher/attendance")`. Column `marked_by_teacher_id` used (not `teacher_id`). `attendance_marks.school_id` is NOT NULL so school_id is fetched server-side and passed through.
+
+### Server page — `apps/teacher/app/attendance/page.tsx`
+
+Parallel fetches:
+- `getCurrentSlotForTeacher` → active slot
+- `getStudentsBySection(sectionId)` → roll call list
+- `getAttendanceForPeriod(sectionId, today, bellPeriodId)` → today's saved marks
+- `getYesterdayAttendanceForSection(sectionId, yesterday)` → previous day marks
+- `getTeacherSchoolId(teacherId)` → inline helper querying `teachers.school_id`
+
+All with `.catch(() => [])` / `.catch(() => null)` guards. Passes all data to `OneTapClient`.
+
+### Client component — `apps/teacher/app/attendance/OneTapClient.tsx`
+
+Full interactive roll call UI:
+- Local state `Record<string, LocalMark>` initialized from DB marks or mock fixtures.
+- `useTransition` for background server action saves (optimistic UI, `isPending` shows "saving…").
+- Live KPI counters (PRESENT / ABSENT / LATE) derived from local state.
+- AI suggestion banner: auto-shown when no exceptions yet; "Yes, mark all present" calls `markAllPresent()` and dismisses banner.
+- Quick actions: `markAllPresent()` (bulk upsert), `clearAll()` (resets all to null/present), `fromYesterday()` (loads yesterday's marks into state).
+- Student rows: roll number + colored avatar (initials + `COLORS` array) + name + section/roll meta + 3-button status picker (✓ / ✕ / 🕐).
+- Reason chips on absent/late rows: `ABSENT_REASONS = ["Bus late", "Medical", "Family", "Other"]`, `LATE_REASONS = ["Medical", "Family informed", "Unknown", "Other"]`.
+- Collapsed present-students section: `nonPresent` always visible, `presentStudents` collapsed by default with avatar stack + "N more students — all marked present → show".
+- Sticky submit footer with summary counts.
+- Mock fallback: `MOCK_SLOT` (G5B Maths, P2, 9:00–9:45, Room 12) + 12 `MOCK_STUDENTS` + 3 `MOCK_MARKS` (s3=late/Bus late, s5=absent/Family informed, s8=absent/Medical). Falls back automatically when DB returns no students.
+
+### CSS — `packages/ui/src/globals.css`
+
+`.tap-` CSS block appended: page wrapper (max-width 680px, margin 0 auto), class header, KPI row, AI banner, roll-call header, quick-action buttons, student row (main + reason row), status buttons, collapsed section, submit footer.
+
+---
+
+## 43. Teacher App — Rubric Scoring (T2) (2026-07-09)
+
+### Nav update
+
+**`apps/teacher/app/components/TeacherNav.tsx`** — Added "Rubric Scoring" tab at position 3 (after One-Tap Attendance, before Input):
+```
+Dashboard / One-Tap Attendance / Rubric Scoring / Input
+```
+
+### DB Schema used
+
+- `rubrics`: `id`, `name`, `school_id`, `is_manhaj_default`, `version` — school's rubric definition. Fetched with `is_manhaj_default = true`.
+- `rubric_criteria`: `id`, `rubric_id`, `axis_code`, `axis_name_en`, `description_en`, `ai_suggested` (bool), `display_order`, `scale_min`, `scale_max` — the scoring axes for a rubric.
+- `rubric_scores`: `id`, `rubric_id`, `student_id`, `axis_code`, `score` (number), `notes`, `scored_by_teacher_id`, `scored_for_month` (YYYY-MM string), `source` ("ai" or "teacher"), `school_id`, `subject_id`.
+
+### New query file — `packages/lib/src/queries/rubric.ts`
+
+Three functions:
+- `getRubricForSchool(schoolId)` → `{ id, name } | null` — fetches the `is_manhaj_default` rubric for the school using `.maybeSingle()`.
+- `getRubricCriteria(rubricId)` → `RubricCriterion[]` — axes ordered by `display_order`.
+- `getRubricScoresForStudents(studentIds, rubricId, month)` → `RubricScore[]` — all scores for the section for a given month.
+
+### Server action — `apps/teacher/app/actions/rubric.ts`
+
+- `bulkSaveRubricScores(records[])` — upserts to `rubric_scores` with `source: "teacher"`, conflict key `student_id,rubric_id,axis_code,scored_for_month`. Calls `revalidatePath("/teacher/rubric")`.
+
+### Server page — `apps/teacher/app/rubric/page.tsx`
+
+Fetches in parallel: current slot → section ID → students → rubric → criteria + scores. All `.catch()` guarded. Passes to `RubricClient`.
+
+### Client component — `apps/teacher/app/rubric/RubricClient.tsx`
+
+Two-panel layout:
+
+**Left sidebar (240px sticky):**
+- Monthly Rubric Cycle header with class/subject label and 3-button month navigator (prev / current / next).
+- CLASS PROGRESS bar: `confirmedCount / totalStudents` filled green.
+- Student list: colored avatar + name + status dot (green=confirmed, orange=in_progress, gray=not_started) + score or state label. Active student highlighted with left border.
+
+**Right panel:**
+- Sticky student header: avatar + name + roll meta + Previous / Save & next buttons.
+- AI banner: explains how many axes are AI-proposed vs. teacher-judgment.
+- Per axis section:
+  - Axis name + status chip (AI SUGGESTED / IN PROGRESS / AI ASSESSED / YOUR COMMENT).
+  - Description text.
+  - 5-point scale bar: each step is a button (EMERGING / DEVELOPING / PROFICIENT / STRONG / ADVANCED), active step filled with primary color.
+  - AI evidence bullets (from `MOCK_AI_EVIDENCE` per `axis_code`, or from `rubric_scores.notes` where `source="ai"` in live mode).
+  - For non-AI axes: note that no automatic scoring is available.
+  - Notes textarea per axis.
+- Overall score footer: averaged score across all scored axes, Save draft / Confirm & next student.
+- "How the scoring works" footnote.
+
+**State design:**
+- `AllScores = Record<studentId, Record<axisCode, { score, notes, source }>>` — initialized from DB scores or mock, all held in memory.
+- `studentStatus()`: "confirmed" if all axes have `source="teacher"`, "in_progress" if any score exists, "not_started" otherwise.
+- `confirmAndNext()`: marks all scored axes as `source="teacher"` in local state → bulk upserts → advances to next student.
+- `saveDraft()`: upserts current student's scores without changing source or navigation.
+- Month navigation changes `month` state; live mode would re-fetch on navigation (currently uses initial load; re-fetch on month change is a future enhancement).
+
+**Mock fallback:** 12 students (same as One-Tap), 6 MOCK_CRITERIA (conceptual / analytical / communication / collaboration / self_direction / application), pre-populated MOCK_SCORES for first 5 students as "teacher"-confirmed and s6 (Layla) with AI-proposed scores on 4 axes. MOCK_AI_EVIDENCE keyed by `axis_code` matches the mockup bullets. Default `activeIdx = 5` (Layla) in mock mode.
+
+### CSS — `packages/ui/src/globals.css`
+
+`.rub-` CSS block appended: two-column page (max-width 1100px, margin 0 auto), sidebar (240px sticky, cycle header, progress bar, student list), right panel (student header, AI banner, axis sections, scale buttons, evidence block, notes textarea, footer with overall score).
+
+---
+
+## 44. Teacher App — Class Hub + Parent Summary (T3) (2026-07-09)
+
+### Nav update
+
+**`apps/teacher/app/components/TeacherNav.tsx`** — Added "Class Hub" tab at position 4 (after Rubric Scoring, before Input):
+```
+Dashboard / One-Tap Attendance / Rubric Scoring / Class Hub / Input
+```
+
+### DB tables wired
+
+| Table | Usage |
+|---|---|
+| `lessons` | This-week topic, homework description; next-class upcoming lesson |
+| `lesson_followups` | Follow-ups from this week (title, description, priority, tag, is_done) |
+| `assessments` | Quiz/test held this week (kind = "quiz"\|"test") |
+| `assessment_results` | Per-student scores → compute class avg + top score % |
+| `attendance_marks` | Week attendance % + absent/late student IDs |
+| `behaviour_notes` | Positive recognition count + concern count for the week |
+| `comm_drafts` | Parent summary draft (`drafted_en`, `edited_en`, `status = "draft"`) |
+| `student_parents` | Parent/family count for "Where this goes" row |
+| `teachers` | Teacher `full_name` / `display_name` for digest preview "From …" line |
+
+### New query file — `packages/lib/src/queries/classhub.ts`
+
+Functions:
+- `getWeekLessons(sectionId, weekStart, weekEnd)` → `LessonRow[]`
+- `getNextLesson(sectionId, afterDate)` → `LessonRow | null`
+- `getFollowupsForLessons(lessonIds[])` → `FollowupRow[]`
+- `getWeekAssessments(sectionId, weekStart, weekEnd)` → `{ assessments, results }`
+- `getWeekAttendance(sectionId, weekStart, weekEnd)` → `{ total, present, absent[], late[] }`
+- `getWeekBehaviourNotes(sectionId, weekStart, weekEnd)` → `BehaviourRow[]`
+- `getLatestCommDraft(teacherId)` → `CommDraftRow | null` — most recent draft-status comm for the teacher
+- `getParentCountForSection(sectionId)` → number — unique parent_ids via student_parents
+
+### Server actions — `apps/teacher/app/actions/classhub.ts`
+
+- `toggleFollowup(id, isDone)` — updates `lesson_followups.is_done` + `completed_at`.
+- `saveCommDraft({ teacherId, schoolId, draftEn, draftId })` — upserts to `comm_drafts`; updates `edited_en` if `draftId` exists, inserts new draft otherwise.
+
+### Server page — `apps/teacher/app/classhub/page.tsx`
+
+- `getWeekRange(0)` helper: computes Mon–Fri ISO dates for the current calendar week.
+- `getTeacherSchoolAndName(teacherId)`: single query for `school_id`, `full_name`, `display_name`.
+- Parallel fetches: current slot, teacher info → then week lessons, attendance, behaviour, comm draft, parent count → then followups, assessments, next lesson.
+- All `.catch()` guarded.
+
+### Client component — `apps/teacher/app/classhub/ClassHubClient.tsx`
+
+**Two-column layout (flex, max-width 1200px):**
+
+**Left column:**
+1. Week header — "WEEKLY CLASS SUMMARY", section/subject/week label, Last week / This week toggle.
+2. "THIS WEEK AT A GLANCE" — 5 bullet items. Live: topic from `lessons[0].topic`, assessment stats from DB, attendance % from `attendance_marks`, recognition count from `behaviour_notes where kind="positive"`. Falls back to mock when DB empty.
+3. "FOLLOW-UPS FROM THIS WEEK" — checkboxes from `lesson_followups`. Toggle calls `toggleFollowup()` server action. Tags colour-coded: PRIORITY=red, CONCEPT=blue, DONE=green, PTC NOTE=purple, HANDOFF=orange.
+4. "NEXT CLASS" — from `getNextLesson()` (topic + date) + current slot (time/period/room).
+5. "PRE-CLASS CHECKLIST" — 4 mock items (no dedicated table), local toggle state.
+6. "— PARENT SUMMARY —" — bullet textareas (local state), tone selector (Formal/Warm/Brief/Detailed), regenerate button (UI only, AI not integrated), "Save as draft" calls `saveCommDraft()`.
+
+**Right column:**
+1. "Ready to send" with 5 checklist items (all-green badge when all pass). Checks: class data complete, week has ended (today ≥ weekEnd), observations added (bullet count > 0), tone selected, AI quality check.
+2. Digest preview card — `comm_drafts.edited_en ?? drafted_en ?? MOCK_DIGEST`. Shows section/week header, teacher name, body paragraphs, 4-KPI strip (attendance %, quiz avg, 87% homework, recognition count), coming-up paragraph.
+3. "WHERE THIS GOES" — 4 checkboxes: parents' weekly digest (family count · Thu 5PM), class page (live), standalone email, Arabic translation (+15 min). Local toggle state.
+4. Save as draft / Schedule for digest buttons.
+
+**State:** `followupDone` (Record), `checklist` (Record), `bullets` (string[]), `tone`, four distribution channel booleans. `useTransition` for server action calls.
+
+**Mock fallback:** 5 glance items, 5 follow-ups, 4 checklist items, full MOCK_DIGEST text, 2 bullets, 23 families. Active when `lessons.length === 0 && followups.length === 0`.
+
+### CSS — `packages/ui/src/globals.css`
+
+`.clh-` CSS block appended: two-column page (max-width 1200px, margin 0 auto), left column (week header, glance rows, follow-up rows, next class box, checklist, parent summary bullets + tone + regenerate), right column (ready checks, digest card with KPI strip, where-this-goes rows, footer buttons).
+
+---
+
+## 45. Teacher App — Substitute Handoff Sheet (T6) (2026-07-09)
+
+### Nav update
+
+**`apps/teacher/app/components/TeacherNav.tsx`** — Added "Substitute" tab at position 5 (after Class Hub, before Input):
+```
+Dashboard / One-Tap Attendance / Rubric Scoring / Class Hub / Substitute / Input
+```
+
+### DB tables wired
+
+| Table | Usage |
+|---|---|
+| `timetable_slots` | Teacher's teaching periods for the selected day (by day_of_week) |
+| `bell_periods` | Period times (starts_at, ends_at, period_label, period_number, day_of_week) |
+| `sections` | Class codes and grade levels |
+| `subjects` | Subject name per slot |
+| `rooms` | Room code per slot |
+| `lessons` | Lesson plan (topic, learning_objective, homework_description) for each section on the date |
+| `lesson_followups` | Student-specific flags (`student_id` not null, `is_done = false`) |
+| `behaviour_notes` | Recent student notes (positive = RECOGNITION, concern = CONCERN) |
+| `students` | Names for flagged student IDs |
+| `staff_absences` | Checks if teacher is absent on the date (to find linked substitute_sheet) |
+| `substitute_sheets` | Tracks acknowledgment: `ack_at`, `sub_teacher_id` |
+| `teachers` | Teacher `full_name`, `display_name` |
+
+### New query file — `packages/lib/src/queries/substitute.ts`
+
+- `getTeacherDaySchedule(teacherId, academicYearId, date)` → `DaySlot[]` — all teaching slots for the given date's `day_of_week`, sorted by `period_number`.
+- `getLessonsForSections(sectionIds, date)` → `SlotLesson[]` — lesson plan per section on that date.
+- `getStudentFlagsForSections(sectionIds, teacherId, from)` → `StudentFlag[]` — lesson_followups with `student_id` + behaviour_notes from `from` date; joins `students` table for names.
+- `getSubstituteSheet(teacherId, date)` → `SubSheetRow | null` — checks `staff_absences` then `substitute_sheets` for the date.
+
+### Server action — `apps/teacher/app/actions/substitute.ts`
+
+- `acknowledgeSheet(sheetId)` — updates `substitute_sheets.ack_at = now()`.
+
+### Server page — `apps/teacher/app/substitute/page.tsx`
+
+- Reads `?date` search param (defaults to today).
+- Fetches teacher info (school_id, name), day schedule, then in parallel: lessons, student flags, substitute_sheet.
+- `weekStart` = 7 days before forDate for the student flags time window.
+
+### Client component — `apps/teacher/app/substitute/SubstituteClient.tsx`
+
+**Layout:** Single centered column (max-width 820px), printable.
+
+**Header:** Teacher name + formatted date. Prev/Today/Next buttons navigate by pushing `?date=YYYY-MM-DD` to router. "Today" button highlighted when on today's date. "Substitute assigned" badge shown when `sheet.sub_teacher_id` exists.
+
+**Period strip:** Horizontal scrollable pills — teaching periods (colored, section code + subject + time) and free periods (grayed out). Built from DB slots + MOCK_FREE gaps in mock mode.
+
+**Period cards (one per teaching period):**
+- Colored header bar (primary color) with period label, section, room, time.
+- "same class as P1" chip when re-teaching the same section.
+- LESSON PLAN block: topic (bold) + learning_objective text.
+- Checklist items (local checkbox state, no DB write needed).
+- Student flags: left-border highlighted rows with student name + tag chip (RECOGNITION/CONCERN/FOLLOW-UP/ELL) + note text.
+- Homework note (amber bar) if `homework_description` set.
+
+**Emergency contacts:** 2×2 grid, hardcoded (no dedicated DB table). Red border card.
+**End-of-day checklist:** 5 items, local checkbox state.
+
+**Footer (sticky):** Period count + time range. "Save as PDF" calls `window.print()`. "I've read this →" calls `acknowledgeSheet()` and disables itself after click (green ✓ state).
+
+**Print CSS:** `@media print` hides nav and footer, removes max-width constraint.
+
+**Mock fallback:** 4 teaching periods (G5B P1, G5A P3, G5B P5, G5C P6) + 2 free gaps, 4 lesson plans, 4 checklist sets, 5 student flags spread across sections. Active when `slots.length === 0`.
+
+### CSS — `packages/ui/src/globals.css`
+
+`.sub-` CSS block appended: page (max-width 820px), sticky header with date nav, horizontal period strip, free-period dashed cards, teaching period cards (lesson plan / checklist / student flags / homework note), emergency contacts grid (red), end-of-day checklist, sticky footer with PDF + ack buttons, print media query.
+
+---
+
+## 46. One-Tap Attendance — Full-Width Fix (2026-07-09)
+
+**Problem:** `.tap-page` had `max-width: 680px; margin: 0 auto` which made it appear narrower and smaller than every other page in the teacher app.
+
+**Fix — `packages/ui/src/globals.css`:**
+```css
+/* Before */
+.tap-page { padding: 0; max-width: 680px; margin: 0 auto; }
+
+/* After */
+.tap-page { padding: 0; }
+```
+
+Removed the max-width constraint so the One-Tap Attendance page fills the full available width, consistent with all other pages (Rubric Scoring, Class Hub, Substitute, admin pages, etc.).

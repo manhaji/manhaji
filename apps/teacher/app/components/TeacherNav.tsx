@@ -4,8 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: "/teacher",       label: "Analyze" },
-  { href: "/teacher/input", label: "Input"   },
+  { href: "/teacher",              label: "Dashboard"          },
+  { href: "/teacher/attendance",   label: "One-Tap Attendance" },
+  { href: "/teacher/rubric",       label: "Rubric Scoring"     },
+  { href: "/teacher/classhub",     label: "Class Hub"          },
+  { href: "/teacher/substitute",   label: "Substitute"         },
+  { href: "/teacher/input",        label: "Input"              },
 ];
 
 export default function TeacherNav() {

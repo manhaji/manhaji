@@ -327,3 +327,132 @@ export async function getTeacherSectionAttendance(
     trend,
   };
 }
+
+// ── One-Tap Attendance ──────────────────────────────────────────────────────
+
+export type RollCallMark = {
+  student_id: string;
+  status: string;
+  reason: string | null;
+  notes: string | null;
+};
+
+export async function getAttendanceForPeriod(
+  sectionId: string,
+  date: string,
+  bellPeriodId: string,
+): Promise<RollCallMark[]> {
+  const db = await serverClient();
+  const { data, error } = await db
+    .from("attendance_marks")
+    .select("student_id, status, reason, notes")
+    .eq("section_id", sectionId)
+    .eq("marked_on", date)
+    .eq("bell_period_id", bellPeriodId);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map(r => ({
+    student_id: r.student_id,
+    status: r.status,
+    reason: r.reason,
+    notes: r.notes,
+  }));
+}
+
+export async function getYesterdayAttendanceForSection(
+  sectionId: string,
+  date: string,               // yesterday's date (YYYY-MM-DD)
+): Promise<RollCallMark[]> {
+  const db = await serverClient();
+  const { data, error } = await db
+    .from("attendance_marks")
+    .select("student_id, status, reason, notes")
+    .eq("section_id", sectionId)
+    .eq("marked_on", date);
+  if (error) throw new Error(error.message);
+  return (data ?? []).map(r => ({
+    student_id: r.student_id,
+    status: r.status,
+    reason: r.reason,
+    notes: r.notes,
+  }));
+}
+
+export type CurrentSlotInfo = {
+  slotId: string;
+  sectionId: string;
+  sectionCode: string;
+  gradeLevel: string | null;
+  subjectName: string | null;
+  roomCode: string | null;
+  bellPeriodId: string;
+  periodLabel: string;
+  periodNumber: number;
+  startsAt: string;
+  endsAt: string;
+  isNow: boolean;
+};
+
+export async function getCurrentSlotForTeacher(
+  teacherId: string,
+  academicYearId: string,
+): Promise<CurrentSlotInfo | null> {
+  const db = await serverClient();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const todayDay = days[new Date().getDay()];
+  const nowHHMM = new Date().toTimeString().slice(0, 5);
+
+  const { data, error } = await db
+    .from("timetable_slots")
+    .select(`
+      id, section_id,
+      bell_periods ( id, period_label, period_number, starts_at, ends_at, day_of_week, is_teaching ),
+      subjects ( name_en ),
+      sections ( code, grade_level ),
+      rooms ( code )
+    `)
+    .eq("teacher_id", teacherId)
+    .eq("academic_year_id", academicYearId);
+  if (error) throw new Error(error.message);
+
+  const todaySlots = (data ?? []).filter(s => {
+    const b = s.bell_periods as { day_of_week: string; is_teaching: boolean | null } | null;
+    return b?.day_of_week === todayDay && b?.is_teaching !== false;
+  });
+
+  const toSlotInfo = (s: typeof todaySlots[number], isNow: boolean): CurrentSlotInfo => {
+    const b   = s.bell_periods as { id: string; period_label: string | null; period_number: number; starts_at: string; ends_at: string } | null;
+    const sub = s.subjects as { name_en: string } | null;
+    const sec = s.sections as { code: string; grade_level: string | null } | null;
+    const rm  = s.rooms as { code: string } | null;
+    return {
+      slotId: s.id,
+      sectionId: s.section_id,
+      sectionCode: sec?.code ?? "",
+      gradeLevel: sec?.grade_level ?? null,
+      subjectName: sub?.name_en ?? null,
+      roomCode: rm?.code ?? null,
+      bellPeriodId: b?.id ?? "",
+      periodLabel: b?.period_label ?? "",
+      periodNumber: b?.period_number ?? 0,
+      startsAt: (b?.starts_at ?? "").slice(0, 5),
+      endsAt: (b?.ends_at ?? "").slice(0, 5),
+      isNow,
+    };
+  };
+
+  const current = todaySlots.find(s => {
+    const b = s.bell_periods as { starts_at: string; ends_at: string } | null;
+    if (!b) return false;
+    const start = (b.starts_at as string).slice(0, 5);
+    const end   = (b.ends_at as string).slice(0, 5);
+    return nowHHMM >= start && nowHHMM < end;
+  });
+  if (current) return toSlotInfo(current, true);
+
+  const fallback = todaySlots.sort((a, b) => {
+    const ba = a.bell_periods as { period_number: number } | null;
+    const bb = b.bell_periods as { period_number: number } | null;
+    return (ba?.period_number ?? 0) - (bb?.period_number ?? 0);
+  })[0];
+  return fallback ? toSlotInfo(fallback, false) : null;
+}
