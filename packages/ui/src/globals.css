@@ -2830,6 +2830,19 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
   border-color: var(--color-primary);
 }
 .ai-input-btn.primary:hover { background: var(--color-accent); border-color: var(--color-accent); }
+/* Preview / Phase 2 treatment — pairs a disabled control with a visible badge */
+.ai-input-btn-row { display: flex; align-items: center; gap: 8px; }
+.ai-input-phase-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: var(--color-soft);
+  color: var(--color-muted);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
 /* Card highlight for primary action card */
 .ai-input-card.ai-input-card-primary {
   border-color: var(--color-accent);
@@ -4569,6 +4582,13 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
 }
 .ars-action-btn.primary {
   background: var(--color-primary); color: #fff; border-color: var(--color-primary);
+}
+.ars-action-btn:disabled { opacity: .5; cursor: not-allowed; }
+/* Preview / Phase 2 badge — signals these actions are not yet live */
+.ars-preview-pill {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  background: var(--color-soft); color: var(--color-muted);
+  padding: 2px 8px; border-radius: 9999px; white-space: nowrap; align-self: center;
 }
 
 .ars-empty { text-align: center; padding: 48px; color: var(--color-muted); font-size: 13px; }

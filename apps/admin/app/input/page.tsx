@@ -39,7 +39,17 @@ export default function AdminInputPage() {
             <span className="ai-input-drop-icon">📂</span>
             <span className="ai-input-drop-hint">Drag CSV / Excel here or click to browse</span>
           </div>
-          <button type="button" className="ai-input-btn ghost" disabled>Upload file</button>
+          <div className="ai-input-btn-row">
+            <button
+              type="button"
+              className="ai-input-btn ghost"
+              disabled
+              title="Roster import lands in Phase 2 — this interface is a preview."
+            >
+              Upload file
+            </button>
+            <span className="ai-input-phase-badge">Phase 2</span>
+          </div>
         </div>
 
         {/* Schedule edits */}
@@ -78,7 +88,17 @@ export default function AdminInputPage() {
           <div className="ai-input-composer-placeholder">
             Select sections + compose message · 17 templates available
           </div>
-          <button type="button" className="ai-input-btn ghost" disabled>Send batch →</button>
+          <div className="ai-input-btn-row">
+            <button
+              type="button"
+              className="ai-input-btn ghost"
+              disabled
+              title="Bulk parent comms send in Phase 2 — this interface is a preview."
+            >
+              Send batch →
+            </button>
+            <span className="ai-input-phase-badge">Phase 2</span>
+          </div>
         </div>
 
       </div>

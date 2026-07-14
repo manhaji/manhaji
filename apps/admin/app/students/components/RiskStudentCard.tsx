@@ -86,8 +86,21 @@ export default function RiskStudentCard({ student }: { student: Student }) {
           {primaryFlag?.owner_id ? `Owner: ${primaryFlag.owner_id.slice(0, 8)}…` : "Unassigned"}
         </span>
         <div className="ars-card-actions">
-          <button className="ars-action-btn">Message parent</button>
-          <button className="ars-action-btn primary">Open profile</button>
+          <span className="ars-preview-pill">Phase 2</span>
+          <button
+            className="ars-action-btn"
+            disabled
+            title="Parent messaging arrives in Phase 2 — this action is a preview."
+          >
+            Message parent
+          </button>
+          <button
+            className="ars-action-btn primary"
+            disabled
+            title="Student profiles arrive in Phase 2 — this action is a preview."
+          >
+            Open profile
+          </button>
         </div>
       </div>
     </div>
