@@ -8,7 +8,7 @@ export default function AdminAnalyzeInputTabs() {
   return (
     <nav className="ai-tabs" aria-label="Admin mode">
       <Link href="/admin" className={`ai-tab ${!onInput ? "active" : ""}`}>Analyze data</Link>
-      <Link href="/input" className={`ai-tab ${onInput ? "active" : ""}`}>Input data</Link>
+      <Link href="/admin/input" className={`ai-tab ${onInput ? "active" : ""}`}>Input data</Link>
     </nav>
   );
 }

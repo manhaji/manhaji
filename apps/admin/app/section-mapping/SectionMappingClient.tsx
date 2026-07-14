@@ -147,7 +147,7 @@ export default function SectionMappingClient({ initialSections }: { initialSecti
     }
     setSave({ kind: "saving" });
     try {
-      const res = await fetch("/api/sections/save-mapping", {
+      const res = await fetch("/admin/api/sections/save-mapping", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

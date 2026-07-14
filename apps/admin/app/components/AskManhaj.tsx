@@ -64,7 +64,7 @@ export default function AskManhaj() {
       // Send the full conversation EXCEPT the placeholder assistant we just added.
       const payloadMessages = nextTurns.slice(0, -1);
 
-      const res = await fetch("/api/chat", {
+      const res = await fetch("/admin/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: payloadMessages }),

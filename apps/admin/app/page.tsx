@@ -74,7 +74,7 @@ export default async function AdminDashboard() {
   const cards: TabSummary[] = [
     {
       label: "Faculty",
-      href: "/faculty",
+      href: "/admin/faculty",
       big: String(s.n_teachers),
       big_suffix: "teachers",
       trend: s.over_capacity > 0
@@ -87,7 +87,7 @@ export default async function AdminDashboard() {
     },
     {
       label: "Students",
-      href: "/students",
+      href: "/admin/students",
       big: String(enrolled),
       trend: flagged > 0
         ? { text: `▲ ${flagged} flagged for support`, tone: "down" }
@@ -99,7 +99,7 @@ export default async function AdminDashboard() {
     },
     {
       label: "Attendance",
-      href: "/attendance",
+      href: "/admin/attendance",
       big: weekPct > 0 ? String(weekPct) : "—",
       big_suffix: weekPct > 0 ? "%" : undefined,
       trend: { text: attTrendText, tone: attTrendTone },
@@ -110,7 +110,7 @@ export default async function AdminDashboard() {
     },
     {
       label: "Schedule",
-      href: "/schedule",
+      href: "/admin/schedule",
       big: String(conflicts + gaps),
       trend: (conflicts + gaps) > 0
         ? { text: `▲ ${conflicts} conflict${conflicts !== 1 ? "s" : ""} · ${gaps} gap${gaps !== 1 ? "s" : ""}`, tone: "down" }
@@ -122,7 +122,7 @@ export default async function AdminDashboard() {
     },
     {
       label: "Reports",
-      href: "/reports",
+      href: "/admin/reports",
       big: String(sentCount),
       trend: { text: `▲ ${openRate}% opened this cycle`, tone: "up" },
       rows: [

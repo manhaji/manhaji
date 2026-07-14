@@ -216,7 +216,7 @@ export default async function StudentDashboard() {
 
       {/* 2×2 summary card grid */}
       <div className="sd-card-grid">
-        <Link href="/schedule" className="sd-card">
+        <Link href="/student/schedule" className="sd-card">
           <div className="sd-card-head">
             <span className="sd-card-label">My Schedule</span>
             <span className="sd-card-arrow" aria-hidden="true">→</span>
@@ -238,7 +238,7 @@ export default async function StudentDashboard() {
           </div>
         </Link>
 
-        <Link href="/homework" className="sd-card">
+        <Link href="/student/homework" className="sd-card">
           <div className="sd-card-head">
             <span className="sd-card-label">Homework</span>
             <span className="sd-card-arrow" aria-hidden="true">→</span>
@@ -261,7 +261,7 @@ export default async function StudentDashboard() {
           </div>
         </Link>
 
-        <Link href="/past-reports" className="sd-card">
+        <Link href="/student/past-reports" className="sd-card">
           <div className="sd-card-head">
             <span className="sd-card-label">Past Reports</span>
             <span className="sd-card-arrow" aria-hidden="true">→</span>
@@ -277,7 +277,7 @@ export default async function StudentDashboard() {
           </div>
         </Link>
 
-        <Link href="/growth" className="sd-card">
+        <Link href="/student/growth" className="sd-card">
           <div className="sd-card-head">
             <span className="sd-card-label">My Growth</span>
             <span className="sd-card-arrow" aria-hidden="true">→</span>

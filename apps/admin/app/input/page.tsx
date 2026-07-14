@@ -22,7 +22,7 @@ export default function AdminInputPage() {
           <p className="ai-input-card-body">
             Map workbook section codes to grade levels — required before reports can be sent.
           </p>
-          <a href="/section-mapping" className="ai-input-btn primary">Open section mapping →</a>
+          <a href="/admin/section-mapping" className="ai-input-btn primary">Open section mapping →</a>
         </div>
 
         {/* Roster import */}
@@ -51,7 +51,7 @@ export default function AdminInputPage() {
           <p className="ai-input-card-body">
             Review and approve timetable changes before publishing to teachers and students.
           </p>
-          <a href="/schedule" className="ai-input-btn ghost">Open schedule editor →</a>
+          <a href="/admin/schedule" className="ai-input-btn ghost">Open schedule editor →</a>
         </div>
 
         {/* Faculty edits */}
@@ -63,7 +63,7 @@ export default function AdminInputPage() {
           <p className="ai-input-card-body">
             Update teacher records, contract status, and subject assignments.
           </p>
-          <a href="/faculty" className="ai-input-btn ghost">Open faculty editor →</a>
+          <a href="/admin/faculty" className="ai-input-btn ghost">Open faculty editor →</a>
         </div>
 
         {/* Bulk parent comms */}
