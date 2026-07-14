@@ -82,7 +82,7 @@ data/exports/
 .superpowers/
 
 # PDFs
-  PDFs/
+PDFs/
 
 # Supabase
 # .mcp.json

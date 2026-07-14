@@ -18,7 +18,7 @@ WHAT THIS DOES (plain English):
 
 REQUIRES:
   In .env:
-    SUPABASE_URL=https://dxrkbjftkfhlddqefmaq.supabase.co
+    SUPABASE_URL=https://qntmzazndkcdgkwmrhae.supabase.co
     SUPABASE_SERVICE_ROLE_KEY=<service role key from Supabase Dashboard → Settings → API>
 
   WARNING: the service_role key bypasses RLS. Never commit it; keep it only
