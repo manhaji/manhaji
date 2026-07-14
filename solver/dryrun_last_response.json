@@ -1,0 +1,61 @@
+{
+  "request_summary": {
+    "absent_teacher": "Sandra Swart",
+    "date": "2026-09-09",
+    "slots": 1,
+    "candidates": 71
+  },
+  "response": {
+    "status": "solved",
+    "assignments": [
+      {
+        "slot_id": "f1000000-0000-0000-0000-000000000004",
+        "date": "2026-09-09",
+        "substitute_teacher_id": "e5e0ed48-aff7-4b4b-9d8d-6273799a0a09",
+        "match_type": "same_subject",
+        "score": 100,
+        "reasoning": "e5e0ed48-aff7-4b4b-9d8d-6273799a0a09 is free this period and teaches this subject.",
+        "alternatives": [
+          {
+            "substitute_teacher_id": "035ad215-61fb-4173-91b7-0b6a7f5096f4",
+            "match_type": "same_subject",
+            "score": 100
+          },
+          {
+            "substitute_teacher_id": "07054b73-d235-4ac5-be0b-1055b172e8de",
+            "match_type": "same_subject",
+            "score": 100
+          },
+          {
+            "substitute_teacher_id": "1ec3fa24-d1f6-49d2-8902-f1fa181e72b5",
+            "match_type": "same_subject",
+            "score": 100
+          }
+        ]
+      }
+    ],
+    "unfilled": [],
+    "summary": {
+      "slots_total": 1,
+      "filled": 1,
+      "unfilled": 0,
+      "fairness_spread": {
+        "max_covers_one_teacher": 1
+      }
+    },
+    "confidence": 1.0,
+    "notes_for_admin": "1 of 1 lessons covered.",
+    "source": {
+      "solver_version": "0.1.0",
+      "generated_at": "2026-07-01T21:36:23.723298+00:00"
+    }
+  },
+  "issues": [
+    "timetable_slots has only 6 rows total \u2014 this is demo data, not a real timetable. Free/busy for every other teacher is vacuously 'free', so the dry run exercises the pipeline, not real scheduling pressure.",
+    "2 active teacher(s) have no teacher_contracts row (Demo Teacher, Sandra Swart) \u2014 no weekly cap known; daily cap left unset for them.",
+    "teachers.primary_dept is NULL for 71/71 active teachers \u2014 same-department matching finds NOBODY. (Departments are derivable from subjects.department via the load matrix; see Part C of schema/011_substitutions.sql.)",
+    "5 active teacher(s) have no load-matrix rows, so no known subjects: Demo Teacher, JO AN, MAIMONA, NEW PE FEMALE, RITA MAHFOUZ \u2014 they can never same-subject match.",
+    "substitutions table is empty \u2014 cover_done_recently is 0 for everyone (expected: no cover history exists yet).",
+    "rooms table is empty \u2014 room continuity can't be considered (harmless for cover, matters for the timetable builder)."
+  ]
+}

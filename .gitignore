@@ -89,3 +89,17 @@ PDFs/
 
 # Conversation log
 # conversation.md
+
+# --- Solver (Python) engine ---
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+# Solver run outputs (regenerable)
+solver/timetable_out/
+solver/**/*_out/
+# Regenerable solver analysis (cover_plans.json is kept — demo needs it)
+data/processed/tt_2526/derived/substitution_score.json
+data/processed/tt_2526/derived/rebuild_*.json
+# Heavy review renders (canonical copies live in OneDrive 01 Product)
+docs/pm/reviews/*.pdf

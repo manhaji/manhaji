@@ -1,0 +1,22 @@
+[
+  {
+    "key": "classes|Grade 12C-A2|Sun|P7|Biology|Hilda Mucharafieh",
+    "overspan": true,
+    "reason": "Classes-page over-span: the Grade 12C-A2 Sunday stacked Physics/Biology cell is merged across P7-P8 on the classes page, which over-spans Biology. Hilda Mucharafieh's teacher page shows the true placement -- Biology for Grade 12C-A2 at P8 only (her P7 that day is Bio SS for Grade 10A/Grade 10B, and no vline is missing between her P7/P8 columns). The teacher view is the precise one; prefer it downstream."
+  },
+  {
+    "key": "classes|Grade 12C-A2|Tue|P5|Economics|Mohd Wassim",
+    "overspan": true,
+    "reason": "Classes-page over-span: the Grade 12C-A2 Tuesday stacked Chemistry/Economics cell is merged across P4-P5 on the classes page, which over-spans Economics. Mohd Wassim's teacher page shows the true placement -- Economics for Grade 12C-A2 at P4 only (his P5 that day is genuinely blank/free; verified no words in that column and no missing vline). The teacher view is the precise one; prefer it downstream."
+  },
+  {
+    "key": "classes|Grade 12C-A2|Wed|P1|Economics|Mohd Wassim",
+    "overspan": true,
+    "reason": "Classes-page over-span: the Grade 12C-A2 Wednesday stacked Chemistry/Economics cell is merged across P1-P2 on the classes page, which over-spans Economics. Mohd Wassim's teacher page shows the true placement -- Economics for Grade 12C-A2 at P2 only (his P1 that day is Business Studies for Grade 10A/Grade 10B). The teacher view is the precise one; prefer it downstream."
+  },
+  {
+    "key": "classes|Grade 12C-A2|Thu|P7|Physics|Hussein Kameh",
+    "overspan": true,
+    "reason": "Classes-page over-span: the Grade 12C-A2 Thursday stacked Physics/Biology cell is merged across P7-P8 on the classes page, which over-spans Physics for this section. Hussein Kameh's teacher page shows the true placement -- Physics for Grade 12C-A2 at P8 only (his P7 that day is Physics for Grade 11A-GED). The teacher view is the precise one; prefer it downstream."
+  }
+]

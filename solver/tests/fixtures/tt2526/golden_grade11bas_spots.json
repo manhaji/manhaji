@@ -1,0 +1,22 @@
+{
+  "_comment": "Spot-check assertions for Classes TT p.38 (Grade 11B-AS) — the hardest page (stacked elective groups, lab Group 1/2 splits, multi-slot Exam and labs). Deliberately NOT a full transcription: multi-column span geometry was read from an image and full transcription risk is too high for a golden. Each spot is high-confidence. mode='exact_set' = the (day, slot) cell contains exactly these subject+teacher pairs; mode='contains' = at least this pair, possibly with a span reaching this slot.",
+  "section": "Grade 11B-AS",
+  "spots": [
+    {"mode": "exact_set", "day": "Sun", "slot": "P4",
+     "entries": [["Business Studies", "Mohd Wassim"], ["Bio SS", "Al Walid Shamseddine"], ["ICT", "Nagavani Puppala"]]},
+    {"mode": "contains", "day": "Wed", "slot": "P1", "entries": [["Exam", null]]},
+    {"mode": "contains", "day": "Wed", "slot": "P2", "entries": [["Exam", null]]},
+    {"mode": "contains", "day": "Tue", "slot": "P7",
+     "entries": [["Physics Lab", "Hussein Kameh"], ["Biology Lab", "Hilda Mucharafieh"]]},
+    {"mode": "contains", "day": "Tue", "slot": "P8",
+     "entries": [["Physics Lab", "Hussein Kameh"], ["Biology Lab", "Hilda Mucharafieh"]]},
+    {"mode": "contains", "day": "Mon", "slot": "P4", "entries": [["Chemistry Lab", "Khalil Al Salim"]]},
+    {"mode": "contains", "day": "Mon", "slot": "P5", "entries": [["Chemistry Lab", "Khalil Al Salim"]]},
+    {"mode": "exact_set", "day": "Thu", "slot": "P1",
+     "entries": [["Chemistry", "Khalil Al Salim"], ["Economics", "Mohd Wassim"]]},
+    {"mode": "exact_set", "day": "Sun", "slot": "P6", "entries": [["Mechanics", "Hussein Kameh"]]},
+    {"mode": "exact_set", "day": "Tue", "slot": "P3", "entries": [["Mechanics", "Hussein Kameh"]]},
+    {"mode": "exact_set", "day": "Mon", "slot": "P7", "entries": [["Civics", "Mariam AlBlouchi"]]},
+    {"mode": "exact_set", "day": "Wed", "slot": "P8", "entries": [["Chemistry", "Khalil Al Salim"]]}
+  ]
+}

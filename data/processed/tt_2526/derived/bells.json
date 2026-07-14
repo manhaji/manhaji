@@ -1,0 +1,176 @@
+{
+  "KG": [
+    {
+      "slot": "P1",
+      "start": "8:00",
+      "end": "8:45",
+      "teaching": true
+    },
+    {
+      "slot": "P2",
+      "start": "8:45",
+      "end": "9:30",
+      "teaching": true
+    },
+    {
+      "slot": "B1",
+      "start": "9:30",
+      "end": "9:50",
+      "teaching": false
+    },
+    {
+      "slot": "P3",
+      "start": "9:50",
+      "end": "10:35",
+      "teaching": true
+    },
+    {
+      "slot": "P4",
+      "start": "10:35",
+      "end": "11:15",
+      "teaching": true
+    },
+    {
+      "slot": "B2",
+      "start": "11:15",
+      "end": "11:55",
+      "teaching": false
+    },
+    {
+      "slot": "P5",
+      "start": "11:55",
+      "end": "12:35",
+      "teaching": true
+    },
+    {
+      "slot": "P6",
+      "start": "12:35",
+      "end": "13:20",
+      "teaching": true
+    }
+  ],
+  "GR1_6": [
+    {
+      "slot": "P1",
+      "start": "8:00",
+      "end": "8:45",
+      "teaching": true
+    },
+    {
+      "slot": "P2",
+      "start": "8:45",
+      "end": "9:30",
+      "teaching": true
+    },
+    {
+      "slot": "B1",
+      "start": "9:30",
+      "end": "9:50",
+      "teaching": false
+    },
+    {
+      "slot": "P3",
+      "start": "9:50",
+      "end": "10:35",
+      "teaching": true
+    },
+    {
+      "slot": "P4",
+      "start": "10:35",
+      "end": "11:15",
+      "teaching": true
+    },
+    {
+      "slot": "P5",
+      "start": "11:15",
+      "end": "11:55",
+      "teaching": true
+    },
+    {
+      "slot": "B2",
+      "start": "11:55",
+      "end": "12:35",
+      "teaching": false
+    },
+    {
+      "slot": "P6",
+      "start": "12:35",
+      "end": "13:20",
+      "teaching": true
+    },
+    {
+      "slot": "P7",
+      "start": "13:20",
+      "end": "14:05",
+      "teaching": true
+    },
+    {
+      "slot": "P8",
+      "start": "14:05",
+      "end": "14:45",
+      "teaching": true
+    }
+  ],
+  "GR7_12": [
+    {
+      "slot": "P1",
+      "start": "8:00",
+      "end": "8:45",
+      "teaching": true
+    },
+    {
+      "slot": "P2",
+      "start": "8:45",
+      "end": "9:30",
+      "teaching": true
+    },
+    {
+      "slot": "P3",
+      "start": "9:30",
+      "end": "10:15",
+      "teaching": true
+    },
+    {
+      "slot": "B1",
+      "start": "10:15",
+      "end": "10:35",
+      "teaching": false
+    },
+    {
+      "slot": "P4",
+      "start": "10:35",
+      "end": "11:15",
+      "teaching": true
+    },
+    {
+      "slot": "P5",
+      "start": "11:15",
+      "end": "11:55",
+      "teaching": true
+    },
+    {
+      "slot": "P6",
+      "start": "11:55",
+      "end": "12:35",
+      "teaching": true
+    },
+    {
+      "slot": "B2",
+      "start": "12:35",
+      "end": "13:20",
+      "teaching": false
+    },
+    {
+      "slot": "P7",
+      "start": "13:20",
+      "end": "14:05",
+      "teaching": true
+    },
+    {
+      "slot": "P8",
+      "start": "14:05",
+      "end": "14:45",
+      "teaching": true
+    }
+  ]
+}
