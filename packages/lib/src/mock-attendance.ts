@@ -198,7 +198,7 @@ export const ATT_LESSONS: LessonMissed[] = [
   { date: "2026-05-22", period: "P3", subject: "Calculus",  teacher: "Mr Saab",   note: "limits unit-test review" },
   { date: "2026-05-22", period: "P5", subject: "Chemistry", teacher: "Mr Salim",  note: "organic reactions lab"   },
   { date: "2026-05-17", period: "P1", subject: "Mathematics", teacher: "Mr Saab", note: "15 min late"             },
-  { date: "2026-05-15", period: "P2", subject: "English",   teacher: "Ms Swart",  note: "essay feedback session"  },
+  { date: "2026-05-15", period: "P2", subject: "History",   teacher: "Ms Swart",  note: "essay feedback session"  },
 ];
 
 // =========================

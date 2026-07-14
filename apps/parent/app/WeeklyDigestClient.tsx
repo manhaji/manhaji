@@ -56,8 +56,8 @@ const MOCK_CHILD: ParentChild = {
   full_name_en: "Layla Al-Habsi",
   initial: "L",
   section_id: "mock-sec",
-  section_code: "G5A",
-  grade_level: "Grade 5",
+  section_code: "10A",
+  grade_level: "Grade 10",
 };
 
 const MOCK_DIGEST_TEXT =

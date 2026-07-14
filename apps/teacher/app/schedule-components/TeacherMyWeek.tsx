@@ -13,12 +13,12 @@ interface Cell {
 }
 
 const SWART_WEEK: Partial<Record<Period, Partial<Record<Day, Cell | undefined>>>> = {
-  P1: { Tue: { subject: "English", section: "10A", room: "R204" }, Thu: { subject: "English", section: "10A", room: "R204" } },
-  P2: { Mon: { subject: "English", section: "10A", room: "R204" }, Wed: { subject: "English (sub)", section: "10A", room: "R204" }, Thu: { subject: "English", section: "10A", room: "R204" } },
-  P3: { Tue: { subject: "English", section: "11 AS", room: "R204" }, Fri: { subject: "English", section: "12 A2", room: "R204" } },
-  P4: { Fri: { subject: "English", section: "11 AS", room: "R204" } },
-  P5: { Mon: { subject: "English", section: "12 A2", room: "R204" }, Wed: { subject: "English", section: "10A", room: "R204" } },
-  P6: { Thu: { subject: "English", section: "12 A2", room: "R204" }, Fri: { subject: "English", section: "11 AS", room: "R204" } },
+  P1: { Tue: { subject: "History", section: "10A", room: "R210" }, Thu: { subject: "History", section: "10A", room: "R210" } },
+  P2: { Mon: { subject: "Geography", section: "10A", room: "R210" }, Wed: { subject: "History (sub)", section: "10A", room: "R210" }, Thu: { subject: "History", section: "10A", room: "R210" } },
+  P3: { Tue: { subject: "History", section: "11 AS", room: "R210" }, Fri: { subject: "History", section: "12 A2", room: "R210" } },
+  P4: { Fri: { subject: "Geography", section: "11 AS", room: "R210" } },
+  P5: { Mon: { subject: "History", section: "12 A2", room: "R210" }, Wed: { subject: "MUN club", section: "10A", room: "R210" } },
+  P6: { Thu: { subject: "Geography", section: "12 A2", room: "R210" }, Fri: { subject: "History", section: "11 AS", room: "R210" } },
 };
 
 function normDay(d: string): Day {
@@ -59,7 +59,7 @@ export default function TeacherMyWeek({ slots }: Props) {
   } else {
     totalPeriods = Object.values(SWART_WEEK).reduce((acc, row) =>
       acc + Object.values(row ?? {}).filter(Boolean).length, 0);
-    subtitle = `English · ${totalPeriods} periods this week · teacher lens`;
+    subtitle = `History · ${totalPeriods} periods this week · teacher lens`;
   }
 
   return (

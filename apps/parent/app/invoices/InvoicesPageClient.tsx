@@ -36,7 +36,7 @@ function daysUntil(iso: string | null): number | null {
 // ── Mock data ─────────────────────────────────────────────────────────────────
 
 const MOCK_LINES = [
-  { description: "Tuition (Term 3 portion)", note: "Grade 5 · 13 weeks", amount_aed: 6500 },
+  { description: "Tuition (Term 3 portion)", note: "Grade 10 · 13 weeks", amount_aed: 6500 },
   { description: "Bus transport", note: "Route 8 · home–school return", amount_aed: 850 },
   { description: "Lunch programme", note: "Hot lunch · 5 days/week", amount_aed: 600 },
   { description: "Enrichment & field trips", note: "Includes Bait Al Zubair · 3 June", amount_aed: 450 },
@@ -212,7 +212,7 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
         <span className="inv-bc-active">Term 3 · Installment 3</span>
       </div>
       <div className="inv-page-title">Term 3 fee — Installment 3 of 4</div>
-      <div className="inv-page-sub">For Layla Al-Habsi · Grade 5B · Academic year 2025/26</div>
+      <div className="inv-page-sub">For Layla Al-Habsi · 10A · Academic year 2025/26</div>
 
       <div className="inv-body">
         {/* ── Left column ── */}

@@ -77,7 +77,7 @@ const MOCK_CHILDREN: ChildSiblingData[] = [
     nextExam: { label: "Science exam", held_on: "2026-05-29", subject: "Science" },
   },
   {
-    child: { student_id: "m2", full_name_en: "Layla Al-Habsi", initial: "L", section_id: "s2", section_code: "G5B",  grade_level: "Grade 5"  },
+    child: { student_id: "m2", full_name_en: "Layla Al-Habsi", initial: "L", section_id: "s2", section_code: "10A",  grade_level: "Grade 10"  },
     formTeacher: "Ms. Tariq",
     att: { pct: 100, absences: 0 },
     homeworkCount: 3,
