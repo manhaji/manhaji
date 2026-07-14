@@ -1,0 +1,3824 @@
+[
+  {
+    "section": "Grade 10A",
+    "subject": "ART & Design",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Bio SS",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Biology",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Chemistry",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Environmental Management",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "French",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Physics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "ART & Design",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Bio SS",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Biology",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Chemistry",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Environmental Management",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Physics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 10B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Art",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Biology",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Chemistry",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Civics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Economics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "PE",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11A-GED",
+    "subject": "Physics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Art",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Bio SS",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Bio SS Lab",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Biology",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Biology Lab",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Business Studies",
+    "per_week": 6,
+    "max_per_day": 3,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Chemistry",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Chemistry Lab",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Civics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Mechanics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "PE",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Physics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 11B-AS",
+    "subject": "Physics Lab",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Art",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Biology",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Chemistry",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Civics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Economics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "English",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "PE",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12A-GED",
+    "subject": "Physics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Art",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Biology",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Chemistry",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Civics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Economics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "English",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "PE",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12B-GED",
+    "subject": "Physics",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Art",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Biology",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Chemistry",
+    "per_week": 7,
+    "max_per_day": 3,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Civics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Mechanics",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "PE",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Physics",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 12C-A2",
+    "subject": "Statistics 2",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 3,
+    "has_double": true
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "English",
+    "per_week": 11,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "French",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1A",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "English",
+    "per_week": 11,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1B",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "English",
+    "per_week": 11,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 1C",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "French",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2A",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "English",
+    "per_week": 14,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2AL",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 3,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2B",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Arabic",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 2C",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3A",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "English",
+    "per_week": 14,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 3AL",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "French",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3B",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "English",
+    "per_week": 9,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 3C",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "French",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4A",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "English",
+    "per_week": 14,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 4AL",
+    "subject": "Science",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4B",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Arabic",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Computing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Global Perspectives",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Identity & Citizenship",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Islamic Studies",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 4C",
+    "subject": "Wellbeing",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "English",
+    "per_week": 14,
+    "max_per_day": 5,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 5 AL",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "French",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Eng - Supp",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 5C",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "English",
+    "per_week": 14,
+    "max_per_day": 5,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Math",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 6 AL",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "English - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "French",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Math",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "English - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Math",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "English",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "English - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Math",
+    "per_week": 8,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 6C",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "French",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 7C",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "French",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Arabic",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Computing",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "English",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "French 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Global Perspectives",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Math",
+    "per_week": 6,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Music",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Science",
+    "per_week": 4,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "Grade 8B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "ART & Design",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Arabic 3rd Lang",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Bio SS",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Biology",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Chemistry",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "English",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Environmental Management",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "French",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "History",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Physics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9A",
+    "subject": "Social Studies-Arabic",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "ART & Design",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Arabic",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Art",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Bio SS",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Biology",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Business Studies",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Chemistry",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Economics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "English",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "English-Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "History",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "ICT",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Islamic Studies",
+    "per_week": 3,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Math - Support",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 2,
+    "has_double": true
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Physics",
+    "per_week": 4,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "Grade 9B",
+    "subject": "Social Studies-Arabic",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "Arabic",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "English",
+    "per_week": 13,
+    "max_per_day": 4,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "Music",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "Arabic",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "English",
+    "per_week": 13,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "Music",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG1 B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "Arabic",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "English",
+    "per_week": 13,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "Music",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 A",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "Arabic",
+    "per_week": 7,
+    "max_per_day": 2,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "Art",
+    "per_week": 1,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "English",
+    "per_week": 13,
+    "max_per_day": 3,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "Math",
+    "per_week": 5,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "Music",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  },
+  {
+    "section": "KG2 B",
+    "subject": "PE",
+    "per_week": 2,
+    "max_per_day": 1,
+    "has_double": false
+  }
+]

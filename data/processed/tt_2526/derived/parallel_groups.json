@@ -1,0 +1,762 @@
+{
+  "Grade 1A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 7
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Identity & Citizenship",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 2A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 7
+    },
+    {
+      "subjects": [
+        "Arabic",
+        "Library"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Identity & Citizenship",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 2B": [
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 2C": [
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 3A": [
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 3B": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 7
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Arabic",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Identity & Citizenship",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 3C": [
+    {
+      "subjects": [
+        "E-S",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 4A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Arabic",
+        "Library"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Wellbeing"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Identity & Citizenship",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 4B": [
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Wellbeing"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 4C": [
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Wellbeing"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 5A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 5B": [
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 5C": [
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Eng - Supp",
+        "Library"
+      ],
+      "count": 1
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 6A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 6B": [
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 6C": [
+    {
+      "subjects": [
+        "Global Perspectives",
+        "Social Studies-Arabic"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 7A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 3
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 7B": [
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 3
+    }
+  ],
+  "Grade 7C": [
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 3
+    }
+  ],
+  "Grade 8A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 3
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "French 3rd Lang"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 8B": [
+    {
+      "subjects": [
+        "Library",
+        "Social Studies-Arabic"
+      ],
+      "count": 3
+    }
+  ],
+  "Grade 9A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "ART & Design",
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS",
+        "Economics",
+        "History"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Environmental Management"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Arabic 3rd Lang",
+        "Islamic Studies"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Islamic Studies",
+        "Library"
+      ],
+      "count": 1
+    }
+  ],
+  "Grade 9B": [
+    {
+      "subjects": [
+        "ART & Design",
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS",
+        "Economics",
+        "History"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Islamic Studies",
+        "Library"
+      ],
+      "count": 3
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 10A": [
+    {
+      "subjects": [
+        "Arabic",
+        "French"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "ART & Design",
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS",
+        "Environmental Management"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Islamic Studies",
+        "Library"
+      ],
+      "count": 3
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 10B": [
+    {
+      "subjects": [
+        "ART & Design",
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS",
+        "Environmental Management"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 11A-GED": [
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Arabic",
+        "Arabic 3rd Lang"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 11B-AS": [
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS",
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Bio SS Lab",
+        "Business Studies"
+      ],
+      "count": 2
+    },
+    {
+      "subjects": [
+        "Biology Lab",
+        "Physics Lab"
+      ],
+      "count": 2
+    }
+  ],
+  "Grade 12A-GED": [
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    }
+  ],
+  "Grade 12B-GED": [
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 5
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Business Studies",
+        "ICT"
+      ],
+      "count": 4
+    }
+  ],
+  "Grade 12C-A2": [
+    {
+      "subjects": [
+        "Biology",
+        "Physics"
+      ],
+      "count": 6
+    },
+    {
+      "subjects": [
+        "Art",
+        "PE"
+      ],
+      "count": 4
+    },
+    {
+      "subjects": [
+        "Chemistry",
+        "Economics"
+      ],
+      "count": 2
+    }
+  ]
+}

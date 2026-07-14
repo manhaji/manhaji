@@ -1,0 +1,3278 @@
+[
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 3A",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 3B",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 4A",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 4A",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 4B",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 4B",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 4C",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 5A",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Agnes Blignaut",
+    "section": "Grade 5A",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 10A",
+    "subject": "Biology",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 10A",
+    "subject": "Environmental Management",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 10B",
+    "subject": "Biology",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 10B",
+    "subject": "Environmental Management",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 11A-GED",
+    "subject": "Biology",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 11B-AS",
+    "subject": "Bio SS",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 11B-AS",
+    "subject": "Bio SS Lab",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Al Walid Shamseddine",
+    "section": "Grade 9A",
+    "subject": "Environmental Management",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 10A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 10B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 11A-GED",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 11B-AS",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 12A-GED",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 12B-GED",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 12C-A2",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 8A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 8B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 9A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Ali El Temsah",
+    "section": "Grade 9B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Claire Yvonne Hodgson",
+    "section": "Grade 3B",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Claire Yvonne Hodgson",
+    "section": "KG1 B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Claire Yvonne Hodgson",
+    "section": "KG1 B",
+    "subject": "English",
+    "weekly_slots": 13
+  },
+  {
+    "teacher": "Claire Yvonne Hodgson",
+    "section": "KG1 B",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Claire Yvonne Hodgson",
+    "section": "KG1 B",
+    "subject": "Music",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 10A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 10B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 7A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 7B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 7C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 8A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 8B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 9A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "DV / H",
+    "section": "Grade 9B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 10A",
+    "subject": "Physics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 10B",
+    "subject": "Physics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 3AL",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 4AL",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 6A",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 7A",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 7B",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 7C",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 9A",
+    "subject": "Physics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eliana Al Hakeem",
+    "section": "Grade 9B",
+    "subject": "Physics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 1A",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 1B",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 1C",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 2A",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 2AL",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 2B",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 2C",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 3A",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 3AL",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 3B",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 3C",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 4A",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 4AL",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 4B",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 4C",
+    "subject": "Computing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 5 AL",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 5A",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 5B",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 5C",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 6 AL",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 6A",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 6B",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Eslam Aghawani",
+    "section": "Grade 6C",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "FM / KAS",
+    "section": "Grade 10A",
+    "subject": "Chemistry",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "FM / KAS",
+    "section": "Grade 10B",
+    "subject": "Chemistry",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 1A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 1B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 1C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 2A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 2AL",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 2B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "Grade 2C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "KG1 A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fateme Ghajarian",
+    "section": "KG1 B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 6B",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 6C",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 8A",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 8B",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 9A",
+    "subject": "Chemistry",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Manana",
+    "section": "Grade 9B",
+    "subject": "Chemistry",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 1C",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 2AL",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 2B",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 2C",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 2C",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 3A",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 3C",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 5 AL",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Fatma Shour",
+    "section": "Grade 6 AL",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 8A",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 8A",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 8A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 8B",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 9A",
+    "subject": "English",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 9A",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 9B",
+    "subject": "English",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Ferdinand Gericke",
+    "section": "Grade 9B",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 4A",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 4A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 4B",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 4B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 4C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 5 AL",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 6 AL",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Ghada Albhaisi",
+    "section": "Grade 6B",
+    "subject": "Math",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "H / DV",
+    "section": "Grade 11A-GED",
+    "subject": "PE",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "H / DV",
+    "section": "Grade 11B-AS",
+    "subject": "PE",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "H / DV",
+    "section": "Grade 12A-GED",
+    "subject": "PE",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "H / DV",
+    "section": "Grade 12B-GED",
+    "subject": "PE",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "H / DV",
+    "section": "Grade 12C-A2",
+    "subject": "PE",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Hajer Fned",
+    "section": "KG2 B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 6A",
+    "subject": "Math",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 6C",
+    "subject": "Math",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 8A",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 9A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 9B",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hassan Seif El dein",
+    "section": "Grade 9B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hiba Asha",
+    "section": "Grade 10A",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hiba Asha",
+    "section": "Grade 10B",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hiba Asha",
+    "section": "Grade 11A-GED",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hiba Asha",
+    "section": "Grade 9A",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hiba Asha",
+    "section": "Grade 9B",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hiba Hamoud",
+    "section": "Grade 2AL",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Hiba Hamoud",
+    "section": "Grade 2B",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Hiba Hamoud",
+    "section": "Grade 2C",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 10A",
+    "subject": "Bio SS",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 10B",
+    "subject": "Bio SS",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 11B-AS",
+    "subject": "Biology",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 11B-AS",
+    "subject": "Biology Lab",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 12A-GED",
+    "subject": "Biology",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 12B-GED",
+    "subject": "Biology",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hilda Mucharafieh",
+    "section": "Grade 12C-A2",
+    "subject": "Biology",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 11A-GED",
+    "subject": "Physics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 11B-AS",
+    "subject": "Mechanics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 11B-AS",
+    "subject": "Physics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 11B-AS",
+    "subject": "Physics Lab",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 12A-GED",
+    "subject": "Physics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 12B-GED",
+    "subject": "Physics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 12C-A2",
+    "subject": "Mechanics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Hussein Kameh",
+    "section": "Grade 12C-A2",
+    "subject": "Physics",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 5 AL",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 5A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 5B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 5C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 6 AL",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 6A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 6B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / DV",
+    "section": "Grade 6C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 3A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 3AL",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 3B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 3C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 4A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 4AL",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 4B",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "Grade 4C",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "IBZ / H",
+    "section": "KG2 A",
+    "subject": "PE",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 10A",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 10A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 10B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 11B-AS",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 12C-A2",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Ibrahim Harb",
+    "section": "Grade 12C-A2",
+    "subject": "Statistics 2",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 10A",
+    "subject": "ART & Design",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 10A",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 10B",
+    "subject": "ART & Design",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 10B",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 11A-GED",
+    "subject": "Art",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 11B-AS",
+    "subject": "Art",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 12A-GED",
+    "subject": "Art",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 12B-GED",
+    "subject": "Art",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 12C-A2",
+    "subject": "Art",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 7A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 7B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 7C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 8A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 8B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 9A",
+    "subject": "ART & Design",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 9A",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 9B",
+    "subject": "ART & Design",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Irina Murariu",
+    "section": "Grade 9B",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 10A",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 10B",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 11A-GED",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 11A-GED",
+    "subject": "Economics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 9A",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 9A",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 9B",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jessica Bitar",
+    "section": "Grade 9B",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 1A",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 1B",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 1C",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 3A",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 3B",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 3C",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 3C",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 4A",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 4B",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jinan Al Farsi",
+    "section": "Grade 4C",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jo-Anne Venketas",
+    "section": "Grade 2A",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Jo-Anne Venketas",
+    "section": "KG1 A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jo-Anne Venketas",
+    "section": "KG1 A",
+    "subject": "English",
+    "weekly_slots": 13
+  },
+  {
+    "teacher": "Jo-Anne Venketas",
+    "section": "KG1 A",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Jo-Anne Venketas",
+    "section": "KG1 A",
+    "subject": "Music",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 1A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 1B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 1C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 2A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 2AL",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 2B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 2C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 3A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 3AL",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 3B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 3C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 4A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 4AL",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 4B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 4C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 5 AL",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 5A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 5B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 5C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 6 AL",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 6A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 6B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 6C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 7A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 7B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 7C",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 8A",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Jolio Lopez",
+    "section": "Grade 8B",
+    "subject": "Music",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 1B",
+    "subject": "English",
+    "weekly_slots": 11
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 1B",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2A",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2B",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2C",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2C",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Justine Roose",
+    "section": "Grade 2C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 10A",
+    "subject": "French",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 2C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 3B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 7B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 8A",
+    "subject": "French",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Khadija Ben Hamida",
+    "section": "Grade 9A",
+    "subject": "French",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 11A-GED",
+    "subject": "Chemistry",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 11B-AS",
+    "subject": "Chemistry",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 11B-AS",
+    "subject": "Chemistry Lab",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 12A-GED",
+    "subject": "Chemistry",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 12B-GED",
+    "subject": "Chemistry",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Khalil Al Salim",
+    "section": "Grade 12C-A2",
+    "subject": "Chemistry",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 1A",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 1B",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 4A",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 4C",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 5B",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 9A",
+    "subject": "Bio SS",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 9A",
+    "subject": "Biology",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 9B",
+    "subject": "Bio SS",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Khaoula Jedda",
+    "section": "Grade 9B",
+    "subject": "Biology",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 4A",
+    "subject": "French",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 4A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 4B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 4C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 5A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 5B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 5C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 7A",
+    "subject": "French",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 8A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lamia Akermoun",
+    "section": "Grade 8B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 4C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7A",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7A",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7B",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7B",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7C",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7C",
+    "subject": "English-Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lizl Lewis",
+    "section": "Grade 7C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 3B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 3B",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 3C",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 5C",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 6A",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 6A",
+    "subject": "English - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 6B",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 6B",
+    "subject": "English - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Lynn Smith",
+    "section": "Grade 6C",
+    "subject": "English - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 1A",
+    "subject": "French",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 1A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 1B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 1C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 2A",
+    "subject": "French",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 2A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 2B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 7A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Manal",
+    "section": "Grade 7C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 10A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 10B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 11A-GED",
+    "subject": "Civics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 11B-AS",
+    "subject": "Civics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 12A-GED",
+    "subject": "Civics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 12B-GED",
+    "subject": "Civics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 12C-A2",
+    "subject": "Civics",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 7B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 7C",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 8A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 8B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 9A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mariam AlBlouchi",
+    "section": "Grade 9B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "Grade 4C",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "Grade 4C",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "KG2 B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "KG2 B",
+    "subject": "English",
+    "weekly_slots": 13
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "KG2 B",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Marly Shaw",
+    "section": "KG2 B",
+    "subject": "Music",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mary Boyle",
+    "section": "Grade 1C",
+    "subject": "English",
+    "weekly_slots": 11
+  },
+  {
+    "teacher": "Mary Boyle",
+    "section": "Grade 1C",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mary Boyle",
+    "section": "Grade 5 AL",
+    "subject": "English",
+    "weekly_slots": 14
+  },
+  {
+    "teacher": "Mary Boyle",
+    "section": "Grade 6 AL",
+    "subject": "English",
+    "weekly_slots": 14
+  },
+  {
+    "teacher": "May Dib",
+    "section": "Grade 1A",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "May Dib",
+    "section": "Grade 1B",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "May Dib",
+    "section": "KG2 B",
+    "subject": "Arabic",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 1A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 1B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 1C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 2B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 3A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 3B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 3C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 5 AL",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Maymouna Al Ruqeishi",
+    "section": "Grade 5A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 2B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 3A",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 3A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 3A",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 3AL",
+    "subject": "English",
+    "weekly_slots": 14
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 3C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 4A",
+    "subject": "Wellbeing",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 4AL",
+    "subject": "English",
+    "weekly_slots": 14
+  },
+  {
+    "teacher": "Melissa - New teacher",
+    "section": "Grade 4B",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 3A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 3B",
+    "subject": "French",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 3C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 5A",
+    "subject": "French",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 6A",
+    "subject": "French",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 6A",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 6B",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Micheline Khoury",
+    "section": "Grade 6C",
+    "subject": "French 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 1A",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 1B",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 1C",
+    "subject": "Art",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 2A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 2AL",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 2B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 2C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 3A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 3AL",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 3B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 3C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 4A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 4AL",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 4B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 4C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 5 AL",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 5A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 5B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 5C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 6 AL",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 6A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 6B",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mirna Jomaa",
+    "section": "Grade 6C",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Mohamad Kuzzo",
+    "section": "Grade 11A-GED",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Mohamad Kuzzo",
+    "section": "Grade 12A-GED",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohamad Kuzzo",
+    "section": "Grade 12B-GED",
+    "subject": "Arabic",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohamad Kuzzo",
+    "section": "Grade 8A",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohamad Kuzzo",
+    "section": "Grade 8B",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammad Al Ali",
+    "section": "Grade 5A",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammad Al Ali",
+    "section": "Grade 5B",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammad Al Ali",
+    "section": "Grade 5C",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammad Al Ali",
+    "section": "Grade 6B",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammad Al Ali",
+    "section": "Grade 6C",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammed Saab",
+    "section": "Grade 10B",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohammed Saab",
+    "section": "Grade 11A-GED",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammed Saab",
+    "section": "Grade 12A-GED",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammed Saab",
+    "section": "Grade 12B-GED",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohammed Saab",
+    "section": "Grade 9A",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 10A",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 10B",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 11B-AS",
+    "subject": "Business Studies",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 11B-AS",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 12A-GED",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 12A-GED",
+    "subject": "Economics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 12B-GED",
+    "subject": "Business Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 12B-GED",
+    "subject": "Economics",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Mohd Wassim",
+    "section": "Grade 12C-A2",
+    "subject": "Economics",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 1A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 5B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 5C",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 6A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 6A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 6B",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 6C",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 7A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 7A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Munira Al Mughery",
+    "section": "Grade 8A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 10A",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 10B",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 11A-GED",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 11B-AS",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 12A-GED",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 12B-GED",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 7A",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 7B",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 7C",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 8A",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 8B",
+    "subject": "Computing",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 9A",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Nagavani Puppala",
+    "section": "Grade 9B",
+    "subject": "ICT",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Natalia Stevens",
+    "section": "Grade 1A",
+    "subject": "English",
+    "weekly_slots": 11
+  },
+  {
+    "teacher": "Natalia Stevens",
+    "section": "Grade 1A",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Natalia Stevens",
+    "section": "Grade 2AL",
+    "subject": "English",
+    "weekly_slots": 14
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 5 AL",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 6 AL",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 6A",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 7A",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 7B",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Nemah Hasn",
+    "section": "Grade 7C",
+    "subject": "Arabic",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Rafah Al Khatib",
+    "section": "Grade 3A",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Rafah Al Khatib",
+    "section": "Grade 4A",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Rafah Al Khatib",
+    "section": "Grade 4C",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Raheeq Merhi",
+    "section": "Grade 2A",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Raheeq Merhi",
+    "section": "Grade 3AL",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Raheeq Merhi",
+    "section": "Grade 4A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Raheeq Merhi",
+    "section": "Grade 4AL",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Raheeq Merhi",
+    "section": "Grade 4B",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "Grade 2A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "Grade 3B",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "Grade 5A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "Grade 9A",
+    "subject": "Arabic 3rd Lang",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "KG1 A",
+    "subject": "Arabic",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "KG1 B",
+    "subject": "Arabic",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Rayan Al Humaimi",
+    "section": "KG2 A",
+    "subject": "Arabic",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Rita Mahfouz",
+    "section": "Grade 2A",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Rita Mahfouz",
+    "section": "Grade 2A",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Rita Mahfouz",
+    "section": "Grade 3B",
+    "subject": "Science",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Rita Mahfouz",
+    "section": "Grade 4B",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2A",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2AL",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2B",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2C",
+    "subject": "Identity & Citizenship",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 2C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 3AL",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 4AL",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 4B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 4C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Safaa",
+    "section": "Grade 5A",
+    "subject": "Social Studies-Arabic",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 2B",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 3A",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 3A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 3AL",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 3B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 3C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 4AL",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 5A",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Sahar Mohamad",
+    "section": "Grade 5C",
+    "subject": "Science",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Salma Dayoub",
+    "section": "Grade 1C",
+    "subject": "Arabic",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Salma Dayoub",
+    "section": "Grade 3B",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Salma Dayoub",
+    "section": "Grade 3C",
+    "subject": "Arabic",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 4A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 5B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 5C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 6 AL",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 6A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 6B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 6C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 7A",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 7B",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shaima El Temsah",
+    "section": "Grade 7C",
+    "subject": "Islamic Studies",
+    "weekly_slots": 3
+  },
+  {
+    "teacher": "Shane Carroll",
+    "section": "Grade 11A-GED",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Shane Carroll",
+    "section": "Grade 12A-GED",
+    "subject": "English",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Shane Carroll",
+    "section": "Grade 12B-GED",
+    "subject": "English",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 4A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 4B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 5B",
+    "subject": "Eng - Supp",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 5B",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 5B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 5C",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Shihaam Morris",
+    "section": "Grade 6C",
+    "subject": "English",
+    "weekly_slots": 8
+  },
+  {
+    "teacher": "Suzan Coetzee",
+    "section": "Grade 2B",
+    "subject": "English",
+    "weekly_slots": 9
+  },
+  {
+    "teacher": "Suzan Coetzee",
+    "section": "KG2 A",
+    "subject": "Art",
+    "weekly_slots": 1
+  },
+  {
+    "teacher": "Suzan Coetzee",
+    "section": "KG2 A",
+    "subject": "English",
+    "weekly_slots": 13
+  },
+  {
+    "teacher": "Suzan Coetzee",
+    "section": "KG2 A",
+    "subject": "Math",
+    "weekly_slots": 5
+  },
+  {
+    "teacher": "Suzan Coetzee",
+    "section": "KG2 A",
+    "subject": "Music",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 5A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 5C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 6A",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 6B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 6C",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 8B",
+    "subject": "English",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 8B",
+    "subject": "Global Perspectives",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 9A",
+    "subject": "History",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Tania Harder",
+    "section": "Grade 9B",
+    "subject": "History",
+    "weekly_slots": 4
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 1A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 1B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 1C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 2A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 2AL",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 2B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 2C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 3B",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 3C",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Yasmeen Ali",
+    "section": "Grade 4C",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5A",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5B",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5C",
+    "subject": "Math",
+    "weekly_slots": 7
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 5C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 6A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 6B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Yunus Murat",
+    "section": "Grade 6C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7A",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7B",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7C",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 7C",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 8A",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 8B",
+    "subject": "Math",
+    "weekly_slots": 6
+  },
+  {
+    "teacher": "Zainab Murtada",
+    "section": "Grade 8B",
+    "subject": "Math - Support",
+    "weekly_slots": 2
+  }
+]

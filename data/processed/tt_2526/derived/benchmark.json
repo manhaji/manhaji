@@ -1,0 +1,2531 @@
+{
+  "school_ver19": {
+    "lesson_records": 1920,
+    "physical_lessons": 1655,
+    "placed_slots": 2003,
+    "teachers": 67,
+    "teacher_clash_count": 0,
+    "illegal_overlap_count": 0,
+    "per_day_cap_violation_count": 0,
+    "spread_score": 366,
+    "spread_lower_bound": 354,
+    "teacher_balance": {
+      "per_teacher": {
+        "Agnes Blignaut": 2,
+        "Al Walid Shamseddine": 4,
+        "Ali El Temsah": 4,
+        "Claire Yvonne Hodgson": 2,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 1,
+        "Eslam Aghawani": 2,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 4,
+        "Fatma Manana": 3,
+        "Fatma Shour": 3,
+        "Ferdinand Gericke": 3,
+        "Ghada Albhaisi": 2,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 2,
+        "Hiba Asha": 2,
+        "Hiba Hamoud": 1,
+        "Hilda Mucharafieh": 2,
+        "Hussein Kameh": 3,
+        "IBZ / DV": 0,
+        "IBZ / H": 2,
+        "Ibrahim Harb": 1,
+        "Irina Murariu": 3,
+        "Jessica Bitar": 2,
+        "Jinan Al Farsi": 3,
+        "Jo-Anne Venketas": 2,
+        "Jolio Lopez": 2,
+        "Justine Roose": 2,
+        "Khadija Ben Hamida": 3,
+        "Khalil Al Salim": 2,
+        "Khaoula Jedda": 5,
+        "Lamia Akermoun": 2,
+        "Lizl Lewis": 1,
+        "Lynn Smith": 4,
+        "Manal": 1,
+        "Mariam AlBlouchi": 3,
+        "Marly Shaw": 2,
+        "Mary Boyle": 2,
+        "May Dib": 2,
+        "Maymouna Al Ruqeishi": 3,
+        "Melissa - New teacher": 2,
+        "Micheline Khoury": 1,
+        "Mirna Jomaa": 4,
+        "Mohamad Kuzzo": 1,
+        "Mohammad Al Ali": 2,
+        "Mohammed Saab": 2,
+        "Mohd Wassim": 2,
+        "Munira Al Mughery": 3,
+        "Nagavani Puppala": 2,
+        "Natalia Stevens": 2,
+        "Nemah Hasn": 2,
+        "Rafah Al Khatib": 2,
+        "Raheeq Merhi": 1,
+        "Rayan Al Humaimi": 3,
+        "Rita Mahfouz": 1,
+        "Safaa": 2,
+        "Sahar Mohamad": 1,
+        "Salma Dayoub": 2,
+        "Shaima El Temsah": 1,
+        "Shane Carroll": 1,
+        "Shihaam Morris": 2,
+        "Suzan Coetzee": 2,
+        "Tania Harder": 3,
+        "Yasmeen Ali": 1,
+        "Yunus Murat": 4,
+        "Zainab Murtada": 2
+      },
+      "average": 2.06
+    },
+    "idle_gaps": {
+      "per_teacher": {
+        "Agnes Blignaut": 8,
+        "Al Walid Shamseddine": 3,
+        "Ali El Temsah": 10,
+        "Claire Yvonne Hodgson": 16,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 17,
+        "Eslam Aghawani": 7,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 3,
+        "Fatma Manana": 19,
+        "Fatma Shour": 8,
+        "Ferdinand Gericke": 10,
+        "Ghada Albhaisi": 5,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 29,
+        "Hiba Asha": 7,
+        "Hiba Hamoud": 11,
+        "Hilda Mucharafieh": 11,
+        "Hussein Kameh": 11,
+        "IBZ / DV": 0,
+        "IBZ / H": 0,
+        "Ibrahim Harb": 7,
+        "Irina Murariu": 8,
+        "Jessica Bitar": 4,
+        "Jinan Al Farsi": 8,
+        "Jo-Anne Venketas": 11,
+        "Jolio Lopez": 11,
+        "Justine Roose": 9,
+        "Khadija Ben Hamida": 15,
+        "Khalil Al Salim": 13,
+        "Khaoula Jedda": 20,
+        "Lamia Akermoun": 19,
+        "Lizl Lewis": 10,
+        "Lynn Smith": 8,
+        "Manal": 15,
+        "Mariam AlBlouchi": 7,
+        "Marly Shaw": 18,
+        "Mary Boyle": 8,
+        "May Dib": 17,
+        "Maymouna Al Ruqeishi": 8,
+        "Melissa - New teacher": 8,
+        "Micheline Khoury": 4,
+        "Mirna Jomaa": 6,
+        "Mohamad Kuzzo": 10,
+        "Mohammad Al Ali": 7,
+        "Mohammed Saab": 7,
+        "Mohd Wassim": 10,
+        "Munira Al Mughery": 10,
+        "Nagavani Puppala": 8,
+        "Natalia Stevens": 6,
+        "Nemah Hasn": 14,
+        "Rafah Al Khatib": 12,
+        "Raheeq Merhi": 11,
+        "Rayan Al Humaimi": 5,
+        "Rita Mahfouz": 5,
+        "Safaa": 7,
+        "Sahar Mohamad": 11,
+        "Salma Dayoub": 6,
+        "Shaima El Temsah": 18,
+        "Shane Carroll": 14,
+        "Shihaam Morris": 5,
+        "Suzan Coetzee": 14,
+        "Tania Harder": 15,
+        "Yasmeen Ali": 10,
+        "Yunus Murat": 10,
+        "Zainab Murtada": 6
+      },
+      "grand_total": 630
+    }
+  },
+  "manhaj_rebuild": {
+    "lesson_records": 1920,
+    "physical_lessons": 1655,
+    "placed_slots": 2003,
+    "teachers": 67,
+    "teacher_clash_count": 0,
+    "illegal_overlap_count": 0,
+    "per_day_cap_violation_count": 0,
+    "spread_score": 366,
+    "spread_lower_bound": 354,
+    "teacher_balance": {
+      "per_teacher": {
+        "Agnes Blignaut": 2,
+        "Al Walid Shamseddine": 4,
+        "Ali El Temsah": 4,
+        "Claire Yvonne Hodgson": 2,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 1,
+        "Eslam Aghawani": 1,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 4,
+        "Fatma Manana": 3,
+        "Fatma Shour": 3,
+        "Ferdinand Gericke": 3,
+        "Ghada Albhaisi": 2,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 2,
+        "Hiba Asha": 2,
+        "Hiba Hamoud": 1,
+        "Hilda Mucharafieh": 2,
+        "Hussein Kameh": 3,
+        "IBZ / DV": 0,
+        "IBZ / H": 2,
+        "Ibrahim Harb": 1,
+        "Irina Murariu": 3,
+        "Jessica Bitar": 2,
+        "Jinan Al Farsi": 2,
+        "Jo-Anne Venketas": 2,
+        "Jolio Lopez": 2,
+        "Justine Roose": 2,
+        "Khadija Ben Hamida": 3,
+        "Khalil Al Salim": 2,
+        "Khaoula Jedda": 5,
+        "Lamia Akermoun": 2,
+        "Lizl Lewis": 1,
+        "Lynn Smith": 4,
+        "Manal": 1,
+        "Mariam AlBlouchi": 3,
+        "Marly Shaw": 2,
+        "Mary Boyle": 2,
+        "May Dib": 2,
+        "Maymouna Al Ruqeishi": 3,
+        "Melissa - New teacher": 2,
+        "Micheline Khoury": 1,
+        "Mirna Jomaa": 4,
+        "Mohamad Kuzzo": 1,
+        "Mohammad Al Ali": 2,
+        "Mohammed Saab": 2,
+        "Mohd Wassim": 2,
+        "Munira Al Mughery": 3,
+        "Nagavani Puppala": 2,
+        "Natalia Stevens": 2,
+        "Nemah Hasn": 2,
+        "Rafah Al Khatib": 2,
+        "Raheeq Merhi": 1,
+        "Rayan Al Humaimi": 3,
+        "Rita Mahfouz": 1,
+        "Safaa": 2,
+        "Sahar Mohamad": 1,
+        "Salma Dayoub": 2,
+        "Shaima El Temsah": 1,
+        "Shane Carroll": 1,
+        "Shihaam Morris": 2,
+        "Suzan Coetzee": 2,
+        "Tania Harder": 3,
+        "Yasmeen Ali": 3,
+        "Yunus Murat": 4,
+        "Zainab Murtada": 2
+      },
+      "average": 2.06
+    },
+    "idle_gaps": {
+      "per_teacher": {
+        "Agnes Blignaut": 8,
+        "Al Walid Shamseddine": 3,
+        "Ali El Temsah": 10,
+        "Claire Yvonne Hodgson": 16,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 17,
+        "Eslam Aghawani": 9,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 3,
+        "Fatma Manana": 19,
+        "Fatma Shour": 8,
+        "Ferdinand Gericke": 10,
+        "Ghada Albhaisi": 5,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 29,
+        "Hiba Asha": 7,
+        "Hiba Hamoud": 11,
+        "Hilda Mucharafieh": 11,
+        "Hussein Kameh": 11,
+        "IBZ / DV": 0,
+        "IBZ / H": 0,
+        "Ibrahim Harb": 7,
+        "Irina Murariu": 8,
+        "Jessica Bitar": 4,
+        "Jinan Al Farsi": 8,
+        "Jo-Anne Venketas": 11,
+        "Jolio Lopez": 11,
+        "Justine Roose": 9,
+        "Khadija Ben Hamida": 15,
+        "Khalil Al Salim": 13,
+        "Khaoula Jedda": 20,
+        "Lamia Akermoun": 19,
+        "Lizl Lewis": 10,
+        "Lynn Smith": 7,
+        "Manal": 15,
+        "Mariam AlBlouchi": 7,
+        "Marly Shaw": 18,
+        "Mary Boyle": 8,
+        "May Dib": 17,
+        "Maymouna Al Ruqeishi": 8,
+        "Melissa - New teacher": 8,
+        "Micheline Khoury": 4,
+        "Mirna Jomaa": 6,
+        "Mohamad Kuzzo": 10,
+        "Mohammad Al Ali": 7,
+        "Mohammed Saab": 7,
+        "Mohd Wassim": 10,
+        "Munira Al Mughery": 10,
+        "Nagavani Puppala": 8,
+        "Natalia Stevens": 6,
+        "Nemah Hasn": 14,
+        "Rafah Al Khatib": 12,
+        "Raheeq Merhi": 11,
+        "Rayan Al Humaimi": 5,
+        "Rita Mahfouz": 5,
+        "Safaa": 7,
+        "Sahar Mohamad": 11,
+        "Salma Dayoub": 5,
+        "Shaima El Temsah": 18,
+        "Shane Carroll": 14,
+        "Shihaam Morris": 5,
+        "Suzan Coetzee": 14,
+        "Tania Harder": 15,
+        "Yasmeen Ali": 10,
+        "Yunus Murat": 10,
+        "Zainab Murtada": 6
+      },
+      "grand_total": 630
+    }
+  },
+  "summary": {
+    "school_ver19": {
+      "lesson_records": 1920,
+      "placed_slots": 2003,
+      "teacher_clashes": 0,
+      "illegal_section_overlaps": 0,
+      "per_day_cap_violations": 0,
+      "same_day_doublings_per_week": 366,
+      "teacher_daily_balance_avg": 2.06,
+      "teacher_idle_gap_slots_per_week": 630
+    },
+    "manhaj_rebuild": {
+      "lesson_records": 1920,
+      "placed_slots": 2003,
+      "teacher_clashes": 0,
+      "illegal_section_overlaps": 0,
+      "per_day_cap_violations": 0,
+      "same_day_doublings_per_week": 366,
+      "teacher_daily_balance_avg": 2.06,
+      "teacher_idle_gap_slots_per_week": 630
+    },
+    "manhaj_coverage_v3": {
+      "lesson_records": 1920,
+      "placed_slots": 2003,
+      "teacher_clashes": 0,
+      "illegal_section_overlaps": 0,
+      "per_day_cap_violations": 0,
+      "same_day_doublings_per_week": 366,
+      "teacher_daily_balance_avg": 2.06,
+      "teacher_idle_gap_slots_per_week": 630
+    },
+    "manhaj_coverage_v4": {
+      "lesson_records": 1920,
+      "placed_slots": 2003,
+      "teacher_clashes": 0,
+      "illegal_section_overlaps": 0,
+      "per_day_cap_violations": 0,
+      "same_day_doublings_per_week": 368,
+      "teacher_daily_balance_avg": 2.119,
+      "teacher_idle_gap_slots_per_week": 637
+    }
+  },
+  "solve_meta": {
+    "status": "feasible_timeout",
+    "wall_time_s": 229.6,
+    "time_limit_s": 240,
+    "movable": 1358,
+    "locked": 562
+  },
+  "substitution_friendliness": {
+    "school_ver19": {
+      "total_scored_lessons": 1846,
+      "vacancy_count": 15,
+      "pct_lessons_with_same_subject_cover": 83.21,
+      "pct_with_subject_or_dept_cover": 94.64,
+      "avg_same_subject_depth": 2.965,
+      "min_same_subject_depth": 0,
+      "avg_same_subject_or_dept_depth": 4.401,
+      "min_same_subject_or_dept_depth": 0,
+      "fragile_lesson_count": 310,
+      "fixable_by_moving_alone": 215,
+      "lessons_with_subject_missing_from_dept_map": 96
+    },
+    "manhaj_rebuild": {
+      "total_scored_lessons": 1846,
+      "vacancy_count": 15,
+      "pct_lessons_with_same_subject_cover": 83.21,
+      "pct_with_subject_or_dept_cover": 94.64,
+      "avg_same_subject_depth": 2.96,
+      "min_same_subject_depth": 0,
+      "avg_same_subject_or_dept_depth": 4.395,
+      "min_same_subject_or_dept_depth": 0,
+      "fragile_lesson_count": 310,
+      "fixable_by_moving_alone": 215,
+      "lessons_with_subject_missing_from_dept_map": 96
+    },
+    "manhaj_coverage_v3": {
+      "total_scored_lessons": 1846,
+      "vacancy_count": 15,
+      "pct_lessons_with_same_subject_cover": 83.37,
+      "pct_with_subject_or_dept_cover": 94.64,
+      "avg_same_subject_depth": 2.962,
+      "min_same_subject_depth": 0,
+      "avg_same_subject_or_dept_depth": 4.395,
+      "min_same_subject_or_dept_depth": 0,
+      "fragile_lesson_count": 307,
+      "fixable_by_moving_alone": 212,
+      "lessons_with_subject_missing_from_dept_map": 96
+    },
+    "manhaj_coverage_v4": {
+      "total_scored_lessons": 1846,
+      "vacancy_count": 15,
+      "pct_lessons_with_same_subject_cover": 87.05,
+      "pct_with_subject_or_dept_cover": 97.18,
+      "avg_same_subject_depth": 2.99,
+      "min_same_subject_depth": 0,
+      "avg_same_subject_or_dept_depth": 4.426,
+      "min_same_subject_or_dept_depth": 0,
+      "fragile_lesson_count": 239,
+      "fixable_by_moving_alone": 127,
+      "lessons_with_subject_missing_from_dept_map": 96
+    }
+  },
+  "manhaj_coverage_v3": {
+    "lesson_records": 1920,
+    "physical_lessons": 1655,
+    "placed_slots": 2003,
+    "teachers": 67,
+    "teacher_clash_count": 0,
+    "illegal_overlap_count": 0,
+    "per_day_cap_violation_count": 0,
+    "spread_score": 366,
+    "spread_lower_bound": 354,
+    "teacher_balance": {
+      "per_teacher": {
+        "Agnes Blignaut": 2,
+        "Al Walid Shamseddine": 4,
+        "Ali El Temsah": 4,
+        "Claire Yvonne Hodgson": 2,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 1,
+        "Eslam Aghawani": 1,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 4,
+        "Fatma Manana": 3,
+        "Fatma Shour": 3,
+        "Ferdinand Gericke": 3,
+        "Ghada Albhaisi": 2,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 2,
+        "Hiba Asha": 2,
+        "Hiba Hamoud": 1,
+        "Hilda Mucharafieh": 2,
+        "Hussein Kameh": 3,
+        "IBZ / DV": 0,
+        "IBZ / H": 2,
+        "Ibrahim Harb": 1,
+        "Irina Murariu": 3,
+        "Jessica Bitar": 2,
+        "Jinan Al Farsi": 2,
+        "Jo-Anne Venketas": 2,
+        "Jolio Lopez": 2,
+        "Justine Roose": 2,
+        "Khadija Ben Hamida": 3,
+        "Khalil Al Salim": 2,
+        "Khaoula Jedda": 5,
+        "Lamia Akermoun": 2,
+        "Lizl Lewis": 1,
+        "Lynn Smith": 4,
+        "Manal": 1,
+        "Mariam AlBlouchi": 3,
+        "Marly Shaw": 2,
+        "Mary Boyle": 2,
+        "May Dib": 2,
+        "Maymouna Al Ruqeishi": 3,
+        "Melissa - New teacher": 2,
+        "Micheline Khoury": 1,
+        "Mirna Jomaa": 4,
+        "Mohamad Kuzzo": 1,
+        "Mohammad Al Ali": 2,
+        "Mohammed Saab": 2,
+        "Mohd Wassim": 2,
+        "Munira Al Mughery": 3,
+        "Nagavani Puppala": 2,
+        "Natalia Stevens": 2,
+        "Nemah Hasn": 2,
+        "Rafah Al Khatib": 2,
+        "Raheeq Merhi": 1,
+        "Rayan Al Humaimi": 3,
+        "Rita Mahfouz": 1,
+        "Safaa": 2,
+        "Sahar Mohamad": 1,
+        "Salma Dayoub": 2,
+        "Shaima El Temsah": 1,
+        "Shane Carroll": 1,
+        "Shihaam Morris": 2,
+        "Suzan Coetzee": 2,
+        "Tania Harder": 3,
+        "Yasmeen Ali": 3,
+        "Yunus Murat": 4,
+        "Zainab Murtada": 2
+      },
+      "average": 2.06
+    },
+    "idle_gaps": {
+      "per_teacher": {
+        "Agnes Blignaut": 8,
+        "Al Walid Shamseddine": 3,
+        "Ali El Temsah": 10,
+        "Claire Yvonne Hodgson": 16,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 17,
+        "Eslam Aghawani": 9,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 3,
+        "Fatma Manana": 19,
+        "Fatma Shour": 8,
+        "Ferdinand Gericke": 10,
+        "Ghada Albhaisi": 5,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 29,
+        "Hiba Asha": 7,
+        "Hiba Hamoud": 11,
+        "Hilda Mucharafieh": 11,
+        "Hussein Kameh": 11,
+        "IBZ / DV": 0,
+        "IBZ / H": 0,
+        "Ibrahim Harb": 7,
+        "Irina Murariu": 8,
+        "Jessica Bitar": 4,
+        "Jinan Al Farsi": 8,
+        "Jo-Anne Venketas": 11,
+        "Jolio Lopez": 11,
+        "Justine Roose": 9,
+        "Khadija Ben Hamida": 15,
+        "Khalil Al Salim": 13,
+        "Khaoula Jedda": 20,
+        "Lamia Akermoun": 19,
+        "Lizl Lewis": 10,
+        "Lynn Smith": 7,
+        "Manal": 15,
+        "Mariam AlBlouchi": 7,
+        "Marly Shaw": 18,
+        "Mary Boyle": 8,
+        "May Dib": 17,
+        "Maymouna Al Ruqeishi": 8,
+        "Melissa - New teacher": 8,
+        "Micheline Khoury": 4,
+        "Mirna Jomaa": 6,
+        "Mohamad Kuzzo": 10,
+        "Mohammad Al Ali": 7,
+        "Mohammed Saab": 7,
+        "Mohd Wassim": 10,
+        "Munira Al Mughery": 10,
+        "Nagavani Puppala": 8,
+        "Natalia Stevens": 6,
+        "Nemah Hasn": 14,
+        "Rafah Al Khatib": 12,
+        "Raheeq Merhi": 11,
+        "Rayan Al Humaimi": 5,
+        "Rita Mahfouz": 5,
+        "Safaa": 7,
+        "Sahar Mohamad": 11,
+        "Salma Dayoub": 5,
+        "Shaima El Temsah": 18,
+        "Shane Carroll": 14,
+        "Shihaam Morris": 5,
+        "Suzan Coetzee": 14,
+        "Tania Harder": 15,
+        "Yasmeen Ali": 10,
+        "Yunus Murat": 10,
+        "Zainab Murtada": 6
+      },
+      "grand_total": 630
+    }
+  },
+  "coverage_resolve_stats": {
+    "passes_run": 2,
+    "fixpoint_reached": true,
+    "total_moves": 1,
+    "moves_per_pass": [
+      1,
+      0
+    ],
+    "fragile_before": 310,
+    "fragile_after": 307,
+    "locked_fragile_count": 159,
+    "locked_fragile": [
+      {
+        "section": "Grade 10A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Sun",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Wed",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Bio SS",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Biology",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Sun",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Business Studies",
+        "teacher": "Mohd Wassim",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Mon",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Sun",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Mon",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Tue",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Sun",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10A",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Tue",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Sun",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Wed",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Bio SS",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Biology",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Sun",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Business Studies",
+        "teacher": "Mohd Wassim",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Mon",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Sun",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Economics",
+        "teacher": "Jessica Bitar",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Mon",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Environmental Management",
+        "teacher": "Al Walid Shamseddine",
+        "day": "Tue",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Sun",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 10B",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Tue",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11A-GED",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11A-GED",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Wed",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11A-GED",
+        "subject": "Islamic Studies",
+        "teacher": "Ali El Temsah",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11A-GED",
+        "subject": "Islamic Studies",
+        "teacher": "Ali El Temsah",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Wed",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Islamic Studies",
+        "teacher": "Ali El Temsah",
+        "day": "Mon",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Islamic Studies",
+        "teacher": "Ali El Temsah",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Mechanics",
+        "teacher": "Hussein Kameh",
+        "day": "Sun",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 11B-AS",
+        "subject": "Mechanics",
+        "teacher": "Hussein Kameh",
+        "day": "Tue",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Art",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P4",
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Mon",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Business Studies",
+        "teacher": "Mohd Wassim",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Sun",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Tue",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Economics",
+        "teacher": "Mohd Wassim",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Economics",
+        "teacher": "Mohd Wassim",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Mon",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Thu",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12A-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Art",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P4",
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Mon",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Biology",
+        "teacher": "Hilda Mucharafieh",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Business Studies",
+        "teacher": "Mohd Wassim",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Economics",
+        "teacher": "Mohd Wassim",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Economics",
+        "teacher": "Mohd Wassim",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Sun",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Thu",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Mon",
+        "slots": [
+          "P2"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Thu",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12B-GED",
+        "subject": "Physics",
+        "teacher": "Hussein Kameh",
+        "day": "Wed",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12C-A2",
+        "subject": "Art",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P4",
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12C-A2",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Sun",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12C-A2",
+        "subject": "Civics",
+        "teacher": "Mariam AlBlouchi",
+        "day": "Tue",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12C-A2",
+        "subject": "Mechanics",
+        "teacher": "Hussein Kameh",
+        "day": "Sun",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 12C-A2",
+        "subject": "Mechanics",
+        "teacher": "Hussein Kameh",
+        "day": "Tue",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 3AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 3AL",
+        "subject": "Science",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 4AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 4AL",
+        "subject": "Science",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 5 AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 5 AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Sun",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 5 AL",
+        "subject": "Islamic Studies",
+        "teacher": "Maymouna Al Ruqeishi",
+        "day": "Mon",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 5 AL",
+        "subject": "Music",
+        "teacher": "Jolio Lopez",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 5A",
+        "subject": "Islamic Studies",
+        "teacher": "Maymouna Al Ruqeishi",
+        "day": "Mon",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6 AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6 AL",
+        "subject": "Computing",
+        "teacher": "Eslam Aghawani",
+        "day": "Sun",
+        "slots": [
+          "P1"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6 AL",
+        "subject": "Islamic Studies",
+        "teacher": "Shaima El Temsah",
+        "day": "Mon",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6 AL",
+        "subject": "Music",
+        "teacher": "Jolio Lopez",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6A",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6A",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6A",
+        "subject": "Islamic Studies",
+        "teacher": "Shaima El Temsah",
+        "day": "Mon",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 6B",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6B",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6C",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6C",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7A",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7A",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7B",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7B",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7C",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7C",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 8A",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 8B",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Bio SS",
+        "teacher": "Khaoula Jedda",
+        "day": "Thu",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Biology",
+        "teacher": "Khaoula Jedda",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Business Studies",
+        "teacher": "Jessica Bitar",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Business Studies",
+        "teacher": "Jessica Bitar",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Thu",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Wed",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Tue",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Wed",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ART & Design",
+        "teacher": "Irina Murariu",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Bio SS",
+        "teacher": "Khaoula Jedda",
+        "day": "Thu",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Biology",
+        "teacher": "Khaoula Jedda",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Business Studies",
+        "teacher": "Jessica Bitar",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Business Studies",
+        "teacher": "Jessica Bitar",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Mon",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Thu",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Tue",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "History",
+        "teacher": "Tania Harder",
+        "day": "Wed",
+        "slots": [
+          "P5"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Mon",
+        "slots": [
+          "P3"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Thu",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Tue",
+        "slots": [
+          "P8"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "ICT",
+        "teacher": "Nagavani Puppala",
+        "day": "Wed",
+        "slots": [
+          "P6"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Sun",
+        "slots": [
+          "P4"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Tue",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "Physics",
+        "teacher": "Eliana Al Hakeem",
+        "day": "Wed",
+        "slots": [
+          "P7"
+        ],
+        "lock_reason": "combined_cross_section"
+      }
+    ],
+    "candidate_rejects": {
+      "hard_rule": 11257,
+      "no_cover_cheap": 6,
+      "no_cover_confirmed": 0,
+      "victim": 0
+    },
+    "fixable_by_moving_alone_before": 215,
+    "fixable_by_moving_alone_after": 212,
+    "wall_time_s": 2.3
+  },
+  "manhaj_coverage_v4": {
+    "lesson_records": 1920,
+    "physical_lessons": 1655,
+    "placed_slots": 2003,
+    "teachers": 67,
+    "teacher_clash_count": 0,
+    "illegal_overlap_count": 0,
+    "per_day_cap_violation_count": 0,
+    "spread_score": 368,
+    "spread_lower_bound": 354,
+    "teacher_balance": {
+      "per_teacher": {
+        "Agnes Blignaut": 2,
+        "Al Walid Shamseddine": 4,
+        "Ali El Temsah": 4,
+        "Claire Yvonne Hodgson": 2,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 1,
+        "Eslam Aghawani": 1,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 4,
+        "Fatma Manana": 3,
+        "Fatma Shour": 3,
+        "Ferdinand Gericke": 3,
+        "Ghada Albhaisi": 2,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 2,
+        "Hiba Asha": 2,
+        "Hiba Hamoud": 1,
+        "Hilda Mucharafieh": 2,
+        "Hussein Kameh": 3,
+        "IBZ / DV": 0,
+        "IBZ / H": 2,
+        "Ibrahim Harb": 1,
+        "Irina Murariu": 3,
+        "Jessica Bitar": 2,
+        "Jinan Al Farsi": 3,
+        "Jo-Anne Venketas": 2,
+        "Jolio Lopez": 2,
+        "Justine Roose": 3,
+        "Khadija Ben Hamida": 3,
+        "Khalil Al Salim": 2,
+        "Khaoula Jedda": 5,
+        "Lamia Akermoun": 2,
+        "Lizl Lewis": 1,
+        "Lynn Smith": 4,
+        "Manal": 2,
+        "Mariam AlBlouchi": 3,
+        "Marly Shaw": 2,
+        "Mary Boyle": 0,
+        "May Dib": 3,
+        "Maymouna Al Ruqeishi": 3,
+        "Melissa - New teacher": 2,
+        "Micheline Khoury": 1,
+        "Mirna Jomaa": 4,
+        "Mohamad Kuzzo": 1,
+        "Mohammad Al Ali": 2,
+        "Mohammed Saab": 2,
+        "Mohd Wassim": 2,
+        "Munira Al Mughery": 3,
+        "Nagavani Puppala": 2,
+        "Natalia Stevens": 2,
+        "Nemah Hasn": 2,
+        "Rafah Al Khatib": 2,
+        "Raheeq Merhi": 1,
+        "Rayan Al Humaimi": 3,
+        "Rita Mahfouz": 2,
+        "Safaa": 3,
+        "Sahar Mohamad": 1,
+        "Salma Dayoub": 2,
+        "Shaima El Temsah": 1,
+        "Shane Carroll": 1,
+        "Shihaam Morris": 2,
+        "Suzan Coetzee": 2,
+        "Tania Harder": 3,
+        "Yasmeen Ali": 3,
+        "Yunus Murat": 4,
+        "Zainab Murtada": 2
+      },
+      "average": 2.119
+    },
+    "idle_gaps": {
+      "per_teacher": {
+        "Agnes Blignaut": 8,
+        "Al Walid Shamseddine": 3,
+        "Ali El Temsah": 10,
+        "Claire Yvonne Hodgson": 16,
+        "DV / H": 0,
+        "Eliana Al Hakeem": 17,
+        "Eslam Aghawani": 7,
+        "FM / KAS": 0,
+        "Fateme Ghajarian": 3,
+        "Fatma Manana": 19,
+        "Fatma Shour": 10,
+        "Ferdinand Gericke": 10,
+        "Ghada Albhaisi": 5,
+        "H / DV": 0,
+        "Hajer Fned": 0,
+        "Hassan Seif El dein": 29,
+        "Hiba Asha": 7,
+        "Hiba Hamoud": 10,
+        "Hilda Mucharafieh": 11,
+        "Hussein Kameh": 11,
+        "IBZ / DV": 0,
+        "IBZ / H": 0,
+        "Ibrahim Harb": 7,
+        "Irina Murariu": 8,
+        "Jessica Bitar": 4,
+        "Jinan Al Farsi": 4,
+        "Jo-Anne Venketas": 11,
+        "Jolio Lopez": 12,
+        "Justine Roose": 9,
+        "Khadija Ben Hamida": 15,
+        "Khalil Al Salim": 13,
+        "Khaoula Jedda": 20,
+        "Lamia Akermoun": 19,
+        "Lizl Lewis": 10,
+        "Lynn Smith": 7,
+        "Manal": 15,
+        "Mariam AlBlouchi": 11,
+        "Marly Shaw": 17,
+        "Mary Boyle": 7,
+        "May Dib": 19,
+        "Maymouna Al Ruqeishi": 10,
+        "Melissa - New teacher": 9,
+        "Micheline Khoury": 4,
+        "Mirna Jomaa": 7,
+        "Mohamad Kuzzo": 12,
+        "Mohammad Al Ali": 7,
+        "Mohammed Saab": 7,
+        "Mohd Wassim": 10,
+        "Munira Al Mughery": 10,
+        "Nagavani Puppala": 8,
+        "Natalia Stevens": 7,
+        "Nemah Hasn": 14,
+        "Rafah Al Khatib": 12,
+        "Raheeq Merhi": 11,
+        "Rayan Al Humaimi": 5,
+        "Rita Mahfouz": 4,
+        "Safaa": 9,
+        "Sahar Mohamad": 11,
+        "Salma Dayoub": 5,
+        "Shaima El Temsah": 19,
+        "Shane Carroll": 14,
+        "Shihaam Morris": 5,
+        "Suzan Coetzee": 14,
+        "Tania Harder": 13,
+        "Yasmeen Ali": 10,
+        "Yunus Murat": 10,
+        "Zainab Murtada": 6
+      },
+      "grand_total": 637
+    }
+  },
+  "coverage_resolve_v4_stats": {
+    "alternations": 3,
+    "fixpoint_reached": true,
+    "total_moves": 0,
+    "total_swaps": 22,
+    "moves_per_alternation": [
+      0,
+      0,
+      0
+    ],
+    "swaps_per_alternation": [
+      21,
+      1,
+      0
+    ],
+    "fragile_before": 307,
+    "fragile_after": 239,
+    "locked_fragile_count": 16,
+    "locked_fragile": [
+      {
+        "section": "Grade 6A",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6B",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6C",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6A",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6B",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 6C",
+        "subject": "English - Support",
+        "teacher": "Lynn Smith",
+        "day": "Wed",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7A",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7B",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7C",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7A",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7B",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 7C",
+        "subject": "English-Support",
+        "teacher": "Lizl Lewis",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 8A",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 8B",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Mon",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 9A",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      },
+      {
+        "section": "Grade 9B",
+        "subject": "English-Support",
+        "teacher": "Ferdinand Gericke",
+        "day": "Tue",
+        "slots": [
+          "B2"
+        ],
+        "lock_reason": "break_slot_source_data"
+      }
+    ],
+    "locked_fragile_became_addressable_count": 77,
+    "locked_fragile_became_addressable_and_fixed_count": 13,
+    "swap_prefilter_count": 307045,
+    "swap_rescore_count": 575,
+    "combined_units_total": 234,
+    "combined_units_locked_at_start": 91,
+    "fixable_by_moving_alone_before": 212,
+    "fixable_by_moving_alone_after": 127,
+    "wall_time_s": 251.0
+  }
+}
