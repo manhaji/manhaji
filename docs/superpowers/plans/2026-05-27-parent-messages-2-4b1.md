@@ -775,7 +775,7 @@ cd ~/dev/manhaj && git push origin main
 ### Required user actions (one-time, ~5 min)
 
 1. **Apply the migration.** Open Supabase SQL editor →
-   <https://supabase.com/dashboard/project/dxrkbjftkfhlddqefmaq/sql/new>
+   <https://supabase.com/dashboard/project/qntmzazndkcdgkwmrhae/sql/new>
    Paste the contents of `schema/010_messages.sql` → Run.
 
 2. **Seed the demo threads.** From `~/dev/manhaj`:

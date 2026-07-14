@@ -2235,3 +2235,54 @@ Added `sectionId: null` to all 5 mock flag objects.
 - Cast `error` as `{ message: string }` in the throw.
 
 All fixes leave runtime behavior unchanged — the casts only satisfy TypeScript when the live schema columns don't match the generated types.
+
+---
+
+## 58. Windows Machine Setup, CI Fixes & MCP Reconfiguration (2026-07-14)
+
+Project moved from macOS to a new Windows machine. Session covered getting git/SSH/local tooling working on Windows, then fixing a batch of real CI failures on an open PR (fork → upstream group repo), plus reconnecting the Supabase MCP server to a new project.
+
+### Git / SSH setup on Windows
+
+- **`git config --global user.name`** was unset (only `user.email` was configured) → set to `Karim AA`, matching existing commit history.
+- **SSH auth to GitHub was fully broken**, diagnosed in stages:
+  1. `~/.ssh/known_hosts` didn't exist → "Host key verification failed". Fixed with `ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts`.
+  2. The Windows machine has its own new SSH keypair (`id_ed25519`, generated locally) that was never registered with GitHub — Mac and Windows each need their own key registered under Settings → SSH and GPG keys (as an **Authentication key**, not a signing key). Once added, GitHub confirmed `Server accepts key`.
+  3. The private key is passphrase-protected. Any command run through the agent sandbox failed with `Permission denied (publickey)` even after the key was correctly registered, because the sandbox has no TTY to prompt for the passphrase and can't reach the interactive Windows `ssh-agent` session/named pipe (`ssh_get_authentication_socket: No such file or directory`) even after enabling and starting the `ssh-agent` Windows service (`Set-Service -Name ssh-agent -StartupType Automatic; Start-Service ssh-agent`) and unlocking the key into it (`ssh-add`).
+  4. Decision: keep the passphrase. Net result — **network git operations (`fetch`/`pull`/`push`) must be run by the user in their own terminal**, where the agent works fine; agent-run tools handle everything else (edits, local commits, etc.) and will hang/fail on network git.
+  5. Added `~/.ssh/config` with `IdentityAgent \\.\pipe\openssh-ssh-agent` and set `git config --global core.sshCommand` to the native `C:/Windows/System32/OpenSSH/ssh.exe` (works from the user's own terminal; irrelevant to the sandbox limitation above).
+- **`.gitattributes`** added (new file) — `* text=auto eol=lf` plus explicit `binary` rules for `*.pdf`, `*.xlsx`, `*.jpeg/jpg/png/gif/ico`, `*.tsbuildinfo` — prevents Windows `core.autocrlf=true` from churning line-ending diffs on files brought over from macOS.
+- **`.gitignore`**: added `.claude/settings.local.json` (machine-specific Claude Code settings; `.claude/settings.json` would stay tracked if the team ever adds a shared one).
+- **`node_modules` was carried over from macOS**, not installed natively — `node_modules/.bin/` had zero Windows shims (`.cmd`/`.ps1`/`.exe`), breaking every local npm script (`lint`, `build`, `dev`, `test`) via `cmd.exe`, even though Linux CI was unaffected. Fixed with a plain `npm install --no-audit --no-fund` from repo root to regenerate proper Windows bin shims. This also surfaced npm's install-script allowlisting blocking `esbuild`, `sharp`, and `unrs-resolver` postinstall scripts — verified both `esbuild` and `sharp` load/work fine without them (no action taken, scripts left blocked).
+
+### CI failures fixed (PR from fork → upstream group repo)
+
+CI on GitHub Actions used a bail-on-first-failure pattern per package, so each fix below only surfaced after the previous one was resolved and lint was rerun.
+
+**1. `npm error code ENOWORKSPACES` in `actions/setup-node@v4`'s `cache: npm` step**
+`.npmrc` contained `workspaces=true`, which forces workspace-mode onto *every* npm invocation — including `setup-node`'s internal `npm config get cache` call, which doesn't support that flag. Redundant anyway since `package.json`'s `"workspaces": ["apps/*", "packages/*"]` already auto-enables workspaces. **Fix:** deleted `.npmrc`.
+
+**2. ESLint errors (blocking `npx turbo lint`), by package:**
+- `apps/student/app/application-tracker/ApplicationTrackerClient.tsx:330` — `react/no-unescaped-entities`: `Manhaj's` → `Manhaj&apos;s`.
+- `apps/student/app/homework/page.tsx:15-16` and `apps/teacher/app/attendance/page.tsx:22` — `react-hooks/purity`: `Date.now()` called directly in a Server Component body. Fixed by extracting the date-range math into a plain helper function (`getHomeworkDateRange()` / `getAttendanceDateRange()`) declared outside the component — the purity rule only inspects component/hook bodies, matching the existing `getDaysAgo`-style helper pattern already used elsewhere (e.g. `RiskStudentCard.tsx`).
+- `apps/parent/app/page.tsx:104` and `apps/parent/app/permission-slip/page.tsx:38` — `react/no-children-prop`: both passed a `children` prop (array of the parent's kids) to `WeeklyDigestClient`/`PermissionSlipClient`, colliding with React's reserved `children` semantics. Renamed the prop to `kids` in both client components (`interface Props`, destructuring, and all internal usages) and both call sites.
+- `apps/portal` had no `eslint.config.mjs` at all (present in `admin`/`parent`/`student`/`teacher`, all four identical) — copied the same config over. Root cause of `ESLint couldn't find an eslint.config.(js|mjs|cjs) file`.
+
+**3. `packages/lib` — `vitest run` exiting 1 with "No test files found"**
+`vitest.config.ts`'s `include: ["lib/**/*.test.ts", "app/**/*.test.{ts,tsx}"]` didn't match any of the 19 real test files, all living flat under `packages/lib/src/*.test.ts`. **Fix:** `include: ["src/**/*.test.ts"]`.
+
+**4. Node 20 deprecation warnings (two separate issues, both cosmetic-but-real):**
+- `.github/workflows/ci.yml`'s `actions/setup-node@v4` `node-version: "20"` → `"24"` (Node 20 hit EOL April 2026; matches the local dev machine's `v24.18.0` and has no `engines` constraint blocking it).
+- Separately, `actions/checkout@v4` and `actions/setup-node@v4` themselves are *built* on a Node 20 runtime internally (unrelated to the `node-version` input above) — GitHub now force-runs that internal runtime on Node 24, which the v4 action builds aren't guaranteed to handle. Bumped to `actions/checkout@v5` and `actions/setup-node@v6`, both rebuilt for Node 24.
+
+**Verified end-to-end locally** after all fixes: `npx turbo lint` (5/5 packages), `npx turbo test` (5/5), and `npx turbo build --filter=@manhaj/portal` with CI's placeholder env vars — all green.
+
+**Not a code fix — flagged for the Vercel project owner:** the PR also shows "Authorization required to deploy" from Vercel. This is Vercel's Git Fork Protection: deployments from fork PRs are blocked pending manual approval when the project has env vars configured (security measure against leaking secrets via a triggered deploy from untrusted fork code). Needs either a per-PR approval (link posted as a PR comment) or disabling Git Fork Protection project-wide, both only actionable by whoever owns the Vercel project tied to the upstream repo.
+
+### `.gitignore` — `PDFs/` bug
+
+Existing `PDFs/` line had two leading spaces (`  PDFs/`), which gitignore treats literally — so it was silently never matching and `PDFs/` was **not actually ignored**. Fixed (leading spaces removed); verified via a live untracked-file test (not `git check-ignore`, which gave inconsistent/unreliable results in this environment) that new files dropped into `PDFs/` are now correctly ignored. Six pre-existing tracked files in `PDFs/` (5 handover PDFs + 1 WhatsApp screenshot) don't get untracked automatically by a `.gitignore` rule — untracked on request via `git rm --cached -r PDFs/` (local files on disk untouched).
+
+### Supabase MCP reconnection
+
+User changed the underlying Supabase database/project. `.mcp.json` already correctly updated (by the user, outside this session) to `https://mcp.supabase.com/mcp?project_ref=qntmzazndkcdgkwmrhae`, replacing the old `project_ref=dxrkbjftkfhlddqefmaq`. `claude mcp add` failed with "already exists" since the entry was already present with the right URL — no edit needed there. A running Claude Code session doesn't pick up `.mcp.json` changes without a restart; mid-session the Supabase MCP tools showed as fully disconnected. Resolution in progress: user restarting the session so it reconnects and re-triggers OAuth against the new project ref.

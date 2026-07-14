@@ -79,7 +79,7 @@ that checkbox checked.
 
 | Name | Value | Notes |
 |---|---|---|
-| `SUPABASE_URL` | `https://dxrkbjftkfhlddqefmaq.supabase.co` | Safe to commit; browser-visible |
+| `SUPABASE_URL` | `https://qntmzazndkcdgkwmrhae.supabase.co` | Safe to commit; browser-visible |
 | `SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_757UEjZSZRD81kd1Cmp2QQ_r0eQXl4H` | Safe to commit; browser-visible |
 | `APP_NAME` | `Manhaj` | |
 | `SCHOOL_NAME` | `International School of Oman` | |
