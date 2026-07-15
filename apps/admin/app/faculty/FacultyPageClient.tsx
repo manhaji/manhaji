@@ -9,7 +9,6 @@ import {
 } from "@manhaj/lib/mock-faculty";
 import { facultyAdminSummary } from "@manhaj/lib/summary";
 import type { TeacherWithLoad } from "@manhaj/lib/queries/teachers";
-import type { TeacherDayLoad } from "@manhaj/lib/queries/timetable";
 
 import { AiBriefingHeader } from "@manhaj/ui";
 import { BreadcrumbLensBar, type Lens } from "@manhaj/ui";
@@ -21,7 +20,7 @@ import ContractsDashboard   from "./components/ContractsDashboard";
 import OnboardingFunnel     from "./components/OnboardingFunnel";
 import PerformanceComposite from "./components/PerformanceComposite";
 import FacultyAskManhaj     from "./components/FacultyAskManhaj";
-export default function FacultyPageClient({ teachers, loads }: { teachers: TeacherWithLoad[]; loads: TeacherDayLoad[] }) {
+export default function FacultyPageClient({ teachers }: { teachers: TeacherWithLoad[] }) {
   const source = teachers.length > 0 ? teachers : null;
 
   const total = source ? source.length : MOCK_TEACHERS.length;

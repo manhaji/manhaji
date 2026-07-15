@@ -1,4 +1,5 @@
 import { serverClient } from "../supabase";
+import { getTeacherDailyLoads } from "./timetable";
 
 export type TeacherWithLoad = {
   id: string;
@@ -11,33 +12,80 @@ export type TeacherWithLoad = {
   weekly_period_assigned: number | null;
 };
 
+/**
+ * Derive a department label from the free-text `primary_subject_text` column.
+ *
+ * `teachers.primary_dept` is NULL for every row in the demo dataset, so the
+ * Faculty page derives the department in code from the raw subject string that
+ * was imported from the staffing workbook (e.g. "ENGLISH", "COORDINATOR(7-12)
+ * CHEM", "Business/ECO"). Rules are ordered by priority and matched on
+ * word boundaries against the upper-cased text. Unrecognised non-empty values
+ * fall back to "Other"; blank/null values fall back to "Unassigned".
+ *
+ * The subject->department groupings mirror the ETL `SUBJECT_CATALOG`
+ * (etl/parse_workbook.py) rolled up into human-readable department names.
+ */
+const DEPARTMENT_RULES: { dept: string; test: RegExp }[] = [
+  { dept: "Mathematics",         test: /\b(MATH|MATHS|MS)\b/ },
+  { dept: "Sciences",            test: /\b(SCIENCE|SC|CHEM|CHEMISTRY|BIO|BIOLOGY|PHY|PHYSICS)\b/ },
+  { dept: "English",             test: /\bENGLISH\b/ },
+  { dept: "Arabic",              test: /\bARABIC\b/ },
+  { dept: "French",              test: /\bFRENCH\b/ },
+  { dept: "Islamic Studies",     test: /\bISLAMIC\b/ },
+  { dept: "Humanities",          test: /\b(SSA|SSE|SOCIAL|BUSINESS|ECO|ECONOMICS|HISTORY|GEOGRAPH\w*|CIVIC\w*)\b/ },
+  { dept: "Physical Education",  test: /\bPE\b/ },
+  { dept: "Arts",                test: /\b(ART|MUSIC)\b/ },
+  { dept: "ICT",                 test: /\b(IT|ICT)\b/ },
+];
+
+export function deriveDepartment(primarySubjectText: string | null | undefined): string {
+  const raw = (primarySubjectText ?? "").trim();
+  if (!raw) return "Unassigned";
+  const upper = raw.toUpperCase();
+  for (const { dept, test } of DEPARTMENT_RULES) {
+    if (test.test(upper)) return dept;
+  }
+  return "Other";
+}
+
 export async function getTeachersWithLoad(academicYearId: string): Promise<TeacherWithLoad[]> {
   const db = await serverClient();
-  const { data, error } = await db
-    .from("teacher_contracts")
-    .select(`
-      weekly_period_cap, weekly_period_assigned,
-      teachers ( id, full_name, display_name, primary_dept, primary_subject_text, employment_status )
-    `)
-    .eq("academic_year_id", academicYearId);
-  if (error) throw new Error(error.message);
 
-  return (data ?? []).map(c => {
-    const t = c.teachers as {
-      id: string; full_name: string; display_name: string | null;
-      primary_dept: string | null; primary_subject_text: string | null; employment_status: string | null;
-    } | null;
-    return {
-      id: t?.id ?? "",
-      full_name: t?.full_name ?? "",
-      display_name: t?.display_name ?? null,
-      primary_dept: t?.primary_dept ?? null,
-      primary_subject_text: t?.primary_subject_text ?? null,
-      employment_status: t?.employment_status ?? null,
-      weekly_period_cap: c.weekly_period_cap,
-      weekly_period_assigned: c.weekly_period_assigned,
-    };
-  });
+  // Read the roster from `teachers` (all 105) rather than `teacher_contracts`
+  // (which only covers ~69 and caps the roster). Contracts are left-joined in
+  // code for the weekly cap; per-teacher load comes from the timetable.
+  const [teachersRes, contractsRes, loads] = await Promise.all([
+    db
+      .from("teachers")
+      .select("id, full_name, display_name, primary_dept, primary_subject_text, employment_status")
+      .order("full_name"),
+    db
+      .from("teacher_contracts")
+      .select("teacher_id, weekly_period_cap")
+      .eq("academic_year_id", academicYearId),
+    getTeacherDailyLoads(academicYearId).catch(() => []),
+  ]);
+  if (teachersRes.error) throw new Error(teachersRes.error.message);
+  if (contractsRes.error) throw new Error(contractsRes.error.message);
+
+  const capByTeacher = new Map<string, number>();
+  for (const c of contractsRes.data ?? []) {
+    if (c.teacher_id != null) capByTeacher.set(c.teacher_id, c.weekly_period_cap);
+  }
+  const loadByTeacher = new Map<string, number>();
+  for (const l of loads) loadByTeacher.set(l.teacher_id, l.total);
+
+  return (teachersRes.data ?? []).map(t => ({
+    id: t.id,
+    full_name: t.full_name,
+    display_name: t.display_name,
+    // primary_dept is NULL across the dataset; derive from the raw subject text.
+    primary_dept: t.primary_dept ?? deriveDepartment(t.primary_subject_text),
+    primary_subject_text: t.primary_subject_text,
+    employment_status: t.employment_status,
+    weekly_period_cap: capByTeacher.get(t.id) ?? null,
+    weekly_period_assigned: loadByTeacher.get(t.id) ?? 0,
+  }));
 }
 
 export async function getTeacherName(teacherId: string): Promise<string> {
