@@ -1,6 +1,6 @@
 {
   "project": "Manhaji",
-  "repo": "Emouawad1/manhaj",
+  "repo": "manhaji/manhaji",
   "database": "qntmzazndkcdgkwmrhae",
   "database_note": "APP STILL POINTS AT OLD ref dxrkbjftkfhlddqefmaq (emouawad2). Cutover is Sprint 1 S0.2. Two live clones in sync — drift risk.",
   "updated": "2026-07-11",

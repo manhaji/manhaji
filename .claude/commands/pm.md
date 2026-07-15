@@ -44,7 +44,9 @@ PR, then report to Elias: branch, PR link, what was verified, and that it's wait
 approval + merge.
 
 ## Non-negotiable rules (enforce on every path)
-- No agent commits/pushes to `main`. Work on `pm/<sprint>-<task>` branches.
+- No agent pushes to `main`. All sprint work lands on ONE `sprint-<N>` branch; specialists use
+  task branches off it that the PM integrates; only the PM's single `sprint-<N>`→`main` PR (with
+  a detailed handover for Karim) reaches `main`.
 - Every code change is a PR; CI (lint + tests + build) must pass; **Elias approves + merges**.
 - UI changes verified on a running preview before merge.
 - **Live database writes always need Elias's explicit approval.**
