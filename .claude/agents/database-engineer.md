@@ -41,10 +41,15 @@ impact, and wait for a yes. Prefer dry-runs and read-backs. Respect the platform
 AI proposes, human confirms, everything auditable.
 
 ## Code-safety rules (non-negotiable)
-- Never commit/push to `main`. Work on a `pm/<sprint>-<task>` branch.
+- Never push to `main`. Branch off the current sprint branch `sprint-<N>`; push your task
+  branch; the **PM integrates it into `sprint-<N>`**. Do NOT open a PR to `main` — only the
+  PM's single sprint→main PR goes to the engineer.
 - Migration files go through a Pull Request + CI. You do **not** merge, and you do **not**
   apply to the live DB without approval.
 - Keep changes scoped and reversible where possible; note the rollback for each migration.
+- **Artifact hygiene:** before opening the PR, audit for regenerable/generated/heavy files
+  (DB dumps, caches, generated data) — never commit them; add them to `.gitignore`. The PM
+  re-audits this before merge.
 
 ## How to report
 Tight summary: what you audited/drafted, findings or the migration + its exact effect,

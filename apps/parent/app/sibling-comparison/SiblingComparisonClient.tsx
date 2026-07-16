@@ -59,11 +59,11 @@ function childColor(idx: number) { return CHILD_COLORS[idx % CHILD_COLORS.length
 // ── Mock data ─────────────────────────────────────────────────────────────────
 
 const MOCK_AI_SUMMARY =
-  "Good news this week: Omar's recovering from Monday's absence and is on track for Thursday's science exam · Layla had her strongest maths week of the term · Yusuf wrote his own name unaided for the first time. 3 things need your attention — see below.";
+  "Good news this week: Omar's recovering from Monday's absence and is on track for Thursday's science exam · Layla had her strongest maths week of the term · Yasmin wrote her own name unaided for the first time. 3 things need your attention — see below.";
 
 const MOCK_CHILDREN: ChildSiblingData[] = [
   {
-    child: { student_id: "m1", full_name_en: "Omar Al-Habsi",  initial: "O", section_id: "s1", section_code: "G8C",  grade_level: "Grade 8"  },
+    child: { student_id: "m1", full_name_en: "Omar Al-Habsi",  initial: "O", section_id: "s1", section_code: "7B",  grade_level: "Grade 7"  },
     formTeacher: "Ms. Khadija",
     att: { pct: 80, absences: 1 },
     homeworkCount: 4,
@@ -101,7 +101,7 @@ const MOCK_CHILDREN: ChildSiblingData[] = [
     nextExam: { label: "Field trip", held_on: "2026-06-03", subject: "Field trip" },
   },
   {
-    child: { student_id: "m3", full_name_en: "Yusuf Al-Habsi", initial: "Y", section_id: "s3", section_code: "KG2",  grade_level: "KG2"       },
+    child: { student_id: "m3", full_name_en: "Yasmin Al-Habsi", initial: "Y", section_id: "s3", section_code: "KG2",  grade_level: "KG2"       },
     formTeacher: "Ms. Layla",
     att: { pct: 100, absences: 0 },
     homeworkCount: 5,
@@ -318,7 +318,7 @@ type AttentionItem = {
 function buildAttentionItems(entries: ChildSiblingData[], unpaidInvoices: InvoiceWithLines[], isMock: boolean): AttentionItem[] {
   if (isMock) {
     return [
-      { tag: "YUSUF", color: CHILD_COLORS[2], title: "Confirm pickup-person change for Wednesday", sub: "Auntie Mariam is collecting — please confirm by tomorrow", action: "Confirm", href: "#" },
+      { tag: "YASMIN", color: CHILD_COLORS[2], title: "Confirm pickup-person change for Wednesday", sub: "Auntie Mariam is collecting — please confirm by tomorrow", action: "Confirm", href: "#" },
       { tag: "LAYLA", color: CHILD_COLORS[1], title: "Sign field-trip consent · Bait Al Zubair", sub: "Trip is Wed 3 June · signature due by Tuesday", action: "Sign now", href: "/parent/permission-slip" },
       { tag: "OMAR",  color: CHILD_COLORS[0], title: "Sign Term 4 elective selection", sub: "3 options to choose from · due Sunday 8 June", action: "Open form", href: "/parent/courses" },
       { tag: "FAMILY", color: "#DD6B20", title: "Term 3 fees — Installment 3 of 4", sub: "5 invoices · total AED 26,250 · due 15 June", action: "View invoices", href: "/parent/invoices" },

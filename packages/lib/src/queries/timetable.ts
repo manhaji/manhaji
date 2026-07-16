@@ -119,8 +119,37 @@ export type TeacherDayLoad = {
   total: number;
 };
 
+/**
+ * The current academic year may not yet have a published timetable (in the demo
+ * dataset the timetable lives in the prior year). Resolve the academic year that
+ * actually holds the most teacher-assigned slots so per-teacher load reflects the
+ * real timetable rather than an empty current year.
+ */
+async function resolveTimetableYearId(
+  db: Awaited<ReturnType<typeof serverClient>>,
+  preferredYearId: string,
+): Promise<string> {
+  const { data } = await db
+    .from("timetable_slots")
+    .select("academic_year_id")
+    .not("teacher_id", "is", null);
+  if (!data || data.length === 0) return preferredYearId;
+  const counts = new Map<string, number>();
+  for (const row of data) {
+    const ay = row.academic_year_id;
+    if (ay) counts.set(ay, (counts.get(ay) ?? 0) + 1);
+  }
+  let best = preferredYearId;
+  let bestN = counts.get(preferredYearId) ?? 0;
+  for (const [ay, n] of counts) {
+    if (n > bestN) { best = ay; bestN = n; }
+  }
+  return best;
+}
+
 export async function getTeacherDailyLoads(academicYearId: string): Promise<TeacherDayLoad[]> {
   const db = await serverClient();
+  const yearId = await resolveTimetableYearId(db, academicYearId);
   const { data, error } = await db
     .from("timetable_slots")
     .select(`
@@ -128,7 +157,7 @@ export async function getTeacherDailyLoads(academicYearId: string): Promise<Teac
       teachers ( full_name ),
       bell_periods ( day_of_week, is_teaching )
     `)
-    .eq("academic_year_id", academicYearId)
+    .eq("academic_year_id", yearId)
     .not("teacher_id", "is", null);
   if (error) throw new Error(error.message);
 
