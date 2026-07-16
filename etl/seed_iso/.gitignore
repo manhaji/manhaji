@@ -1,0 +1,5 @@
+# Heavy, regenerable seed data (722-row INSERT, ~350KB) — regenerate via build_seed.py.
+# The reviewable record is the migrations + demo seed + apply_live.py, not this dump.
+seed_iso_roster.sql
+__pycache__/
+*.pyc
