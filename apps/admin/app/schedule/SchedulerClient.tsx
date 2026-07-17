@@ -2,19 +2,24 @@
 
 import { useState } from "react";
 import type { AbsenceRow, WeekSlot } from "@manhaj/lib/queries/schedule";
+import type { CoverIndexEntry, TeacherCoverPlan } from "@manhaj/lib/queries/cover";
 import TodayView from "./components/TodayView";
 import MasterTimetableView from "./components/MasterTimetableView";
+import CoverPlannerView from "./components/CoverPlannerView";
 
 type Props = {
   absences: AbsenceRow[];
   weekSlots: WeekSlot[];
+  coverIndex: CoverIndexEntry[];
+  featuredCover: TeacherCoverPlan | null;
 };
 
-const TABS = ["Today", "This week", "Master timetable", "Cover history"] as const;
+const TABS = ["Today", "Cover planner", "This week", "Master timetable", "Cover history"] as const;
 type Tab = typeof TABS[number];
 
 const TAB_TITLE: Record<Tab, string> = {
   "Today":            "Today's schedule",
+  "Cover planner":    "Self-healing cover planner",
   "This week":        "This week's schedule",
   "Master timetable": "Master schedule",
   "Cover history":    "Cover history",
@@ -24,7 +29,7 @@ const TODAY = new Date().toLocaleDateString("en-GB", {
   weekday: "long", day: "numeric", month: "long", year: "numeric",
 });
 
-export default function SchedulerClient({ absences, weekSlots }: Props) {
+export default function SchedulerClient({ absences, weekSlots, coverIndex, featuredCover }: Props) {
   const [tab, setTab] = useState<Tab>("Today");
 
   return (
@@ -49,6 +54,11 @@ export default function SchedulerClient({ absences, weekSlots }: Props) {
       </div>
 
       {tab === "Today" && <TodayView absences={absences} />}
+      {tab === "Cover planner" && (
+        featuredCover
+          ? <CoverPlannerView index={coverIndex} featured={featuredCover} />
+          : <div className="sch-cover-loading">Cover plans are unavailable.</div>
+      )}
       {tab === "This week" && <MasterTimetableView weekSlots={weekSlots} title="This Week" />}
       {tab === "Master timetable" && <MasterTimetableView weekSlots={weekSlots} title="Master Timetable" />}
       {tab === "Cover history" && <CoverHistory />}
