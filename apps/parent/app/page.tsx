@@ -2,6 +2,7 @@ import { getCurrentParentId } from "@manhaj/lib/queries/auth";
 import { getParentChildren, getAttendanceForStudents } from "@manhaj/lib/queries/parents";
 import { getHomeworkForSection, getLessonsForSection } from "@manhaj/lib/queries/lessons";
 import { getInvoicesForParent } from "@manhaj/lib/queries/invoices";
+import { getUpcomingActivitySlipsForStudent } from "@manhaj/lib/queries/permissionslip";
 import {
   getBehaviourEventsForStudent,
   getAssessmentResultsForStudent,
@@ -58,7 +59,7 @@ export default async function ParentDashboard() {
       const sectionId = child.section_id;
       const studentId = child.student_id;
 
-      const [lessons, homework, behaviourEvents, assessmentResults, digestDraft, recognition, nextLessons] =
+      const [lessons, homework, behaviourEvents, assessmentResults, digestDraft, recognition, nextLessons, slips] =
         await Promise.all([
           sectionId
             ? getLessonsForSection(sectionId, weekStart, weekEnd).catch(() => [])
@@ -73,11 +74,15 @@ export default async function ParentDashboard() {
           sectionId
             ? getLessonsForSection(sectionId, nextStart, nextEnd).catch(() => [])
             : Promise.resolve([]),
+          sectionId
+            ? getUpcomingActivitySlipsForStudent(studentId, sectionId, todayStr).catch(() => [])
+            : Promise.resolve([]),
         ]);
 
       const att = attendance.find(a => a.student_id === studentId);
       const topResult = [...assessmentResults].sort((a, b) => (b.pct ?? 0) - (a.pct ?? 0))[0] ?? null;
       const positiveNotes = behaviourEvents.filter(e => e.kind === "positive").length;
+      const pendingSlips = slips.filter(s => s.status === "not_started" || s.status === "draft");
 
       return {
         child,
@@ -89,6 +94,7 @@ export default async function ParentDashboard() {
         digestDraft,
         recognition,
         nextLessons,
+        pendingSlips,
         topResult,
         homeworkCount: homework.length,
         positiveNotes,

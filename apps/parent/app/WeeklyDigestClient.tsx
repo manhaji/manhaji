@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import Link from "next/link";
 import type { ParentChild } from "@manhaj/lib/queries/parents";
 import type { InvoiceWithLines } from "@manhaj/lib/queries/invoices";
 import type { BehaviourEvent, StudentAssessmentResult, WeeklyDigestDraft, TeacherRecognition } from "@manhaj/lib/queries/weeklydigest";
+import type { ActivitySlip } from "@manhaj/lib/queries/permissionslip";
+import { replyToSchoolAction } from "./actions/reply-to-school";
 
 type LessonRaw = {
   id: string;
@@ -34,6 +37,7 @@ type ChildDataEntry = {
   digestDraft: WeeklyDigestDraft | null;
   recognition: TeacherRecognition | null;
   nextLessons: LessonRaw[];
+  pendingSlips: ActivitySlip[];
   topResult: StudentAssessmentResult | null;
   homeworkCount: number;
   positiveNotes: number;
@@ -80,8 +84,8 @@ const MOCK_NEXT_WEEK = [
 ];
 
 const MOCK_TODOS = [
-  { label: "Sign consent form — Museum visit", action: "Sign now", kind: "form" },
-  { label: "Invoice due — Tuition Term 3 (OMR 450)", action: "View invoice", kind: "invoice" },
+  { label: "Sign consent form — Museum visit", action: "Sign now", kind: "form", href: "/parent/permission-slip" },
+  { label: "Invoice due — Tuition Term 3 (OMR 450)", action: "View invoice", kind: "invoice", href: "/parent/invoices" },
 ];
 
 const SHORT_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -119,8 +123,37 @@ export default function WeeklyDigestClient({
 }: Props) {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
+  // ── Reply-to-school box
+  const [replyOpen, setReplyOpen]     = useState(false);
+  const [replyBody, setReplyBody]     = useState("");
+  const [replyStatus, setReplyStatus] = useState<"idle" | "sent" | "error">("idle");
+  const [replyLive, setReplyLive]     = useState(false);
+  const [isReplying, startReply]      = useTransition();
+
   const activeEntry = isMock ? null : childData[selectedIdx];
   const activeChild = isMock ? MOCK_CHILD : (activeEntry?.child ?? MOCK_CHILD);
+
+  function handleSendReply() {
+    const firstName = activeChild.full_name_en.split(" ")[0];
+    startReply(async () => {
+      try {
+        const result = await replyToSchoolAction(
+          replyBody,
+          isMock ? null : activeChild.student_id,
+          firstName,
+        );
+        if (result.ok) {
+          setReplyStatus("sent");
+          setReplyLive(result.live);
+          setReplyBody("");
+        } else {
+          setReplyStatus("error");
+        }
+      } catch {
+        setReplyStatus("error");
+      }
+    });
+  }
 
   // ── KPIs
   const attPct       = isMock ? 100 : (activeEntry?.att?.pct ?? 0);
@@ -195,14 +228,21 @@ export default function WeeklyDigestClient({
     : (activeEntry?.recognition ?? null);
 
   // ── Todos
-  type TodoItem = { label: string; action: string; kind: string };
+  type TodoItem = { label: string; action: string; kind: string; href: string };
   const todos: TodoItem[] = isMock
     ? MOCK_TODOS
     : [
+        ...(activeEntry?.pendingSlips ?? []).slice(0, 2).map(slip => ({
+          label: `Sign consent form — ${slip.title}`,
+          action: "Sign now",
+          kind: "form",
+          href: "/parent/permission-slip",
+        })),
         ...unpaidInvoices.slice(0, 2).map(inv => ({
           label: `Invoice due — ${inv.what_for ?? "balance"} (OMR ${inv.amount_owed_aed})`,
           action: "View invoice",
           kind: "invoice",
+          href: "/parent/invoices",
         })),
       ];
 
@@ -367,7 +407,7 @@ export default function WeeklyDigestClient({
                   <div key={i} className={`wd-todo-item wd-todo-item--${todo.kind}`}>
                     <div className="wd-todo-icon">{todo.kind === "invoice" ? "💳" : "📋"}</div>
                     <div className="wd-todo-label">{todo.label}</div>
-                    <button className="wd-todo-btn">{todo.action}</button>
+                    <Link href={todo.href} className="wd-todo-btn">{todo.action}</Link>
                   </div>
                 ))}
               </div>
@@ -394,9 +434,77 @@ export default function WeeklyDigestClient({
 
           {/* Footer actions */}
           <div className="wd-footer-actions">
-            <button className="wd-footer-btn wd-footer-btn--outline">Reply to school</button>
-            <button className="wd-footer-btn wd-footer-btn--outline">View {activeChild.full_name_en.split(" ")[0]}&apos;s full report</button>
-            <button className="wd-footer-btn wd-footer-btn--primary">Open in app</button>
+            <button
+              className="wd-footer-btn wd-footer-btn--outline"
+              onClick={() => setReplyOpen(o => !o)}
+              aria-expanded={replyOpen}
+              type="button"
+            >
+              Reply to school
+            </button>
+
+            {replyOpen && (
+              <div className="wd-reply-box">
+                {replyStatus === "sent" ? (
+                  <div className="wd-reply-sent" role="status">
+                    ✅ {replyLive
+                      ? "Reply sent — the school office will get back to you."
+                      : "Reply recorded (demo mode — not delivered)."}
+                  </div>
+                ) : (
+                  <>
+                    <textarea
+                      className="wd-reply-textarea"
+                      placeholder={`Message the school about ${activeChild.full_name_en.split(" ")[0]}'s week…`}
+                      value={replyBody}
+                      onChange={e => setReplyBody(e.target.value)}
+                      rows={3}
+                      aria-label="Reply to school"
+                    />
+                    {replyStatus === "error" && (
+                      <div className="wd-reply-error" role="alert">
+                        Couldn&apos;t send — please try again.
+                      </div>
+                    )}
+                    <div className="wd-reply-actions">
+                      <button
+                        className="wd-reply-btn wd-reply-btn--ghost"
+                        onClick={() => { setReplyOpen(false); setReplyStatus("idle"); }}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="wd-reply-btn wd-reply-btn--primary"
+                        onClick={handleSendReply}
+                        disabled={isReplying || replyBody.trim().length === 0}
+                        type="button"
+                      >
+                        {isReplying ? "Sending…" : "Send"}
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+
+            <Link
+              href={`/parent/report?student=${encodeURIComponent(activeChild.full_name_en)}`}
+              className="wd-footer-btn wd-footer-btn--outline wd-footer-btn--link"
+            >
+              View {activeChild.full_name_en.split(" ")[0]}&apos;s full report
+            </Link>
+            <div className="wd-footer-phase2">
+              <button
+                className="wd-footer-btn wd-footer-btn--primary"
+                disabled
+                title="The Manhaji mobile app arrives in Phase 2 — this action is a preview."
+                type="button"
+              >
+                Open in app
+              </button>
+              <span className="wd-preview-pill">Phase 2</span>
+            </div>
           </div>
         </div>
       </div>

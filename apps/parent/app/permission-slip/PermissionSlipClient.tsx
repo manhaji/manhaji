@@ -114,6 +114,7 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
   const [currentSlipId, setCurrentSlipId] = useState<string | null>(null);
   const [showDeclineConfirm, setShowDeclineConfirm] = useState(false);
   const [signed, setSigned] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const activeEntry = isMock
     ? { child: MOCK_CHILD, slips: [MOCK_SLIP], health: MOCK_HEALTH, parentContact: MOCK_PARENT }
@@ -156,6 +157,7 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
 
   function handleSaveDraft() {
     if (!activeSlip || isMock) { setLastSaved(new Date()); return; }
+    setActionError(null);
     startTransition(async () => {
       try {
         const result = await saveDraftAction(
@@ -166,12 +168,16 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
         );
         setCurrentSlipId(result.slipId);
         setLastSaved(new Date());
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+        setActionError("Couldn't save your draft — please try again.");
+      }
     });
   }
 
   function handleSignAndSubmit() {
     if (!activeSlip || isMock) { setSigned(true); return; }
+    setActionError(null);
     startTransition(async () => {
       try {
         await signAndSubmitAction(
@@ -182,12 +188,16 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
           parentContact?.name ?? emergencyName,
         );
         setSigned(true);
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+        setActionError("Couldn't submit the form — please try again.");
+      }
     });
   }
 
   function handleDecline() {
     if (!activeSlip || isMock) { setShowDeclineConfirm(false); setSigned(true); return; }
+    setActionError(null);
     startTransition(async () => {
       try {
         await declineSlipAction(
@@ -197,7 +207,11 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
         );
         setShowDeclineConfirm(false);
         setSigned(true);
-      } catch (e) { console.error(e); }
+      } catch (e) {
+        console.error(e);
+        setShowDeclineConfirm(false);
+        setActionError("Couldn't record your decline — please try again.");
+      }
     });
   }
 
@@ -481,6 +495,9 @@ export default function PermissionSlipClient({ kids, childSlipData, isMock }: Pr
       )}
 
       {/* ── Footer bar ── */}
+      {actionError && (
+        <div className="ps-action-error" role="alert">⚠ {actionError}</div>
+      )}
       <div className="ps-footer">
         <div className="ps-footer-meta">
           {lastSaved

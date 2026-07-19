@@ -6910,3 +6910,83 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
   .sc-kpi-grid     { grid-template-columns: 1fr 1fr; }
   .sc-cmp-th-label, .sc-cmp-row-label { width: 90px; font-size: 0.7rem; }
 }
+
+/* =========================================================================
+   Sprint 1.5 · Parent button wiring
+   ========================================================================= */
+
+/* Weekly digest — todo + footer buttons rendered as links */
+a.wd-todo-btn   { text-decoration: none; display: inline-block; }
+a.wd-footer-btn { text-decoration: none; display: block; text-align: center; }
+.wd-footer-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.wd-footer-btn:disabled:hover { opacity: 0.5; }
+.wd-footer-phase2 { position: relative; }
+.wd-footer-phase2 .wd-footer-btn { width: 100%; }
+.wd-preview-pill, .sc-preview-pill {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  background: var(--color-soft); color: var(--color-muted);
+  padding: 2px 8px; border-radius: 9999px; white-space: nowrap;
+}
+.wd-preview-pill {
+  position: absolute; top: -8px; right: -6px;
+  border: 1px solid var(--color-border); background: #fff;
+}
+
+/* Weekly digest — reply-to-school box */
+.wd-reply-box {
+  background: #F7FAFC; border: 1px solid #E2E8F0; border-radius: 9px;
+  padding: 0.75rem; display: flex; flex-direction: column; gap: 0.55rem;
+}
+.wd-reply-textarea {
+  width: 100%; resize: vertical; font: inherit; font-size: 0.78rem;
+  border: 1px solid #CBD5E0; border-radius: 7px; padding: 0.5rem 0.65rem;
+  color: var(--color-text); background: #fff; line-height: 1.45;
+}
+.wd-reply-textarea:focus { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+.wd-reply-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+.wd-reply-btn {
+  font-size: 0.74rem; font-weight: 700; padding: 0.4rem 0.9rem;
+  border-radius: 7px; cursor: pointer; transition: all 0.13s;
+}
+.wd-reply-btn--ghost {
+  background: transparent; border: 1.5px solid #CBD5E0; color: var(--color-muted);
+}
+.wd-reply-btn--ghost:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.wd-reply-btn--primary {
+  background: var(--color-primary); color: #fff; border: none;
+}
+.wd-reply-btn--primary:hover { opacity: 0.88; }
+.wd-reply-btn--primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.wd-reply-sent  { font-size: 0.78rem; color: #276749; line-height: 1.45; }
+.wd-reply-error { font-size: 0.72rem; color: #C53030; }
+
+/* Permission slip — visible write-error banner */
+.ps-action-error {
+  background: #FFF5F5; border: 1px solid #FEB2B2; color: #C53030;
+  font-size: 0.78rem; font-weight: 600; border-radius: 9px;
+  padding: 0.6rem 0.9rem; margin-bottom: 0.75rem;
+}
+
+/* Invoices — pay-panel buttons rendered as links */
+a.inv-pay-btn { text-decoration: none; display: block; text-align: center; }
+a.inv-hist-receipt { text-decoration: none; }
+
+/* Sibling comparison — Phase-2 preview + footer icon links */
+.sc-attention-preview { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.sc-attention-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.sc-attention-btn:disabled:hover { border-color: #CBD5E0; color: var(--color-text); }
+.sc-card-action-btn--disabled { opacity: 0.55; cursor: not-allowed; }
+.sc-card-action .sc-preview-pill { flex-shrink: 0; border: 1px solid var(--color-border); background: #fff; }
+.sc-card-footer-icons a { text-decoration: none; }
+.sc-card-footer-icons a:hover { opacity: 0.7; }
+
+/* Calendar — per-event add-to-calendar links + copied state */
+.cal-up-add { display: inline-flex; gap: 4px; }
+.cal-up-add-btn {
+  font-size: 9.5px; font-weight: var(--font-weight-bold); white-space: nowrap;
+  color: var(--color-primary); background: var(--color-card);
+  border: 1px solid var(--color-border); border-radius: 9999px;
+  padding: 2px 8px; text-decoration: none;
+}
+.cal-up-add-btn:hover { border-color: var(--color-primary); background: var(--color-soft); }
+.cal-sync-btn.ghost.copied { color: #276749; border-color: #9AE6B4; background: #F0FFF4; }

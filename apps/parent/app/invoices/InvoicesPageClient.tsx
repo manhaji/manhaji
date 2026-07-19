@@ -4,6 +4,15 @@ import type { InvoiceWithLines } from "@manhaj/lib/queries/invoices";
 import type { ParentChild } from "@manhaj/lib/queries/parents";
 import { useActiveChild, ALL_CHILDREN_ID } from "@manhaj/lib/child";
 
+/**
+ * PLACEHOLDER — the school's real payment-portal URL goes here once ISO
+ * confirms it. Payments never run through Manhaji; we only link out.
+ */
+const ISO_PARENT_PORTAL_URL = "https://parents.iso.edu.om/pay";
+
+/** Printable invoice / receipt route (browser print → Save as PDF). */
+const INVOICE_PRINT_PATH = "/parent/invoices/print";
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function fmtAed(amount: number): string {
@@ -178,7 +187,16 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
                           <td className="inv-hist-date">{fmtDateShort(inv.paid_on)}</td>
                           <td><span className="inv-hist-badge">PAID</span></td>
                           <td className="inv-hist-amt">{fmtAedShort(inv.amount_owed_aed)}</td>
-                          <td><button className="inv-hist-receipt">Receipt ↓</button></td>
+                          <td>
+                            <a
+                              className="inv-hist-receipt"
+                              href={`${INVOICE_PRINT_PATH}?invoice=${encodeURIComponent(inv.id)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Receipt ↓
+                            </a>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -190,7 +208,7 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
 
           {/* ── Right column ── */}
           <div className="inv-right">
-            <PayPanel amount={total} />
+            <PayPanel amount={total} invoiceId={focused.id} invoiceNumber={focused.invoice_number} />
           </div>
         </div>
       </div>
@@ -278,7 +296,16 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
                       <td className="inv-hist-method">{h.method}</td>
                       <td><span className="inv-hist-badge">PAID</span></td>
                       <td className="inv-hist-amt">AED {h.amount.toLocaleString()}</td>
-                      <td><button className="inv-hist-receipt">Receipt ↓</button></td>
+                      <td>
+                        <a
+                          className="inv-hist-receipt"
+                          href={INVOICE_PRINT_PATH}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Receipt ↓
+                        </a>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -289,7 +316,7 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
 
         {/* ── Right column ── */}
         <div className="inv-right">
-          <PayPanel amount={MOCK_AMOUNT} />
+          <PayPanel amount={MOCK_AMOUNT} invoiceId={null} invoiceNumber={MOCK_INV_NUM} />
         </div>
       </div>
     </div>
@@ -298,7 +325,17 @@ export default function InvoicesPageClient({ dbInvoices, dbChildren }: Props) {
 
 // ── Payment panel ─────────────────────────────────────────────────────────────
 
-function PayPanel({ amount }: { amount: number }) {
+function PayPanel({ amount, invoiceId, invoiceNumber }: {
+  amount:         number;
+  invoiceId:      string | null;
+  invoiceNumber:  string | null;
+}) {
+  const payHref = invoiceNumber
+    ? `${ISO_PARENT_PORTAL_URL}?invoice=${encodeURIComponent(invoiceNumber)}&amount=${amount}`
+    : ISO_PARENT_PORTAL_URL;
+  const printHref = invoiceId
+    ? `${INVOICE_PRINT_PATH}?invoice=${encodeURIComponent(invoiceId)}`
+    : INVOICE_PRINT_PATH;
   return (
     <div className="inv-pay-card">
       <div className="inv-pay-title">Pay this invoice</div>
@@ -333,12 +370,22 @@ function PayPanel({ amount }: { amount: number }) {
         ))}
       </ul>
 
-      <button className="inv-pay-btn inv-pay-btn--primary">
+      <a
+        className="inv-pay-btn inv-pay-btn--primary"
+        href={payHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Pay on ISO Parent Portal ↗
-      </button>
-      <button className="inv-pay-btn inv-pay-btn--outline">
+      </a>
+      <a
+        className="inv-pay-btn inv-pay-btn--outline"
+        href={printHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Download Invoice PDF ↓
-      </button>
+      </a>
 
       <div className="inv-pay-next">
         <span className="inv-pay-next-arrow">→</span>

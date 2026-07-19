@@ -15,7 +15,7 @@ function kindToEventType(kind: string): EventType {
 }
 
 export default async function ParentCalendarPage() {
-  const academicYearId = await getCurrentAcademicYearId();
+  const academicYearId = await getCurrentAcademicYearId().catch(() => null);
 
   const activities = academicYearId
     ? await getActivitiesForYear(academicYearId).catch(() => [])

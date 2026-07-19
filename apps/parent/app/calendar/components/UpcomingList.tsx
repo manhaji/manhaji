@@ -1,6 +1,7 @@
 import type { CalendarEvent } from "@manhaj/lib/mock-calendar";
 import { formatDate, relativeDay } from "@manhaj/lib/mock-calendar";
 import { DEMO_CHILDREN } from "@manhaj/lib/child";
+import { googleEventUrl, eventIcsDataUri, eventIcsFilename } from "../add-to-calendar";
 
 const TYPE_LABEL: Record<CalendarEvent["type"], string> = {
   exam: "EXAM", meeting: "MEETING", event: "EVENT", club: "CLUB", holiday: "HOLIDAY",
@@ -50,6 +51,25 @@ export default function UpcomingList({
                   </span>
                 )}
                 <span className={`cal-up-typetag cal-type-${ev.type}`}>{TYPE_LABEL[ev.type]}</span>
+                <span className="cal-up-add" aria-label={`Add ${ev.title} to your calendar`}>
+                  <a
+                    className="cal-up-add-btn"
+                    href={googleEventUrl(ev)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Add "${ev.title}" to Google Calendar`}
+                  >
+                    + Google
+                  </a>
+                  <a
+                    className="cal-up-add-btn"
+                    href={eventIcsDataUri(ev)}
+                    download={eventIcsFilename(ev)}
+                    title={`Download "${ev.title}" as .ics (Apple Calendar)`}
+                  >
+                    + Apple
+                  </a>
+                </span>
               </span>
             </li>
           );

@@ -215,17 +215,30 @@ function ChildCard({ entry, idx, isMock }: { entry: ChildSiblingData; idx: numbe
       {isMock && idx === 2 && (
         <div className="sc-card-action">
           <span className="sc-card-action-text">Confirm pickup-person change for Wed</span>
-          <button className="sc-card-action-btn" style={{ background: color }}>Confirm</button>
+          <span className="sc-preview-pill">Phase 2</span>
+          <button
+            className="sc-card-action-btn sc-card-action-btn--disabled"
+            style={{ background: color }}
+            disabled
+            title="Pickup-person confirmations arrive in Phase 2 — this action is a preview."
+          >
+            Confirm
+          </button>
         </div>
       )}
 
       {/* Footer */}
       <div className="sc-card-footer">
-        <a href="#" className="sc-card-viewfull">Open {firstName}&apos;s full view →</a>
+        <a
+          href={`/parent/report?student=${encodeURIComponent(entry.child.full_name_en)}`}
+          className="sc-card-viewfull"
+        >
+          Open {firstName}&apos;s full view →
+        </a>
         <div className="sc-card-footer-icons">
-          <span title="Grades">📊</span>
-          <span title="Calendar">📅</span>
-          <span title="Reports">📋</span>
+          <a href={`/parent/report?student=${encodeURIComponent(entry.child.full_name_en)}`} title="Grades" aria-label={`${firstName}'s grades`}>📊</a>
+          <a href="/parent/calendar" title="Calendar" aria-label="Calendar">📅</a>
+          <a href="/parent/past-reports" title="Reports" aria-label="Past reports">📋</a>
         </div>
       </div>
     </div>
@@ -312,13 +325,14 @@ type AttentionItem = {
   title: string;
   sub: string;
   action: string;
-  href: string;
+  /** null = no live target yet → rendered as a Phase-2 preview, never silently dead */
+  href: string | null;
 };
 
 function buildAttentionItems(entries: ChildSiblingData[], unpaidInvoices: InvoiceWithLines[], isMock: boolean): AttentionItem[] {
   if (isMock) {
     return [
-      { tag: "YASMIN", color: CHILD_COLORS[2], title: "Confirm pickup-person change for Wednesday", sub: "Auntie Mariam is collecting — please confirm by tomorrow", action: "Confirm", href: "#" },
+      { tag: "YASMIN", color: CHILD_COLORS[2], title: "Confirm pickup-person change for Wednesday", sub: "Auntie Mariam is collecting — please confirm by tomorrow", action: "Confirm", href: null },
       { tag: "LAYLA", color: CHILD_COLORS[1], title: "Sign field-trip consent · Bait Al Zubair", sub: "Trip is Wed 3 June · signature due by Tuesday", action: "Sign now", href: "/parent/permission-slip" },
       { tag: "OMAR",  color: CHILD_COLORS[0], title: "Sign Term 4 elective selection", sub: "3 options to choose from · due Sunday 8 June", action: "Open form", href: "/parent/courses" },
       { tag: "FAMILY", color: "#DD6B20", title: "Term 3 fees — Installment 3 of 4", sub: "5 invoices · total AED 26,250 · due 15 June", action: "View invoices", href: "/parent/invoices" },
@@ -440,7 +454,20 @@ export default function SiblingComparisonClient({ childData, unpaidInvoices, wee
                     <div className="sc-attention-sub">{item.sub}</div>
                   </div>
                 </div>
-                <a href={item.href} className="sc-attention-btn">{item.action}</a>
+                {item.href ? (
+                  <a href={item.href} className="sc-attention-btn">{item.action}</a>
+                ) : (
+                  <span className="sc-attention-preview">
+                    <span className="sc-preview-pill">Phase 2</span>
+                    <button
+                      className="sc-attention-btn"
+                      disabled
+                      title="Pickup-person confirmations arrive in Phase 2 — this action is a preview."
+                    >
+                      {item.action}
+                    </button>
+                  </span>
+                )}
               </div>
             ))}
           </div>
