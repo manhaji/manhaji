@@ -11,6 +11,8 @@ export type PeriodSlot = {
   teacher: string | null;
   room: string | null;
   is_teaching: boolean;
+  /** "What to bring" notes — demo fixture only for now (no DB source yet). */
+  bring?: string[] | null;
 };
 
 export async function getStudentTimetable(studentId: string, academicYearId: string): Promise<PeriodSlot[]> {

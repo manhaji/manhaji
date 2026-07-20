@@ -6930,3 +6930,153 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
   .sc-kpi-grid     { grid-template-columns: 1fr 1fr; }
   .sc-cmp-th-label, .sc-cmp-row-label { width: 90px; font-size: 0.7rem; }
 }
+
+/* ============================================================================
+   Sprint 1.5 — student schedule / goals / study-planner / app-tracker additions
+   ============================================================================ */
+
+/* ── Shared modal + form primitives (stu-*) ─────────────────────────────── */
+.stu-modal-bg {
+  position: fixed; inset: 0; background: rgba(15, 30, 60, 0.42);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  z-index: 1000;
+}
+.stu-modal {
+  background: var(--color-card); border-radius: var(--radius-xl, 14px);
+  width: 460px; max-width: 100%; max-height: 90vh; overflow: hidden;
+  display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(15, 30, 60, 0.22);
+}
+.stu-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; border-bottom: 1px solid var(--color-border);
+}
+.stu-modal-head h3 { margin: 0; font-size: 14px; color: var(--color-ink); font-weight: 700; }
+.stu-modal-close {
+  background: transparent; border: 0; font-size: 24px; line-height: 1;
+  cursor: pointer; color: var(--color-muted); padding: 0 4px;
+}
+.stu-modal-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; }
+.stu-modal-foot {
+  display: flex; gap: 8px; justify-content: flex-end;
+  padding: 12px 18px; border-top: 1px solid var(--color-border);
+}
+.stu-modal-hint { font-size: 12px; color: var(--color-muted); line-height: 1.5; }
+.stu-field { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.stu-field-label { font-size: 11px; font-weight: 700; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.stu-field-label em { font-weight: 500; text-transform: none; letter-spacing: 0; }
+.stu-field-row { display: flex; gap: 12px; }
+.stu-input {
+  font: inherit; font-size: 13px; padding: 8px 10px;
+  border: 1px solid var(--color-border); border-radius: var(--radius-md, 8px);
+  background: var(--color-surface-subtle, #FAFCFE); color: var(--color-ink); width: 100%;
+}
+.stu-input:focus { outline: none; border-color: var(--color-primary); background: #fff; }
+.stu-form-error { font-size: 12px; color: var(--color-danger); font-weight: 600; }
+
+/* ── Schedule: richer today timeline ────────────────────────────────────── */
+.sc-tl-sub { margin: 4px 0 0; font-size: 11px; color: var(--color-muted); }
+.sc-tl-bring { font-size: 11px; color: #2A4365; margin-top: 3px; }
+.sc-tl-bring b { color: var(--color-ink); }
+.sc-tl-due { font-size: 11px; color: #975A16; margin-top: 3px; }
+.sc-tl-due b { color: #744210; }
+
+/* ── Dashboard: today schedule strip on the My Schedule card ─────────────── */
+.sd-sched-strip { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.sd-sched-item {
+  display: grid; grid-template-columns: 42px 26px 1fr auto auto; gap: 8px; align-items: center;
+  font-size: 11.5px; padding: 5px 8px; border-radius: 6px;
+  background: var(--color-surface-subtle, #FAFCFE); border: 1px solid var(--color-border);
+}
+.sd-sched-item.now  { background: #EBF4FF; border-color: #BEE3F8; }
+.sd-sched-item.done { opacity: 0.5; }
+.sd-sched-time { color: var(--color-muted); font-weight: 700; font-size: 10px; }
+.sd-sched-key  { color: var(--color-muted); font-weight: 700; font-size: 10px; }
+.sd-sched-subj { color: var(--color-ink); font-weight: 700; }
+.sd-sched-room { color: var(--color-muted); font-size: 10px; }
+.sd-sched-badge { background: var(--color-primary); color: #fff; font-size: 8.5px; font-weight: 700; padding: 2px 6px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ── Goals: demo note, phase-2 pill, AI card, history list ──────────────── */
+.myg-demo-note, .at-demo-note {
+  display: flex; align-items: center; gap: 10px; justify-content: space-between;
+  background: #FFFAF0; border: 1px solid #FEEBC8; color: #744210;
+  font-size: 12.5px; padding: 10px 14px; border-radius: 8px; margin-bottom: 1rem;
+}
+.myg-demo-note-close, .at-demo-note-close {
+  background: transparent; border: 0; font-size: 20px; line-height: 1;
+  cursor: pointer; color: #975A16; padding: 0 4px;
+}
+.myg-phase2-pill {
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em;
+  background: #E6FFFA; color: #234E52; padding: 2px 7px; border-radius: 4px; text-transform: uppercase;
+}
+.myg-ai-card { opacity: 0.92; }
+.myg-suggest-add.added { color: var(--color-success); cursor: default; }
+.myg-suggest-add.added:hover { text-decoration: none; }
+.myg-history-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.myg-history-row {
+  display: grid; grid-template-columns: 70px 1fr auto; gap: 10px; align-items: center;
+  padding: 8px 0; border-bottom: 1px dashed var(--color-border); font-size: 12px;
+}
+.myg-history-row:last-child { border-bottom: 0; }
+.myg-history-date { color: var(--color-muted); font-weight: 700; font-size: 11px; }
+.myg-history-body { color: var(--color-ink); }
+.myg-history-pct  { color: var(--color-primary); font-weight: 700; }
+
+/* ── Study planner: save note ───────────────────────────────────────────── */
+.sp-save-note {
+  font-size: 12px; color: #744210; background: #FFFAF0; border: 1px solid #FEEBC8;
+  padding: 8px 12px; border-radius: 6px; margin-bottom: 10px;
+}
+
+/* ── App tracker: university search, empty docs, scores form, slots ─────── */
+.at-empty-hint { font-size: 12.5px; color: var(--color-muted); padding: 16px; text-align: center; }
+.at-admit-pending { color: var(--color-muted); font-size: 10px; font-style: italic; }
+.at-uni-results { display: flex; flex-direction: column; gap: 4px; max-height: 260px; overflow-y: auto; }
+.at-uni-result {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  text-align: left; padding: 9px 12px; border: 1px solid var(--color-border);
+  border-radius: 8px; background: var(--color-surface-subtle, #FAFCFE); cursor: pointer; width: 100%;
+}
+.at-uni-result:hover { border-color: var(--color-primary); background: #EBF4FF; }
+.at-uni-result-name { font-size: 12.5px; font-weight: 700; color: var(--color-ink); }
+.at-uni-result-meta { font-size: 10.5px; color: var(--color-muted); }
+.at-uni-picked {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 12px; border: 1px solid #BEE3F8; background: #EBF4FF; border-radius: 8px;
+}
+.at-docs-empty { padding: 6px 2px; }
+.at-docs-empty-title { font-size: 12.5px; font-weight: 700; color: var(--color-ink); margin-bottom: 4px; }
+.at-docs-empty-sub { font-size: 11px; color: var(--color-muted); line-height: 1.5; }
+.at-placement-refresh-note { font-size: 10px; color: var(--color-muted); margin-top: 8px; font-style: italic; }
+.at-score-add-btn {
+  margin-top: 10px; width: 100%; font-size: 12px; font-weight: 600;
+  color: var(--color-primary); background: #EBF4FF; border: 1px solid #BEE3F8;
+  border-radius: 6px; padding: 7px 0; cursor: pointer;
+}
+.at-score-add-btn:hover { background: #DCEBFB; }
+.at-score-form { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.at-score-form-row { display: flex; gap: 8px; }
+.at-score-form-actions { display: flex; gap: 6px; justify-content: flex-end; }
+.at-assist-item-static { cursor: default; opacity: 0.75; }
+.at-booking-state {
+  margin-top: 12px; padding: 10px 12px; border-radius: 8px;
+  background: #F0FFF4; border: 1px solid #C6F6D5;
+}
+.at-booking-state-title { font-size: 12px; font-weight: 700; color: #276749; }
+.at-booking-state-sub { font-size: 11px; color: #2F855A; margin-top: 3px; }
+.at-slot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.at-slot {
+  display: flex; flex-direction: column; gap: 2px; align-items: flex-start;
+  padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 8px;
+  background: var(--color-surface-subtle, #FAFCFE); cursor: pointer;
+}
+.at-slot:hover { border-color: var(--color-primary); }
+.at-slot.picked { border-color: var(--color-primary); background: #EBF4FF; }
+.at-slot-day { font-size: 12px; font-weight: 700; color: var(--color-ink); }
+.at-slot-time { font-size: 11px; color: var(--color-muted); }
+
+@media (max-width: 600px) {
+  .stu-field-row { flex-direction: column; }
+  .sd-sched-item { grid-template-columns: 40px 24px 1fr auto; }
+  .sd-sched-room { display: none; }
+}

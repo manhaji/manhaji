@@ -3,8 +3,9 @@
 import { useState } from "react";
 import type { PeriodSlot } from "@manhaj/lib/queries/timetable";
 import type { HomeworkRow } from "@manhaj/lib/queries/lessons";
-import type { AssessmentRow } from "@manhaj/lib/queries/studyplanner";
+import type { AssessmentRow, WrapupBlock } from "@manhaj/lib/queries/studyplanner";
 import type { RubricSuggestionData } from "@manhaj/lib/queries/goals";
+import { setWrapupDoneAction } from "@/app/actions/study";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -52,6 +53,8 @@ type Props = {
   homework: HomeworkRow[];
   assessments: AssessmentRow[];
   rubricScores: RubricSuggestionData[];
+  /** Today's study_blocks rows — restore wrap-up checkbox state (mig 020). */
+  wrapupBlocks: WrapupBlock[];
   today: string;
   weekStart: string;
   weekEnd: string;
@@ -195,14 +198,19 @@ function buildSuggestionsFromRubric(scores: RubricSuggestionData[]): StudySugges
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function StudyPlannerClient({
-  studentName, periods, homework, assessments, rubricScores,
+  studentName, periods, homework, assessments, rubricScores, wrapupBlocks,
   today, weekStart, weekEnd, isMock,
 }: Props) {
   const displayName = studentName || "Layla";
 
+  // Restore persisted wrap-up state from study_blocks (keyed by task title).
+  const persistedDone: Record<string, boolean> = {};
+  for (const b of wrapupBlocks) persistedDone[b.title] = b.isDone;
+
   const [focusDone, setFocusDone] = useState<Record<number, boolean>>(
     () => (isMock ? { 2: true } : {}) as Record<number, boolean>,
   );
+  const [saveNote, setSaveNote] = useState<string | null>(null);
 
   // ── Per-day helpers ──────────────────────────────────────────────────────
   function dayDate(name: string): string { return addDays(weekStart, DAY_OFFSET[name] ?? 0); }
@@ -247,9 +255,21 @@ export default function StudyPlannerClient({
           title:  h.title,
           desc:   `${h.subject} · due ${h.due === today ? "today" : "tomorrow"}`,
           time:   h.ai_estimate ?? "",
-          done:   false,
+          done:   persistedDone[h.title] ?? false,
           urgent: h.due === today,
         }));
+
+  // Persist a wrap-up tick to study_blocks.is_done (real write, OR demo).
+  async function toggleWrapup(i: number, item: FocusItem) {
+    const next = !(item.done || focusDone[i]);
+    setFocusDone(p => ({ ...p, [i]: next }));   // optimistic
+    if (isMock) return;                          // demo list — local only
+    const res = await setWrapupDoneAction(item.title, today, next);
+    if (!res.ok && res.error !== "not_signed_in") {
+      setFocusDone(p => ({ ...p, [i]: !next })); // revert
+      setSaveNote(`Couldn't save that: ${res.error}`);
+    }
+  }
 
   // ── KPIs ─────────────────────────────────────────────────────────────────
   const hwCount     = isMock ? 3 : homework.length;
@@ -309,13 +329,16 @@ export default function StudyPlannerClient({
             })}
           </span>
         </div>
+        {saveNote && <div className="sp-save-note" role="status">{saveNote}</div>}
         {todayFocus.map((item, i) => {
-          const isDone = item.done || !!focusDone[i];
+          const isDone = !!focusDone[i] || (focusDone[i] === undefined && item.done);
           return (
             <div key={i} className={`sp-focus-item${isDone ? " done" : ""}`}>
               <button
-                className={`sp-focus-dot${item.urgent ? " urgent" : isDone ? " check" : ""}`}
-                onClick={() => !item.done && setFocusDone(p => ({ ...p, [i]: !p[i] }))}
+                className={`sp-focus-dot${isDone ? " check" : item.urgent ? " urgent" : ""}`}
+                aria-pressed={isDone}
+                aria-label={isDone ? `Mark "${item.title}" not done` : `Mark "${item.title}" done`}
+                onClick={() => toggleWrapup(i, item)}
               >
                 {isDone ? "✓" : ""}
               </button>

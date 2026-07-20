@@ -1,6 +1,13 @@
 import { getCurrentStudentId } from "@manhaj/lib/queries/auth";
-import { getGoalStudentProfile, getStudentLatestRubricScores } from "@manhaj/lib/queries/goals";
-import { getStudentUniversityApps, getStudentCounselor } from "@manhaj/lib/queries/applications";
+import { getGoalStudentProfile } from "@manhaj/lib/queries/goals";
+import {
+  getStudentUniversityApps,
+  getStudentCounselor,
+  getUniversities,
+  getStudentTestScores,
+  getStudentMasterDocs,
+  getStudentBookingRequest,
+} from "@manhaj/lib/queries/applications";
 import ApplicationTrackerClient from "./ApplicationTrackerClient";
 
 export const dynamic = "force-dynamic";
@@ -8,7 +15,7 @@ export const dynamic = "force-dynamic";
 export default async function ApplicationTrackerPage() {
   const studentId = await getCurrentStudentId().catch(() => null);
 
-  const [profile, apps, rubricScores, counselor] = await Promise.all([
+  const [profile, apps, counselor, universities, testScores, masterDocs, booking] = await Promise.all([
     studentId
       ? getGoalStudentProfile(studentId).catch(() => ({ studentName: "" }))
       : Promise.resolve({ studentName: "" }),
@@ -16,22 +23,30 @@ export default async function ApplicationTrackerPage() {
       ? getStudentUniversityApps(studentId).catch(() => [])
       : Promise.resolve([]),
     studentId
-      ? getStudentLatestRubricScores(studentId).catch(() => [])
+      ? getStudentCounselor(studentId).catch(() => null)
+      : Promise.resolve(null),
+    getUniversities().catch(() => []),
+    studentId
+      ? getStudentTestScores(studentId).catch(() => [])
       : Promise.resolve([]),
     studentId
-      ? getStudentCounselor(studentId).catch(() => null)
+      ? getStudentMasterDocs(studentId).catch(() => [])
+      : Promise.resolve([]),
+    studentId
+      ? getStudentBookingRequest(studentId).catch(() => null)
       : Promise.resolve(null),
   ]);
 
-  const isMock = apps.length === 0;
-
   return (
     <ApplicationTrackerClient
+      live={studentId !== null}
       studentName={profile.studentName}
       apps={apps}
-      rubricScores={rubricScores}
+      universities={universities}
+      testScores={testScores}
+      masterDocs={masterDocs}
+      booking={booking}
       counselor={counselor}
-      isMock={isMock}
     />
   );
 }

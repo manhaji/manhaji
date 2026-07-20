@@ -2,7 +2,7 @@ import { getCurrentStudentId, getCurrentAcademicYearId } from "@manhaj/lib/queri
 import { getGoalStudentProfile, getStudentLatestRubricScores } from "@manhaj/lib/queries/goals";
 import { getStudentTimetable } from "@manhaj/lib/queries/timetable";
 import { getHomeworkForStudent } from "@manhaj/lib/queries/lessons";
-import { getStudentAssessmentsThisWeek } from "@manhaj/lib/queries/studyplanner";
+import { getStudentAssessmentsThisWeek, getStudyBlocksForDate } from "@manhaj/lib/queries/studyplanner";
 import StudyPlannerClient from "./StudyPlannerClient";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +29,7 @@ export default async function StudyPlannerPage() {
     getCurrentAcademicYearId().catch(() => null),
   ]);
 
-  const [profile, timetable, homework, assessments, rubricScores] = await Promise.all([
+  const [profile, timetable, homework, assessments, rubricScores, wrapupBlocks] = await Promise.all([
     studentId
       ? getGoalStudentProfile(studentId).catch(() => ({ studentName: "" }))
       : Promise.resolve({ studentName: "" }),
@@ -45,6 +45,9 @@ export default async function StudyPlannerPage() {
     studentId
       ? getStudentLatestRubricScores(studentId).catch(() => [])
       : Promise.resolve([]),
+    studentId
+      ? getStudyBlocksForDate(studentId, today).catch(() => [])
+      : Promise.resolve([]),
   ]);
 
   const isMock = timetable.length === 0 && homework.length === 0;
@@ -56,6 +59,7 @@ export default async function StudyPlannerPage() {
       homework={homework}
       assessments={assessments}
       rubricScores={rubricScores}
+      wrapupBlocks={wrapupBlocks}
       today={today}
       weekStart={weekStart}
       weekEnd={weekEnd}

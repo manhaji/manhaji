@@ -45,3 +45,32 @@ export async function getStudentAssessmentsThisWeek(
     };
   });
 }
+
+// ── Wrap-up task persistence (study_blocks.is_done, migration 020) ──────────
+
+export type WrapupBlock = {
+  id: string;
+  title: string;
+  blockDate: string | null;
+  isDone: boolean;
+};
+
+/** Study blocks for one day — used to restore wrap-up checkbox state. */
+export async function getStudyBlocksForDate(studentId: string, date: string): Promise<WrapupBlock[]> {
+  const db = await serverClient();
+  // is_done landed in migration 020 — not in the generated types yet.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (db as any)
+    .from("study_blocks")
+    .select("id, title, block_date, is_done")
+    .eq("student_id", studentId)
+    .eq("block_date", date);
+  if (error) return [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return ((data as any[]) ?? []).map((b: any) => ({
+    id:        b.id,
+    title:     b.title,
+    blockDate: b.block_date,
+    isDone:    b.is_done === true,
+  }));
+}

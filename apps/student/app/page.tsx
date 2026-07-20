@@ -79,9 +79,6 @@ export default async function StudentDashboard() {
 
   // Today's schedule
   const mockTodayAll = periodsForDay(MOCK_PERIODS, DEMO_DAY);
-  const todayPeriods = periods.length > 0
-    ? periods.filter(p => p.day === todayDow && p.subject !== null)
-    : mockTodayAll.filter(p => p.state == null);
 
   const p3Today = periods.length > 0
     ? periods.find(p => p.day === todayDow && p.period === "P3")
@@ -90,6 +87,19 @@ export default async function StudentDashboard() {
   const p4Today = periods.length > 0
     ? periods.find(p => p.day === todayDow && p.period === "P4")
     : mockTodayAll.find(p => p.period === "P4");
+
+  // Today's schedule strip — normalized {period, start, subject, room} for the card.
+  const nowHHMM = `${String(today.getHours()).padStart(2, "0")}:${String(today.getMinutes()).padStart(2, "0")}`;
+  const scheduleStrip = (periods.length > 0
+    ? periods.filter(p => p.day === todayDow && p.is_teaching && p.subject)
+    : mockTodayAll.filter(p => p.state == null))
+    .map(p => ({
+      period: p.period,
+      start: p.start,
+      end: p.end,
+      subject: p.subject ?? "—",
+      room: ("room" in p ? p.room : null) ?? null,
+    }));
 
   // Rubric KPIs
   const rubricAvg = rubricAxes.length > 0
@@ -218,23 +228,37 @@ export default async function StudentDashboard() {
       <div className="sd-card-grid">
         <Link href="/student/schedule" className="sd-card">
           <div className="sd-card-head">
-            <span className="sd-card-label">My Schedule</span>
+            <span className="sd-card-label">My Schedule · today</span>
             <span className="sd-card-arrow" aria-hidden="true">→</span>
           </div>
-          <div className="sd-card-big">
-            {p3Today ? `P3 · ${p3Today.subject ?? "—"}` : "P3 · Maths"}
-          </div>
-          <div className="sd-card-trend">
-            {p3Today
-              ? `starts ${p3Today.start} · ${p3Today.room ?? ""} · ${p3Today.teacher ?? ""}`
-              : "starts 10:00 · R201 · Mr Faisal"}
-          </div>
+          {scheduleStrip.length > 0 ? (
+            <ol className="sd-sched-strip">
+              {scheduleStrip.map(s => {
+                const isNow  = s.start <= nowHHMM && s.end > nowHHMM;
+                const isDone = s.end <= nowHHMM && !isNow;
+                const cls = ["sd-sched-item"];
+                if (isNow)  cls.push("now");
+                if (isDone) cls.push("done");
+                return (
+                  <li key={s.period} className={cls.join(" ")}>
+                    <span className="sd-sched-time">{s.start}</span>
+                    <span className="sd-sched-key">{s.period}</span>
+                    <span className="sd-sched-subj">{s.subject}</span>
+                    {s.room && <span className="sd-sched-room">{s.room}</span>}
+                    {isNow && <span className="sd-sched-badge">now</span>}
+                  </li>
+                );
+              })}
+            </ol>
+          ) : (
+            <div className="sd-card-trend">No classes scheduled today.</div>
+          )}
           <div className="sd-card-rows">
             <div className="sd-card-row">
-              <span>Next</span>
+              <span>Next up</span>
               <b>{p4Today ? `P4 · ${p4Today.subject ?? "—"}` : "P4 · Physics"}</b>
             </div>
-            <div className="sd-card-row"><span>Today total</span><b>{todayPeriods.length} classes</b></div>
+            <div className="sd-card-row"><span>Today total</span><b>{scheduleStrip.length} classes</b></div>
           </div>
         </Link>
 
