@@ -33,10 +33,10 @@ const MOCK_FREE: { periodNumber: number; startsAt: string; endsAt: string; label
 ];
 
 const MOCK_LESSONS: SlotLesson[] = [
-  { id: "l1", sectionId: "g5b", topic: "Equivalent fractions · Introduction", learningObjective: "Open the fractions-strips activity (top in the sidebar), left side, named 'Fri Day 1'. Work through 3 benchmarks using the 'Equivalence visualiser'. These students may not have seen equivalent fractions yet — 22 students, 24 books. Ask one or two of the problems together — homework is to finish the last at home.", homeworkDescription: "Finish fraction strips problems 3–6 at home." },
-  { id: "l3", sectionId: "g5a", topic: "Multiplication tables · weekly review", learningObjective: "Run the flash-card warm-up (cards in Room 8 cabinet). Run the times-table game from the laminator. Mr. Tariq usually rewards winners with stickers — the box is in the top drawer.", homeworkDescription: null },
-  { id: "l5", sectionId: "g5b", topic: "Multiplication practice (continued from P1)", learningObjective: "Continue the multiplication from Period 1. Aim to finish problems 1–10 together. The last 10 problems are new questions — added at the door. Leave any unfinished. Note: I ran Period 1 with this group, so there's room for a little extra practice, as noted below.", homeworkDescription: null },
-  { id: "l6", sectionId: "g5c", topic: "Decimal fractions · Introduction", learningObjective: "Open with a real-world example (money works well as an anchor). Teach the concept of 1/100 (one part in a hundred). Stop after Slide 8 and have students do examples 1–5 in groups of 8.", homeworkDescription: null },
+  { id: "l1", sectionId: "g5b", topic: "Equivalent fractions · Introduction", learningObjective: "Open the fractions-strips activity (top in the sidebar), left side, named 'Fri Day 1'. Work through 3 benchmarks using the 'Equivalence visualiser'. These students may not have seen equivalent fractions yet — 22 students, 24 books. Ask one or two of the problems together — homework is to finish the last at home.", homeworkDescription: "Finish fraction strips problems 3–6 at home.", planNotes: null, preClassChecklist: [] },
+  { id: "l3", sectionId: "g5a", topic: "Multiplication tables · weekly review", learningObjective: "Run the flash-card warm-up (cards in Room 8 cabinet). Run the times-table game from the laminator. Mr. Tariq usually rewards winners with stickers — the box is in the top drawer.", homeworkDescription: null, planNotes: null, preClassChecklist: [] },
+  { id: "l5", sectionId: "g5b", topic: "Multiplication practice (continued from P1)", learningObjective: "Continue the multiplication from Period 1. Aim to finish problems 1–10 together. The last 10 problems are new questions — added at the door. Leave any unfinished. Note: I ran Period 1 with this group, so there's room for a little extra practice, as noted below.", homeworkDescription: null, planNotes: null, preClassChecklist: [] },
+  { id: "l6", sectionId: "g5c", topic: "Decimal fractions · Introduction", learningObjective: "Open with a real-world example (money works well as an anchor). Teach the concept of 1/100 (one part in a hundred). Stop after Slide 8 and have students do examples 1–5 in groups of 8.", homeworkDescription: null, planNotes: null, preClassChecklist: [] },
 ];
 
 const GENERIC_CHECKLIST_ITEMS = [
@@ -227,7 +227,13 @@ export default function SubstituteClient({ slots, lessons, flags, sheet, freePer
           const { slot, mockIdx } = entry;
           const lesson = lessonMap.get(slot.sectionId);
           const ck = checklistKey(slot, mockIdx);
-          const checkItems = MOCK_CHECKLIST[ck] ?? GENERIC_CHECKLIST_ITEMS;
+          // One source of truth: the pre-class checklist the teacher wrote in
+          // the Class hub (lessons.pre_class_checklist), OR demo items.
+          const checkItems: string[] = lesson && lesson.preClassChecklist.length > 0
+            ? lesson.preClassChecklist.map(c => c.label)
+            : isMock
+              ? (MOCK_CHECKLIST[ck] ?? GENERIC_CHECKLIST_ITEMS)
+              : GENERIC_CHECKLIST_ITEMS;
           const sectionFlags = isMock
             ? flagsForSection(slot.sectionId, activeFlags, true, slot.sectionCode.toLowerCase())
             : flagsForSection(slot.sectionId, activeFlags, false, "");
@@ -249,11 +255,14 @@ export default function SubstituteClient({ slots, lessons, flags, sheet, freePer
                 </div>
               </div>
 
-              {/* Lesson plan */}
+              {/* Lesson plan — topic + the teacher's Class-hub plan notes */}
               {(lesson || isMock) && (
                 <div className="sub-lesson-block">
                   <div className="sub-lesson-label">LESSON PLAN</div>
-                  <div className="sub-lesson-topic">{lesson?.topic ?? "—"}</div>
+                  <div className="sub-lesson-topic">{lesson?.topic ?? lesson?.planNotes?.split(/[.\n]/)[0] ?? "—"}</div>
+                  {lesson?.planNotes && (
+                    <div className="sub-lesson-obj">{lesson.planNotes}</div>
+                  )}
                   {lesson?.learningObjective && (
                     <div className="sub-lesson-obj">{lesson.learningObjective}</div>
                   )}

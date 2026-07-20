@@ -14,6 +14,7 @@
 import { useState, useMemo } from "react";
 import type { TeacherStudentRow, SubmissionStatus } from "@manhaj/lib/mock-teacher-students";
 import StudentSearchFilter from "./StudentSearchFilter";
+import StudentDetailPanel from "./StudentDetailPanel";
 
 // ---- helpers ----------------------------------------------------------------
 
@@ -51,6 +52,7 @@ interface Props {
 export default function TeacherStudentRoster({ students, sections }: Props) {
   const [searchValue,   setSearchValue]   = useState("");
   const [sectionValue,  setSectionValue]  = useState("");
+  const [openStudent,   setOpenStudent]   = useState<TeacherStudentRow | null>(null);
 
   const filtered = useMemo(() => {
     const q = searchValue.trim().toLowerCase();
@@ -137,12 +139,13 @@ export default function TeacherStudentRoster({ students, sections }: Props) {
                     }
                   </td>
 
-                  {/* Open button (drawer placeholder) */}
+                  {/* Open button → student detail panel */}
                   <td>
                     <button
                       type="button"
                       className="tsr-open-btn"
-                      onClick={() => console.log("Open student detail:", s.id, s.full_name)}
+                      onClick={() => setOpenStudent(s)}
+                      aria-haspopup="dialog"
                     >
                       Open
                     </button>
@@ -152,6 +155,16 @@ export default function TeacherStudentRoster({ students, sections }: Props) {
             </tbody>
           </table>
         </div>
+      )}
+
+      {openStudent && (
+        <StudentDetailPanel
+          key={openStudent.id}
+          studentId={openStudent.id}
+          studentName={openStudent.full_name}
+          sectionCode={openStudent.section_code}
+          onClose={() => setOpenStudent(null)}
+        />
       )}
     </section>
   );

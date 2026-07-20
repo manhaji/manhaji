@@ -1751,9 +1751,10 @@ export type Database = {
           due_date: string | null
           id: string
           is_done: boolean
-          lesson_id: string
+          lesson_id: string | null
           priority: string
           school_id: string
+          section_id: string | null
           student_id: string | null
           tag: string | null
           target_teacher_id: string | null
@@ -1767,9 +1768,10 @@ export type Database = {
           due_date?: string | null
           id?: string
           is_done?: boolean
-          lesson_id: string
+          lesson_id?: string | null
           priority?: string
           school_id: string
+          section_id?: string | null
           student_id?: string | null
           tag?: string | null
           target_teacher_id?: string | null
@@ -1783,9 +1785,10 @@ export type Database = {
           due_date?: string | null
           id?: string
           is_done?: boolean
-          lesson_id?: string
+          lesson_id?: string | null
           priority?: string
           school_id?: string
+          section_id?: string | null
           student_id?: string | null
           tag?: string | null
           target_teacher_id?: string | null
@@ -1805,6 +1808,13 @@ export type Database = {
             columns: ["school_id"]
             isOneToOne: false
             referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lesson_followups_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "sections"
             referencedColumns: ["id"]
           },
           {
@@ -1840,7 +1850,9 @@ export type Database = {
           id: string
           learning_objective: string | null
           plan_kind: Database["public"]["Enums"]["lesson_plan_kind"]
+          plan_notes: string | null
           planned_for_week: string | null
+          pre_class_checklist: Json
           resources_url: string | null
           school_id: string
           section_id: string
@@ -1860,7 +1872,9 @@ export type Database = {
           id?: string
           learning_objective?: string | null
           plan_kind?: Database["public"]["Enums"]["lesson_plan_kind"]
+          plan_notes?: string | null
           planned_for_week?: string | null
+          pre_class_checklist?: Json
           resources_url?: string | null
           school_id: string
           section_id: string
@@ -1880,7 +1894,9 @@ export type Database = {
           id?: string
           learning_objective?: string | null
           plan_kind?: Database["public"]["Enums"]["lesson_plan_kind"]
+          plan_notes?: string | null
           planned_for_week?: string | null
+          pre_class_checklist?: Json
           resources_url?: string | null
           school_id?: string
           section_id?: string

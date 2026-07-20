@@ -140,6 +140,28 @@ export default function OneTapClient({ slot, students, todayMarks, yesterdayMark
     }
   }
 
+  /**
+   * Submit the roll call as it stands: unmarked students default to present,
+   * marked exceptions (absent/late/excused) are kept — unlike markAllPresent,
+   * which overwrites exceptions.
+   */
+  function submitAttendance() {
+    const updated: Record<string, LocalMark> = {};
+    activeStudents.forEach(s => {
+      const m = marks[s.id];
+      updated[s.id] = m?.status
+        ? m
+        : { status: "present", reason: null, notes: m?.notes ?? null };
+    });
+    setMarks(updated);
+    setAiBannerDismissed(true);
+    if (schoolId && teacherId && activeSlot.bellPeriodId !== "mock") {
+      startTransition(() =>
+        bulkSaveAttendance(activeStudents.map(s => buildPayload(s.id, updated[s.id]))).catch(() => {})
+      );
+    }
+  }
+
   function clearAll() {
     const updated: Record<string, LocalMark> = {};
     activeStudents.forEach(s => { updated[s.id] = { status: null, reason: null, notes: null }; });
@@ -326,7 +348,7 @@ export default function OneTapClient({ slot, students, todayMarks, yesterdayMark
         </div>
         <button
           className="tap-submit-btn"
-          onClick={markAllPresent}
+          onClick={submitAttendance}
         >
           Submit attendance
         </button>

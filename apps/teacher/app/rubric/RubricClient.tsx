@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useMemo, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import type { CurrentSlotInfo } from "@manhaj/lib/queries/attendance";
 import type { RubricCriterion, RubricScore } from "@manhaj/lib/queries/rubric";
+import type { SectionOption } from "@manhaj/lib/queries/classhub";
 import { bulkSaveRubricScores } from "../actions/rubric";
 
 type Student = {
@@ -20,6 +22,10 @@ type Props = {
   teacherId: string;
   schoolId: string;
   currentMonth: string;
+  /** Teacher's real section × subject options — drives the class dropdown. */
+  sectionOptions: SectionOption[];
+  selectedSectionId: string | null;
+  selectedSubjectId: string | null;
 };
 
 // ── Mock fallback ─────────────────────────────────────────────────────────────
@@ -160,14 +166,25 @@ function overallScore(studentId: string, criteria: RubricCriterion[], allScores:
   return Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 10) / 10;
 }
 
-export default function RubricClient({ slot, students, criteria, scores, rubricId, teacherId, schoolId, currentMonth }: Props) {
+export default function RubricClient({
+  slot, students, criteria, scores, rubricId, teacherId, schoolId, currentMonth,
+  sectionOptions, selectedSectionId, selectedSubjectId,
+}: Props) {
+  const router = useRouter();
   const isMock = students.length === 0 || criteria.length === 0;
   const activeStudents = isMock ? MOCK_STUDENTS : students;
   const activeCriteria = isMock ? MOCK_CRITERIA : criteria;
 
   const [month, setMonth]           = useState(currentMonth);
-  const [activeIdx, setActiveIdx]   = useState(isMock ? 5 : 0); // default to Layla (index 5) in mock
+  const [rawActiveIdx, setActiveIdx] = useState(isMock ? 5 : 0); // default to Layla (index 5) in mock
+  // Clamp: the student list changes when the section dropdown navigates.
+  const activeIdx = Math.min(rawActiveIdx, activeStudents.length - 1);
   const [isPending, startTransition]= useTransition();
+
+  function handleSectionChange(sectionId: string) {
+    setActiveIdx(0);
+    router.push(`?section=${sectionId}`);
+  }
 
   const initialScores = useMemo(
     () => buildInitialScores(activeStudents, activeCriteria, isMock ? MOCK_SCORES : scores),
@@ -215,7 +232,7 @@ export default function RubricClient({ slot, students, criteria, scores, rubricI
         scored_by_teacher_id: teacherId,
         scored_for_month:     month,
         school_id:            schoolId,
-        subject_id:           null,
+        subject_id:           selectedSubjectId,
       }));
   }
 
@@ -248,8 +265,9 @@ export default function RubricClient({ slot, students, criteria, scores, rubricI
   const overall = overallScore(activeStudent?.id, activeCriteria, allScores);
 
   const [yr, mn] = month.split("-").map(Number);
-  const sectionLabel = slot?.sectionCode ?? "G5B";
-  const subjectLabel = slot?.subjectName ?? "Maths";
+  const selectedOption = sectionOptions.find(o => o.sectionId === selectedSectionId) ?? null;
+  const sectionLabel = selectedOption?.code ?? slot?.sectionCode ?? "G5B";
+  const subjectLabel = selectedOption?.subjectName ?? slot?.subjectName ?? "Maths";
   const cycleLabel   = `${sectionLabel} · ${subjectLabel} · ${monthLabel(month)}`;
 
   const aiAxisCount     = activeCriteria.filter(c => c.ai_suggested).length;
@@ -262,6 +280,23 @@ export default function RubricClient({ slot, students, criteria, scores, rubricI
         <div className="rub-cycle-header">
           <div className="rub-cycle-label">MONTHLY RUBRIC CYCLE</div>
           <div className="rub-cycle-class">{cycleLabel}</div>
+          {sectionOptions.length > 0 && (
+            <div className="rub-section-select-wrap">
+              <label className="rub-section-select-label" htmlFor="rub-section-select">Class</label>
+              <select
+                id="rub-section-select"
+                className="rub-section-select"
+                value={selectedSectionId ?? ""}
+                onChange={e => handleSectionChange(e.target.value)}
+              >
+                {sectionOptions.map(o => (
+                  <option key={`${o.sectionId}-${o.subjectId}`} value={o.sectionId}>
+                    {o.gradeLevel ? `${o.gradeLevel} ` : ""}{o.code} · {o.subjectName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="rub-cycle-nav">
             <button className="rub-cycle-btn" onClick={() => setMonth(prevMonth(month))}>
               {monthLabel(prevMonth(month)).split(" ")[0]}

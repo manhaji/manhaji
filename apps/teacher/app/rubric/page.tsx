@@ -1,6 +1,8 @@
 import { getCurrentAcademicYearId, getCurrentTeacherId } from "@manhaj/lib/queries/auth";
 import { getCurrentSlotForTeacher } from "@manhaj/lib/queries/attendance";
+import { getEffectiveTimetableYearId } from "@manhaj/lib/queries/timetable";
 import { getStudentsBySection } from "@manhaj/lib/queries/students";
+import { getTeacherSectionOptions } from "@manhaj/lib/queries/classhub";
 import { getRubricForSchool, getRubricCriteria, getRubricScoresForStudents } from "@manhaj/lib/queries/rubric";
 import { serverClient } from "@manhaj/lib";
 import RubricClient from "./RubricClient";
@@ -13,7 +15,13 @@ async function getTeacherSchoolId(teacherId: string): Promise<string | null> {
   return data?.school_id ?? null;
 }
 
-export default async function RubricScoringPage() {
+export default async function RubricScoringPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ section?: string }>;
+}) {
+  const { section: sectionParam } = await searchParams;
+
   const [academicYearId, teacherId] = await Promise.all([
     getCurrentAcademicYearId().catch(() => null),
     getCurrentTeacherId().catch(() => null),
@@ -22,15 +30,27 @@ export default async function RubricScoringPage() {
   const today = new Date();
   const currentMonth = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}`;
 
-  const currentSlot = (teacherId && academicYearId)
-    ? await getCurrentSlotForTeacher(teacherId, academicYearId).catch(() => null)
+  // The published timetable may live in a prior academic year (demo dataset).
+  const timetableYearId = academicYearId
+    ? await getEffectiveTimetableYearId(academicYearId).catch(() => academicYearId)
     : null;
 
-  const sectionId = currentSlot?.sectionId ?? null;
+  const [currentSlot, sectionOptions, schoolId] = await Promise.all([
+    (teacherId && timetableYearId)
+      ? getCurrentSlotForTeacher(teacherId, timetableYearId).catch(() => null)
+      : Promise.resolve(null),
+    teacherId ? getTeacherSectionOptions(teacherId).catch(() => []) : Promise.resolve([]),
+    teacherId ? getTeacherSchoolId(teacherId).catch(() => null) : Promise.resolve(null),
+  ]);
 
-  const schoolId = teacherId
-    ? await getTeacherSchoolId(teacherId).catch(() => null)
-    : null;
+  // Selected section: ?section= param → current-period section → first option.
+  const selectedOption =
+    sectionOptions.find(o => o.sectionId === sectionParam)
+    ?? sectionOptions.find(o => o.sectionId === currentSlot?.sectionId)
+    ?? sectionOptions[0]
+    ?? null;
+
+  const sectionId = selectedOption?.sectionId ?? currentSlot?.sectionId ?? null;
 
   const students = sectionId
     ? await getStudentsBySection(sectionId).catch(() => [])
@@ -51,6 +71,7 @@ export default async function RubricScoringPage() {
 
   return (
     <RubricClient
+      key={sectionId ?? "demo"}
       slot={currentSlot}
       students={students ?? []}
       criteria={criteria}
@@ -59,6 +80,9 @@ export default async function RubricScoringPage() {
       teacherId={teacherId ?? ""}
       schoolId={schoolId ?? ""}
       currentMonth={currentMonth}
+      sectionOptions={sectionOptions}
+      selectedSectionId={selectedOption?.sectionId ?? null}
+      selectedSubjectId={selectedOption?.subjectId ?? null}
     />
   );
 }

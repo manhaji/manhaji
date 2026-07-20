@@ -1,5 +1,6 @@
 import { getCurrentAcademicYearId, getCurrentTeacherId } from "@manhaj/lib/queries/auth";
 import { getCurrentSlotForTeacher, getAttendanceForPeriod, getYesterdayAttendanceForSection } from "@manhaj/lib/queries/attendance";
+import { getEffectiveTimetableYearId } from "@manhaj/lib/queries/timetable";
 import { getStudentsBySection } from "@manhaj/lib/queries/students";
 import { serverClient } from "@manhaj/lib";
 import OneTapClient from "./OneTapClient";
@@ -26,8 +27,13 @@ export default async function OneTapAttendancePage() {
 
   const { today, yesterday } = getAttendanceDateRange();
 
-  const currentSlot = (teacherId && academicYearId)
-    ? await getCurrentSlotForTeacher(teacherId, academicYearId).catch(() => null)
+  // The published timetable may live in a prior academic year (demo dataset).
+  const timetableYearId = academicYearId
+    ? await getEffectiveTimetableYearId(academicYearId).catch(() => academicYearId)
+    : null;
+
+  const currentSlot = (teacherId && timetableYearId)
+    ? await getCurrentSlotForTeacher(teacherId, timetableYearId).catch(() => null)
     : null;
 
   const sectionId = currentSlot?.sectionId ?? null;

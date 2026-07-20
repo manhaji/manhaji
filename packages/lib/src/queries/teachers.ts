@@ -98,6 +98,45 @@ export async function getTeacherName(teacherId: string): Promise<string> {
   return data?.display_name ?? data?.full_name ?? "";
 }
 
+export type DeptColleague = {
+  id: string;
+  name: string;
+  dept: string;
+};
+
+/**
+ * Same-department colleagues for a teacher — the substitutable set shown as
+ * tabs on My Week. Uses `primary_dept` where set (backfilled real depts,
+ * migration 018) and falls back to deriving from `primary_subject_text`.
+ * The teacher themself is returned first.
+ */
+export async function getDeptColleagues(teacherId: string): Promise<DeptColleague[]> {
+  const db = await serverClient();
+  const { data, error } = await db
+    .from("teachers")
+    .select("id, full_name, display_name, primary_dept, primary_subject_text, employment_status")
+    .order("full_name");
+  if (error) throw new Error(error.message);
+
+  const all = (data ?? []).map(t => ({
+    id: t.id,
+    name: t.display_name ?? t.full_name,
+    dept: t.primary_dept ?? deriveDepartment(t.primary_subject_text),
+    active: t.employment_status !== "inactive" && t.employment_status !== "left",
+  }));
+
+  const self = all.find(t => t.id === teacherId);
+  if (!self) return [];
+
+  const colleagues = all.filter(
+    t => t.id !== teacherId && t.active && t.dept === self.dept && t.dept !== "Unassigned",
+  );
+  return [
+    { id: self.id, name: self.name, dept: self.dept },
+    ...colleagues.map(({ id, name, dept }) => ({ id, name, dept })),
+  ];
+}
+
 export async function getAllTeachers() {
   const db = await serverClient();
   const { data, error } = await db

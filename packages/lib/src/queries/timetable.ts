@@ -125,6 +125,18 @@ export type TeacherDayLoad = {
  * actually holds the most teacher-assigned slots so per-teacher load reflects the
  * real timetable rather than an empty current year.
  */
+/**
+ * Public wrapper around resolveTimetableYearId: given the current academic
+ * year, return the year that actually holds the published teacher timetable
+ * (falls back to the given year when no slots exist anywhere). Teacher-facing
+ * pages use this so My Week / one-tap attendance / class hub read the real
+ * timetable even while the current year's timetable is unpublished.
+ */
+export async function getEffectiveTimetableYearId(preferredYearId: string): Promise<string> {
+  const db = await serverClient();
+  return resolveTimetableYearId(db, preferredYearId);
+}
+
 async function resolveTimetableYearId(
   db: Awaited<ReturnType<typeof serverClient>>,
   preferredYearId: string,

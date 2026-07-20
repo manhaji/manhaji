@@ -1,4 +1,5 @@
 import { getCurrentAcademicYearId, getCurrentTeacherId } from "@manhaj/lib/queries/auth";
+import { getEffectiveTimetableYearId } from "@manhaj/lib/queries/timetable";
 import {
   getTeacherDaySchedule,
   getLessonsForSections,
@@ -42,8 +43,13 @@ export default async function SubstitutePage({
     ? await getTeacherInfo(teacherId).catch(() => ({ schoolId: null, teacherName: "" }))
     : { schoolId: null, teacherName: "" };
 
-  const slots = (teacherId && academicYearId)
-    ? await getTeacherDaySchedule(teacherId, academicYearId, forDate).catch(() => [])
+  // The published timetable may live in a prior academic year (demo dataset).
+  const timetableYearId = academicYearId
+    ? await getEffectiveTimetableYearId(academicYearId).catch(() => academicYearId)
+    : null;
+
+  const slots = (teacherId && timetableYearId)
+    ? await getTeacherDaySchedule(teacherId, timetableYearId, forDate).catch(() => [])
     : [];
 
   const sectionIds = [...new Set(slots.map(s => s.sectionId))];
@@ -53,7 +59,7 @@ export default async function SubstitutePage({
     sectionIds.length ? getLessonsForSections(sectionIds, forDate).catch(() => [])             : Promise.resolve([]),
     (sectionIds.length && teacherId) ? getStudentFlagsForSections(sectionIds, teacherId, weekStart).catch(() => []) : Promise.resolve([]),
     teacherId ? getSubstituteSheet(teacherId, forDate).catch(() => null)                       : Promise.resolve(null),
-    academicYearId ? getFreePeriods(academicYearId, forDate).catch(() => [])                  : Promise.resolve([]),
+    timetableYearId ? getFreePeriods(timetableYearId, forDate).catch(() => [])                : Promise.resolve([]),
   ]);
 
   return (

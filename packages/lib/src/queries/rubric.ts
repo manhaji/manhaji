@@ -44,15 +44,17 @@ export async function getRubricCriteria(rubricId: string): Promise<RubricCriteri
 export async function getRubricScoresForStudents(
   studentIds: string[],
   rubricId: string,
-  month: string,
+  month: string,               // "YYYY-MM" or "YYYY-MM-DD"
 ): Promise<RubricScore[]> {
   if (studentIds.length === 0) return [];
+  // scored_for_month is a date column normalised to the 1st of the month.
+  const monthDate = /^\d{4}-\d{2}$/.test(month) ? `${month}-01` : month;
   const db = await serverClient();
   const { data, error } = await db
     .from("rubric_scores")
     .select("student_id, axis_code, score, notes, source")
     .eq("rubric_id", rubricId)
-    .eq("scored_for_month", month)
+    .eq("scored_for_month", monthDate)
     .in("student_id", studentIds);
   if (error) throw new Error(error.message);
   return (data ?? []).map(r => ({
