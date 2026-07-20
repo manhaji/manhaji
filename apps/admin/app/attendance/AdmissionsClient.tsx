@@ -1,48 +1,95 @@
 "use client";
 
-import { useState, useMemo } from "react";
-
-type Applicant = {
-  id: string;
-  full_name: string;
-  email: string | null;
-  phone_e164: string | null;
-  target_grade: string;
-  stage: string;
-  source: string | null;
-  notes: string | null;
-  created_at: string;
-};
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import type {
+  AdmissionApplicant,
+  ParentOption,
+  ReEnrollStudent,
+  RetentionSummary,
+} from "@manhaj/lib/queries/admissions";
+import {
+  AVATAR_BG,
+  LEAVER_REASONS,
+  LEAVER_REASON_LABEL,
+  MOCK_APPLICANTS,
+  PIPELINE_STAGES,
+  RISK_COLOR,
+  STAGE_COLOR,
+  STAGE_LABEL,
+  daysInStage,
+  initials,
+  isDemoApplicant,
+  retentionCallMailto,
+  riskScore,
+} from "./admissions-shared";
+import RetentionSummaryModal, { type SummaryTarget } from "./RetentionSummaryModal";
+import ConfirmLeaveModal, { type ConfirmLeaveTarget } from "./ConfirmLeaveModal";
+import ApplicantModal from "./ApplicantModal";
 
 type Props = {
-  applicants: Applicant[];
-  totalEnrolled: number;
+  applicants: AdmissionApplicant[];
+  roster: ReEnrollStudent[];
+  parentOptions: ParentOption[];
 };
 
-// ── Mock data ──────────────────────────────────────────────────────────────
+// ── Demo fallbacks (standing rule: DB-first, demo when empty) ──────────────
+const DEMO = {
+  enrolled: 612,
+  reEnrolledPct: 0.884,
+  pending: 47,
+  leaving: 18,
+};
+
 const MOCK_FAMILIES = [
-  { id: "f1", name: "Al Hamdan Family", detail: "G5 · flagged high risk on retention dashboard · attendance, parent school comms", risk: "ALL DISMISSED RISK", action: "Open retention plan", color: "#C53030" },
-  { id: "f2", name: "Maya Al-Lawati",   detail: "G9 · G10 · 4 Financial (mid-block) · 90 days overdue",                          risk: "BACK-TO-SCH RISK",  action: "View barrier plan", color: "#C05621" },
-  { id: "f3", name: "Aisha Al-Balushi", detail: "G7 · 3 years at G12 · Competitive retention, same day · referral came engaged", risk: "COMPETITION RISK",  action: "Schedule retention call", color: "#975A16" },
-  { id: "f4", name: "Sara Al-Said",     detail: "G1 · 7 years at G12 · 3 previous open · no other negative signals",             risk: "CREDIT RISK",       action: "Send nudge", color: "#276749" },
-  { id: "f5", name: "Omar Al-Habsi",    detail: "G6 · G6 · 1 year at G4 · Father confirmation at PTO 'at' 3 last week' · 10 days ago", risk: "FRIENDLY CONTACT", action: "Send friendly reminder", color: "#2C5282" },
+  { id: "demo-f1", name: "Al Hamdan Family", grade: "G5", detail: "G5 · attendance slipping this term · 2 unanswered school comms", risk: "HIGH RISK",        color: "#C53030" },
+  { id: "demo-f2", name: "Maya Al-Lawati",   grade: "G9", detail: "G9 · fees 90 days overdue · payment plan discussed in March",   risk: "FEES RISK",        color: "#C05621" },
+  { id: "demo-f3", name: "Aisha Al-Balushi", grade: "G7", detail: "G7 · 3 years at the school · competitor open-day visit reported", risk: "COMPETITION RISK", color: "#975A16" },
+  { id: "demo-f4", name: "Sara Al-Said",     grade: "G1", detail: "G1 · 7 years at the school · no negative signals",              risk: "LOW RISK",         color: "#276749" },
+  { id: "demo-f5", name: "Omar Al-Habsi",    grade: "G6", detail: "G6 · father positive at PTO last week",                          risk: "LOW RISK",         color: "#2C5282" },
 ];
 
-const LEAVING_REASONS = [
-  { label: "GRADUATED",         count: 12, color: "#BEE3F8", note: "all leavers · rejected · all university destinations confirmed" },
-  { label: "MOVING",            count: 4,  color: "#FEEBC8", note: "confirmed · 1 to KSA · 1 to Canada · 1 to Australia · 1 other" },
-  { label: "COMPETITION LOSING",count: 2,  color: "#FED7D7", note: "Dissatisfied · 1 to previous gap · both flagged in exit interview" },
-  { label: "DISSATISFIED",      count: 0,  color: "#EDF2F7", note: "" },
+function demoSummaryFor(index: number, id: string, name: string, grade: string): RetentionSummary {
+  const flavours: Array<Pick<RetentionSummary, "attendance" | "riskFlags" | "fees">> = [
+    {
+      attendance: { pct: 84, absences: 9, lates: 4, marks: 78 },
+      riskFlags: [{ severity: "high", category: "attendance", reason: "Attendance dropped below 85% this term." }],
+      fees: { invoices: 3, unpaid: 0, overdue: 0, owedAed: 0 },
+    },
+    {
+      attendance: { pct: 93, absences: 3, lates: 2, marks: 80 },
+      riskFlags: [{ severity: "medium", category: "financial", reason: "Term-2 invoice 90 days overdue." }],
+      fees: { invoices: 3, unpaid: 1, overdue: 1, owedAed: 5400 },
+    },
+    {
+      attendance: { pct: 96, absences: 2, lates: 1, marks: 81 },
+      riskFlags: [{ severity: "medium", category: "retention", reason: "Family reported visiting a competitor open day." }],
+      fees: { invoices: 3, unpaid: 0, overdue: 0, owedAed: 0 },
+    },
+  ];
+  const f = flavours[index % flavours.length];
+  return {
+    student: { id, name, section_code: null, grade_level: grade, re_enrolled_on: null, final_enrollment_date: null, leaver_reason: null },
+    parent: null,
+    ...f,
+  };
+}
+
+const MOCK_LEAVING = [
+  { label: "Graduating",      count: 12, color: "#BEE3F8", note: "all G12 leavers · university destinations confirmed" },
+  { label: "Relocating",      count: 4,  color: "#FEEBC8", note: "1 to KSA · 1 to Canada · 1 to Australia · 1 other" },
+  { label: "Fees",            count: 2,  color: "#FED7D7", note: "both flagged in exit interview" },
+  { label: "Dissatisfaction", count: 0,  color: "#EDF2F7", note: "" },
 ];
 
-const PIPELINE_STAGES = [
-  { key: "new",      label: "INQUIRY",      sub: "91 this month", mock: 142 },
-  { key: "review",   label: "TOUR BOOKED",  sub: "first visit",   mock: 84 },
-  { key: "interview",label: "ASSESSMENT",   sub: "in 18 days",    mock: 61 },
-  { key: "offer",    label: "INTERVIEW",    sub: "27 scheduled",  mock: 38 },
-  { key: "accepted", label: "OFFER SENT",   sub: "4 expiring",    mock: 31 },
-  { key: "enrolled", label: "ENROLLED",     sub: "4 decisions pending", mock: 22 },
-];
+const MOCK_STAGE_SUB: Record<string, string> = {
+  new: "91 this month",
+  review: "first visit",
+  interview: "in 18 days",
+  offer: "4 expiring",
+  accepted: "4 decisions pending",
+};
+const MOCK_STAGE_COUNT: Record<string, number> = { new: 142, review: 84, interview: 61, offer: 38, accepted: 31 };
 
 const NEEDS_THIS_WEEK = [
   {
@@ -83,43 +130,99 @@ const NEEDS_THIS_WEEK = [
   },
 ];
 
-const STAGE_LABEL: Record<string, string> = {
-  new: "INQUIRY", review: "TOUR BOOKED", interview: "ASSESSMENT",
-  offer: "OFFER SENT", accepted: "ENROLLED", rejected: "REJECTED", withdrawn: "WITHDRAWN",
-};
-const STAGE_COLOR: Record<string, string> = {
-  new: "adm-chip-blue", review: "adm-chip-blue", interview: "adm-chip-yellow",
-  offer: "adm-chip-green", accepted: "adm-chip-green", rejected: "adm-chip-red", withdrawn: "adm-chip-grey",
-};
+const PENDING_PREVIEW_COUNT = 6;
 
-const MOCK_APPLICANTS: Applicant[] = [
-  { id: "a1", full_name: "Reem Al-Halabi",   email: null, phone_e164: null, target_grade: "G11", stage: "accepted",  source: "Sibling referral",   notes: null, created_at: "2026-01-01" },
-  { id: "a2", full_name: "Laena Al-Sharif",  email: null, phone_e164: null, target_grade: "G7",  stage: "review",    source: "Open day",           notes: null, created_at: "2026-01-15" },
-  { id: "a3", full_name: "Mohammed Al-Said", email: null, phone_e164: null, target_grade: "G3",  stage: "interview", source: "Word of mouth",      notes: null, created_at: "2026-02-01" },
-  { id: "a4", full_name: "Aisha Al-Balushi", email: null, phone_e164: null, target_grade: "G5",  stage: "review",    source: "Website",            notes: null, created_at: "2026-02-10" },
-  { id: "a5", full_name: "Yousef Al-Khalili",email: null, phone_e164: null, target_grade: "G9",  stage: "new",       source: "Parent of G8K",      notes: null, created_at: "2026-03-01" },
-  { id: "a6", full_name: "Sama Al-Harthi",   email: null, phone_e164: null, target_grade: "G2",  stage: "offer",     source: "Google search",      notes: null, created_at: "2026-03-15" },
-  { id: "a7", full_name: "Hassan Al-Amri",   email: null, phone_e164: null, target_grade: "G5",  stage: "review",    source: "Paid · Facebook ad", notes: null, created_at: "2026-04-01" },
-  { id: "a8", full_name: "Faisal Al-Ansi",   email: null, phone_e164: null, target_grade: "G10", stage: "new",       source: "Walk in",            notes: null, created_at: "2026-04-10" },
-];
-
-function daysInStage(created_at: string): number {
-  return Math.floor((Date.now() - new Date(created_at).getTime()) / 86400000);
+function exportCsv(rows: AdmissionApplicant[]) {
+  const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const header = ["Applicant", "Target grade", "Stage", "Days in stage", "Source", "Parent", "Parent email", "Applicant email", "Phone", "Notes", "Created"];
+  const lines = rows.map(a => [
+    a.full_name,
+    a.target_grade,
+    STAGE_LABEL[a.stage] ?? a.stage,
+    daysInStage(a.created_at),
+    a.source ?? "",
+    a.parent_name ?? "",
+    a.parent_email ?? "",
+    a.email ?? "",
+    a.phone_e164 ?? "",
+    a.notes ?? "",
+    a.created_at.slice(0, 10),
+  ].map(esc).join(","));
+  const blob = new Blob(["﻿" + [header.map(esc).join(","), ...lines].join("\r\n")], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `applicants-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.click();
+  URL.revokeObjectURL(url);
 }
 
-function initials(name: string): string {
-  return name.split(" ").slice(0, 2).map(p => p[0]).join("").toUpperCase();
-}
-
-const AVATAR_BG = ["#3D5A80", "#C05621", "#2F855A", "#C53030", "#975A16", "#2C5282", "#6B46C1", "#B7791F"];
-
-export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
+export default function AdmissionsClient({ applicants, roster, parentOptions }: Props) {
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const [stageFilter, setStageFilter] = useState("All stages");
+  const [expandedStage, setExpandedStage] = useState<string | null>(null);
+  const [showAllPending, setShowAllPending] = useState(false);
+  const [summaryTarget, setSummaryTarget] = useState<SummaryTarget | null>(null);
+  const [confirmTarget, setConfirmTarget] = useState<ConfirmLeaveTarget | null>(null);
+  const [editorOpen, setEditorOpen] = useState(false);
+  const [editorApplicant, setEditorApplicant] = useState<AdmissionApplicant | null>(null);
+  // Optimistic overlay so a confirmed leaver updates instantly while the route revalidates.
+  const [localLeavers, setLocalLeavers] = useState<Record<string, { reason: string; comment: string }>>({});
 
+  // ── Re-enrollment funnel from the real columns (migration 020) ───────────
+  const effectiveRoster = useMemo<ReEnrollStudent[]>(
+    () => roster.map(s => localLeavers[s.id]
+      ? { ...s, final_enrollment_date: new Date().toISOString().slice(0, 10), leaver_reason: localLeavers[s.id].reason, leaver_comment: localLeavers[s.id].comment }
+      : s),
+    [roster, localLeavers],
+  );
+
+  const leavers    = useMemo(() => effectiveRoster.filter(s => s.final_enrollment_date), [effectiveRoster]);
+  const reEnrolled = useMemo(() => effectiveRoster.filter(s => !s.final_enrollment_date && s.re_enrolled_on), [effectiveRoster]);
+  const pending    = useMemo(
+    () => effectiveRoster
+      .filter(s => !s.final_enrollment_date && !s.re_enrolled_on)
+      .sort((a, b) =>
+        riskScore(b.risk_flags) - riskScore(a.risk_flags) ||
+        b.risk_flags.length - a.risk_flags.length ||
+        a.full_name_en.localeCompare(b.full_name_en)),
+    [effectiveRoster],
+  );
+  const hasRoster = roster.length > 0;
+  // Standing OR rule: while no family has any decision recorded, KPI numbers fall back to demo.
+  const hasSignal = leavers.length > 0 || reEnrolled.length > 0;
+
+  const enrolledNow = hasRoster ? effectiveRoster.filter(s => !s.final_enrollment_date).length : DEMO.enrolled;
+  const kpiReEnrolled = hasSignal ? reEnrolled.length : Math.round(enrolledNow * DEMO.reEnrolledPct);
+  const kpiPending    = hasSignal ? pending.length : DEMO.pending;
+  const kpiLeaving    = hasSignal ? leavers.length : DEMO.leaving;
+  const reEnrolledPctLabel = hasSignal && effectiveRoster.length > 0
+    ? `${Math.round((reEnrolled.length / effectiveRoster.length) * 1000) / 10}% of current students`
+    : "88.4% · same time last year — +12.6%";
+
+  // Confirmed-leaving breakdown: real leaver_reason grouping OR demo bars.
+  const leavingBars = useMemo(() => {
+    if (leavers.length === 0) return MOCK_LEAVING;
+    const counts = new Map<string, number>();
+    leavers.forEach(s => {
+      const key = LEAVER_REASON_LABEL[s.leaver_reason ?? ""] ?? "Other";
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    });
+    const colors: Record<string, string> = { Graduating: "#BEE3F8", Relocating: "#FEEBC8", Fees: "#FED7D7", Dissatisfaction: "#FBB6CE", Other: "#EDF2F7" };
+    return LEAVER_REASONS.map(r => ({
+      label: r.label,
+      count: counts.get(r.label) ?? 0,
+      color: colors[r.label] ?? "#EDF2F7",
+      note: "",
+    }));
+  }, [leavers]);
+  const maxLeavingBar = Math.max(1, ...leavingBars.map(r => r.count));
+
+  // ── Applicant pipeline (real rows OR demo while the table is empty) ──────
   const rows = applicants.length > 0 ? applicants : MOCK_APPLICANTS;
+  const demoPipeline = applicants.length === 0;
 
-  // Pipeline counts from DB (or mock)
   const stageCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     rows.forEach(a => { counts[a.stage] = (counts[a.stage] ?? 0) + 1; });
@@ -127,20 +230,47 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
   }, [rows]);
 
   const filteredApplicants = useMemo(() => {
+    const q = search.toLowerCase();
     return rows.filter(a => {
-      const matchSearch = !search ||
-        a.full_name.toLowerCase().includes(search.toLowerCase()) ||
-        (a.target_grade ?? "").toLowerCase().includes(search.toLowerCase()) ||
-        (a.source ?? "").toLowerCase().includes(search.toLowerCase());
+      const matchSearch = !q ||
+        a.full_name.toLowerCase().includes(q) ||
+        (a.parent_name ?? "").toLowerCase().includes(q) ||
+        (a.target_grade ?? "").toLowerCase().includes(q) ||
+        (a.source ?? "").toLowerCase().includes(q);
       const matchStage = stageFilter === "All stages" || a.stage === stageFilter;
       return matchSearch && matchStage;
     });
   }, [rows, search, stageFilter]);
 
-  const enrolled = totalEnrolled || 612;
-  const reEnrolled = Math.round(enrolled * 0.884);
-  const notDecided = 47;
-  const confirmedLeaving = 18;
+  const expandedRows = expandedStage ? rows.filter(a => a.stage === expandedStage) : [];
+
+  const visiblePending = showAllPending ? pending : pending.slice(0, PENDING_PREVIEW_COUNT);
+
+  function openEditor(applicant: AdmissionApplicant | null) {
+    setEditorApplicant(applicant);
+    setEditorOpen(true);
+  }
+
+  function gradeLabelFor(s: ReEnrollStudent): string | null {
+    return s.grade_level ?? s.section_code;
+  }
+
+  function pendingDetail(s: ReEnrollStudent): string {
+    const bits = [
+      [s.grade_level, s.section_code].filter(Boolean).join(" · ") || "no section",
+      s.parent ? `parent: ${s.parent.full_name}` : "no parent linked",
+    ];
+    if (s.risk_flags.length > 0) {
+      bits.push(`flags: ${[...new Set(s.risk_flags.map(f => f.category))].join(", ")}`);
+    }
+    return bits.join(" · ");
+  }
+
+  function topRisk(s: ReEnrollStudent): { label: string; color: string } | null {
+    if (s.risk_flags.length === 0) return null;
+    const top = [...s.risk_flags].sort((a, b) => riskScore([b]) - riskScore([a]))[0];
+    return { label: `${top.category} · ${top.severity}`.toUpperCase(), color: RISK_COLOR[top.severity] ?? "#4A5568" };
+  }
 
   return (
     <div className="adm-page">
@@ -169,27 +299,31 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
         </div>
       </div>
 
-      {/* KPI strip */}
+      {/* KPI strip — students.re_enrolled_on / final_enrollment_date, demo while all null */}
       <div className="adm-kpi-strip">
         <div className="adm-kpi-card">
-          <div className="adm-kpi-val">{enrolled}</div>
+          <div className="adm-kpi-val">{enrolledNow}</div>
           <div className="adm-kpi-label">Currently enrolled</div>
           <div className="adm-kpi-sub">2026/27 academic year · all grades</div>
         </div>
         <div className="adm-kpi-card good">
-          <div className="adm-kpi-val">{reEnrolled}</div>
-          <div className="adm-kpi-label">Re-families for 2026/27</div>
-          <div className="adm-kpi-sub">88.4% · same time last year — +12.6%</div>
+          <div className="adm-kpi-val">{kpiReEnrolled}</div>
+          <div className="adm-kpi-label">Re-enrolled for 2026/27</div>
+          <div className="adm-kpi-sub">{reEnrolledPctLabel}</div>
         </div>
         <div className="adm-kpi-card warn">
-          <div className="adm-kpi-val">{notDecided}</div>
+          <div className="adm-kpi-val">{kpiPending}</div>
           <div className="adm-kpi-label">Not yet decided</div>
-          <div className="adm-kpi-sub">7 days to deadline · 3 high risk</div>
+          <div className="adm-kpi-sub">{hasSignal ? "families still to confirm" : "7 days to deadline · 3 high risk"}</div>
         </div>
         <div className="adm-kpi-card bad">
-          <div className="adm-kpi-val">{confirmedLeaving}</div>
+          <div className="adm-kpi-val">{kpiLeaving}</div>
           <div className="adm-kpi-label">Confirmed leaving</div>
-          <div className="adm-kpi-sub">5/7 pending · 4 sibling · 5 other</div>
+          <div className="adm-kpi-sub">
+            {hasSignal
+              ? leavingBars.filter(b => b.count > 0).map(b => `${b.count} ${b.label.toLowerCase()}`).join(" · ") || "—"
+              : "5/7 pending · 4 sibling · 5 other"}
+          </div>
         </div>
       </div>
 
@@ -217,13 +351,85 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
         </div>
       </section>
 
-      {/* Re-enrolment families */}
+      {/* Re-enrolment — pending families */}
       <section className="adm-section">
         <div className="adm-section-head">
           <span className="adm-section-label">RE-ENROLMENT — FAMILIES WHO HAVEN&rsquo;T DECIDED</span>
-          <span className="adm-section-hint">47 pending · 12 days to deadline · sorted by risk</span>
+          <span className="adm-section-hint">
+            {hasRoster
+              ? `${pending.length} pending${hasSignal ? "" : " · no decisions recorded yet"} · sorted by risk`
+              : "47 pending · 12 days to deadline · sorted by risk"}
+          </span>
         </div>
-        {MOCK_FAMILIES.map((f, i) => (
+
+        {hasRoster && visiblePending.map((s, i) => {
+          const risk = topRisk(s);
+          return (
+            <div key={s.id} className="adm-family-row">
+              <div className="adm-family-avatar" style={{ background: AVATAR_BG[i % AVATAR_BG.length] }}>
+                {initials(s.full_name_en)}
+              </div>
+              <div className="adm-family-body">
+                <div className="adm-family-name">{s.full_name_en}</div>
+                <div className="adm-family-detail">{pendingDetail(s)}</div>
+              </div>
+              <div className="adm-family-right">
+                {risk && (
+                  <span className="adm-risk-chip" style={{ color: risk.color, background: risk.color + "18" }}>
+                    {risk.label}
+                  </span>
+                )}
+                <button
+                  className="adm-action-btn"
+                  onClick={() => setSummaryTarget({ studentId: s.id, name: s.full_name_en })}
+                >
+                  Retention summary
+                </button>
+                {s.parent?.email ? (
+                  <a
+                    className="adm-action-btn primary"
+                    href={retentionCallMailto(s.parent.full_name, s.parent.email, s.full_name_en)}
+                  >
+                    Schedule retention call
+                  </a>
+                ) : (
+                  <span
+                    className="adm-no-contact"
+                    title="This parent has no email on file yet. Ask the school office to add one, then the call draft opens here."
+                  >
+                    No contact on file — request from school
+                  </span>
+                )}
+                <button
+                  className="adm-danger-btn"
+                  onClick={() => setConfirmTarget({ studentId: s.id, name: s.full_name_en, gradeLabel: gradeLabelFor(s) })}
+                >
+                  Confirm no re-enrolment
+                </button>
+              </div>
+            </div>
+          );
+        })}
+
+        {hasRoster && pending.length > PENDING_PREVIEW_COUNT && (
+          <div className="adm-family-row all-others">
+            <div className="adm-family-body">
+              <div className="adm-family-detail">
+                {showAllPending
+                  ? `Showing all ${pending.length} pending families`
+                  : `${pending.length - PENDING_PREVIEW_COUNT} more pending families · sorted by risk`}
+              </div>
+            </div>
+            <div className="adm-family-right">
+              <button className="adm-action-btn" onClick={() => setShowAllPending(v => !v)}>
+                {showAllPending ? "Show fewer" : `Show all ${pending.length}`}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Demo fallback — roster unavailable (e.g. DB unreachable) */}
+        {!hasRoster && MOCK_FAMILIES.map((f, i) => (
           <div key={f.id} className="adm-family-row">
             <div className="adm-family-avatar" style={{ background: AVATAR_BG[i % AVATAR_BG.length] }}>
               {initials(f.name)}
@@ -236,44 +442,72 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
               <span className="adm-risk-chip" style={{ color: f.color, background: f.color + "18" }}>
                 {f.risk}
               </span>
-              <button className="adm-action-btn primary">{f.action}</button>
+              <button
+                className="adm-action-btn"
+                onClick={() => setSummaryTarget({
+                  studentId: f.id,
+                  name: f.name,
+                  demoSummary: demoSummaryFor(i, f.id, f.name, f.grade),
+                })}
+              >
+                Retention summary
+              </button>
+              <span
+                className="adm-no-contact"
+                title="This parent has no email on file yet. Ask the school office to add one, then the call draft opens here."
+              >
+                No contact on file — request from school
+              </span>
+              <button
+                className="adm-danger-btn"
+                onClick={() => setConfirmTarget({ studentId: f.id, name: f.name, gradeLabel: f.grade, demo: true })}
+              >
+                Confirm no re-enrolment
+              </button>
             </div>
           </div>
         ))}
-        <div className="adm-family-row all-others">
-          <div className="adm-family-body">
-            <div className="adm-family-detail">All 43 other pending families · no other negative signals · sorted by grade</div>
-          </div>
-          <div className="adm-family-right">
-            <button className="adm-action-btn">Open all</button>
-          </div>
-        </div>
       </section>
 
       {/* Confirmed leaving */}
       <section className="adm-section">
         <div className="adm-section-head">
           <span className="adm-section-label">CONFIRMED LEAVING — AND WHY</span>
-          <span className="adm-section-hint">18 families · drive next year&rsquo;s planning</span>
+          <span className="adm-section-hint">
+            {leavers.length > 0
+              ? `${leavers.length} famil${leavers.length === 1 ? "y" : "ies"} · drives next year's planning`
+              : "18 families · drive next year's planning"}
+          </span>
         </div>
         <div className="adm-leaving-grid">
           <div className="adm-leaving-bars">
-            {LEAVING_REASONS.map(r => (
+            {leavingBars.map(r => (
               <div key={r.label} className="adm-leaving-bar-row">
-                <span className="adm-leaving-reason">{r.label}</span>
+                <span className="adm-leaving-reason">{r.label.toUpperCase()}</span>
                 <div className="adm-leaving-bar-wrap">
-                  <div className="adm-leaving-bar-fill" style={{ width: `${(r.count / 12) * 100}%`, background: r.color }} />
+                  <div className="adm-leaving-bar-fill" style={{ width: `${(r.count / maxLeavingBar) * 100}%`, background: r.color }} />
                 </div>
               </div>
             ))}
           </div>
           <div className="adm-leaving-list">
-            {LEAVING_REASONS.filter(r => r.note).map(r => (
-              <div key={r.label} className="adm-leaving-note-row">
-                <span className="adm-leaving-count">{r.count}</span>
-                <span className="adm-leaving-note">{r.note}</span>
-              </div>
-            ))}
+            {leavers.length > 0
+              ? leavers.slice(0, 8).map(s => (
+                  <div key={s.id} className="adm-leaving-note-row">
+                    <span className="adm-leaving-reason-chip">{LEAVER_REASON_LABEL[s.leaver_reason ?? ""] ?? "Other"}</span>
+                    <span className="adm-leaving-note">
+                      {s.full_name_en}
+                      {gradeLabelFor(s) ? ` (${gradeLabelFor(s)})` : ""} · last day {s.final_enrollment_date}
+                      {s.leaver_comment ? ` · “${s.leaver_comment}”` : ""}
+                    </span>
+                  </div>
+                ))
+              : MOCK_LEAVING.filter(r => r.note).map(r => (
+                  <div key={r.label} className="adm-leaving-note-row">
+                    <span className="adm-leaving-count">{r.count}</span>
+                    <span className="adm-leaving-note">{r.note}</span>
+                  </div>
+                ))}
           </div>
         </div>
       </section>
@@ -283,28 +517,70 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
         <div className="adm-section-head">
           <span className="adm-section-label">NEW APPLICANT PIPELINE · 2026/27</span>
           <span className="adm-section-hint">
-            {rows.length > 0 ? rows.length : "142"} active · 1 new · {rows.length > 0 ? "real data" : "1 new assessment · auto-sorted by risk"}
+            {demoPipeline
+              ? "142 active · demo pipeline — add your first applicant"
+              : `${rows.length} active · click a stage to see candidates`}
           </span>
         </div>
         <div className="adm-pipeline">
-          {PIPELINE_STAGES.map(s => {
-            const count = rows.length > 0 ? (stageCounts[s.key] ?? 0) : s.mock;
-            const maxCount = rows.length > 0 ? Math.max(...Object.values(stageCounts)) : 142;
+          {PIPELINE_STAGES.map(key => {
+            const count = demoPipeline ? MOCK_STAGE_COUNT[key] : (stageCounts[key] ?? 0);
+            const maxCount = demoPipeline
+              ? Math.max(...Object.values(MOCK_STAGE_COUNT))
+              : Math.max(1, ...PIPELINE_STAGES.map(k => stageCounts[k] ?? 0));
+            const active = expandedStage === key;
             return (
-              <div key={s.key} className="adm-pipeline-stage">
+              <button
+                key={key}
+                type="button"
+                className={`adm-pipeline-stage${active ? " active" : ""}`}
+                onClick={() => setExpandedStage(active ? null : key)}
+                aria-expanded={active}
+                aria-label={`${STAGE_LABEL[key]} — ${count} candidates`}
+              >
                 <div className="adm-pipeline-bar-wrap">
-                  <div
-                    className="adm-pipeline-bar"
-                    style={{ height: `${Math.max(8, (count / maxCount) * 80)}px` }}
-                  />
+                  <div className="adm-pipeline-bar" style={{ height: `${Math.max(8, (count / maxCount) * 80)}px` }} />
                 </div>
                 <div className="adm-pipeline-count">{count}</div>
-                <div className="adm-pipeline-label">{s.label}</div>
-                <div className="adm-pipeline-sub">{s.sub}</div>
-              </div>
+                <div className="adm-pipeline-label">{STAGE_LABEL[key]}</div>
+                <div className="adm-pipeline-sub">{demoPipeline ? MOCK_STAGE_SUB[key] : (active ? "hide list" : "view list")}</div>
+              </button>
             );
           })}
         </div>
+        {expandedStage && (
+          <div className="adm-stagelist">
+            <div className="adm-stagelist-head">
+              {STAGE_LABEL[expandedStage]} — {expandedRows.length} candidate{expandedRows.length === 1 ? "" : "s"}
+              {demoPipeline ? " (demo)" : ""}
+            </div>
+            {expandedRows.length === 0 && (
+              <div className="adm-stagelist-empty">No candidates in this stage yet.</div>
+            )}
+            {expandedRows.map((a, i) => (
+              <div key={a.id} className="adm-stagelist-row">
+                <div className="adm-tbl-avatar" style={{ background: AVATAR_BG[i % AVATAR_BG.length] }}>
+                  {initials(a.full_name)}
+                </div>
+                <div className="adm-stagelist-body">
+                  <span className="adm-tbl-name">{a.full_name}</span>
+                  <span className="adm-tbl-meta">
+                    {a.target_grade} · {a.source ?? "no source"} · {daysInStage(a.created_at)} days in stage
+                    {a.parent_name ? ` · parent: ${a.parent_name}` : ""}
+                  </span>
+                </div>
+                <button
+                  className="adm-tbl-btn"
+                  onClick={() => openEditor(a)}
+                  disabled={isDemoApplicant(a)}
+                  title={isDemoApplicant(a) ? "Demo row — add a real applicant to edit" : undefined}
+                >
+                  Edit
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* All applicants table */}
@@ -312,17 +588,14 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
         <div className="adm-section-head">
           <span className="adm-section-label">ALL APPLICANTS</span>
           <div className="adm-tbl-controls">
-            <button className="adm-chip-btn active">All stages</button>
-            <button className="adm-chip-btn">My applicants</button>
-            <button className="adm-chip-btn">G7 seat</button>
-            <button className="adm-export-btn">Export CSV ↓</button>
-            <button className="adm-add-btn">+ Add applicant</button>
+            <button className="adm-export-btn" onClick={() => exportCsv(filteredApplicants)}>Export CSV ↓</button>
+            <button className="adm-add-btn" onClick={() => openEditor(null)}>+ Add applicant</button>
           </div>
         </div>
         <div className="adm-search-row">
           <input
             className="adm-search"
-            placeholder="Search by applicant name, parent, or grade…"
+            placeholder="Search by applicant name, parent, grade, or source…"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
@@ -330,6 +603,7 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
             className="adm-stage-select"
             value={stageFilter}
             onChange={e => setStageFilter(e.target.value)}
+            aria-label="Filter by stage"
           >
             <option>All stages</option>
             {Object.keys(STAGE_LABEL).map(k => (
@@ -345,12 +619,17 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
                 <th>STAGE</th>
                 <th>DAYS IN STAGE</th>
                 <th>SOURCE</th>
-                <th>OWNER</th>
-                <th>AI SIGNAL</th>
+                <th>PARENT</th>
+                <th>NOTES</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
+              {filteredApplicants.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="adm-tbl-empty">No applicants match this search.</td>
+                </tr>
+              )}
               {filteredApplicants.map((a, i) => (
                 <tr key={a.id}>
                   <td>
@@ -371,12 +650,21 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
                   </td>
                   <td className="adm-tbl-days">{daysInStage(a.created_at)}</td>
                   <td className="adm-tbl-source">{a.source ?? "—"}</td>
-                  <td className="adm-tbl-owner">Ms. Salwa</td>
+                  <td className="adm-tbl-owner">{a.parent_name ?? "—"}</td>
                   <td className="adm-tbl-signal">
-                    {a.notes ? <span className="adm-signal-badge">{a.notes.slice(0, 20)}…</span> : <span className="adm-signal-none">—</span>}
+                    {a.notes
+                      ? <span className="adm-signal-badge" title={a.notes}>{a.notes.length > 24 ? `${a.notes.slice(0, 24)}…` : a.notes}</span>
+                      : <span className="adm-signal-none">—</span>}
                   </td>
                   <td>
-                    <button className="adm-tbl-btn">Open ↗</button>
+                    <button
+                      className="adm-tbl-btn"
+                      onClick={() => openEditor(a)}
+                      disabled={isDemoApplicant(a)}
+                      title={isDemoApplicant(a) ? "Demo row — add a real applicant to edit" : undefined}
+                    >
+                      Edit
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -384,6 +672,29 @@ export default function AdmissionsClient({ applicants, totalEnrolled }: Props) {
           </table>
         </div>
       </section>
+
+      {/* Modals */}
+      {summaryTarget && (
+        <RetentionSummaryModal target={summaryTarget} onClose={() => setSummaryTarget(null)} />
+      )}
+      {confirmTarget && (
+        <ConfirmLeaveModal
+          target={confirmTarget}
+          onClose={() => setConfirmTarget(null)}
+          onConfirmed={(studentId, reason, comment) => {
+            setLocalLeavers(prev => ({ ...prev, [studentId]: { reason, comment } }));
+            router.refresh();
+          }}
+        />
+      )}
+      {editorOpen && (
+        <ApplicantModal
+          applicant={editorApplicant}
+          parentOptions={parentOptions}
+          onClose={() => setEditorOpen(false)}
+          onSaved={() => router.refresh()}
+        />
+      )}
     </div>
   );
 }

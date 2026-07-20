@@ -1,6 +1,9 @@
 import { getCurrentAcademicYearId } from "@manhaj/lib/queries/auth";
-import { getApplicantsForYear } from "@manhaj/lib/queries/students";
-import { getStudentsForAdmin } from "@manhaj/lib/queries/students";
+import {
+  getApplicantsForAdmissions,
+  getParentOptions,
+  getReEnrollmentRoster,
+} from "@manhaj/lib/queries/admissions";
 import AdmissionsClient from "./AdmissionsClient";
 
 export const dynamic = "force-dynamic";
@@ -8,15 +11,19 @@ export const dynamic = "force-dynamic";
 export default async function AdminAdmissionsPage() {
   const academicYearId = await getCurrentAcademicYearId().catch(() => null);
 
-  const [applicants, allStudents] = await Promise.all([
-    academicYearId ? getApplicantsForYear(academicYearId).catch(() => []) : Promise.resolve([]),
-    academicYearId ? getStudentsForAdmin(academicYearId).catch(() => []) : Promise.resolve([]),
+  const [applicants, roster, parentOptions] = await Promise.all([
+    academicYearId
+      ? getApplicantsForAdmissions(academicYearId).catch(() => [])
+      : Promise.resolve([]),
+    getReEnrollmentRoster(academicYearId).catch(() => []),
+    getParentOptions().catch(() => []),
   ]);
 
   return (
     <AdmissionsClient
       applicants={applicants}
-      totalEnrolled={allStudents.length}
+      roster={roster}
+      parentOptions={parentOptions}
     />
   );
 }

@@ -5064,6 +5064,115 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
 .adm-chip-red    { background: #FED7D7; color: #C53030; }
 .adm-chip-grey   { background: #EDF2F7; color: #4A5568; }
 
+/* Admissions — Sprint 1.5 wiring (re-enrolment actions, modals, pipeline lists) */
+.adm-danger-btn {
+  padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
+  border: none; background: #E53E3E; color: #fff; cursor: pointer; white-space: nowrap;
+}
+.adm-danger-btn:hover:not(:disabled) { background: #C53030; }
+.adm-danger-btn:disabled { opacity: .55; cursor: not-allowed; }
+.adm-tbl-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.adm-no-contact {
+  font-size: 10.5px; font-weight: 600; color: var(--color-muted);
+  border: 1.5px dashed var(--color-border); border-radius: 6px;
+  padding: 4px 10px; white-space: nowrap; cursor: help;
+}
+
+.adm-demo-note {
+  font-size: 11px; color: #975A16; background: #FEFCBF66;
+  border: 1px solid #FEEBC8; border-radius: 6px; padding: 8px 10px;
+}
+.adm-error-note {
+  font-size: 11px; color: #C53030; background: #FED7D766;
+  border: 1px solid #FED7D7; border-radius: 6px; padding: 8px 10px;
+}
+.adm-modal-status { font-size: 12px; color: var(--color-muted); padding: 8px 0; }
+.adm-confirm-warning { font-size: 12px; color: var(--color-ink); line-height: 1.6; margin: 0; }
+
+/* Retention-summary modal */
+.adm-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .adm-summary-grid { grid-template-columns: 1fr; } }
+.adm-summary-item  { display: flex; flex-direction: column; gap: 3px; }
+.adm-summary-label { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--color-muted); }
+.adm-summary-val   { font-size: 12px; color: var(--color-ink); line-height: 1.5; }
+.adm-flag-row    { display: flex; align-items: baseline; gap: 8px; margin-top: 4px; }
+.adm-flag-reason { font-size: 11.5px; color: var(--color-ink); line-height: 1.5; }
+
+/* Applicant modal */
+.adm-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.adm-link-btn {
+  background: none; border: none; padding: 0; font-size: 11px; font-weight: 600;
+  color: var(--color-accent); cursor: pointer; text-align: left; align-self: flex-start;
+}
+.adm-parent-select { position: relative; }
+.adm-parent-select input { width: 100%; box-sizing: border-box; }
+.adm-parent-opts {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 60;
+  background: #fff; border: 1px solid var(--color-border); border-radius: 8px;
+  box-shadow: var(--shadow-2xl); max-height: 220px; overflow-y: auto;
+}
+.adm-parent-opt {
+  display: flex; flex-direction: column; gap: 1px; width: 100%; text-align: left;
+  background: none; border: none; border-bottom: 1px solid var(--color-soft);
+  padding: 8px 12px; cursor: pointer;
+}
+.adm-parent-opt:hover, .adm-parent-opt:focus-visible { background: var(--color-soft); }
+.adm-parent-opt:last-child { border-bottom: none; }
+.adm-parent-opt-new  { font-size: 11.5px; font-weight: 700; color: var(--color-accent); }
+.adm-parent-opt-name { font-size: 12px; font-weight: 600; color: var(--color-ink); }
+.adm-parent-opt-meta { font-size: 10px; color: var(--color-muted); }
+.adm-parent-opt-empty { font-size: 11px; color: var(--color-muted); padding: 10px 12px; }
+.adm-parent-selected {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  font-size: 12px; color: var(--color-ink);
+  border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  background: var(--color-soft); padding: 8px 10px;
+}
+.adm-new-parent {
+  display: flex; flex-direction: column; gap: 10px;
+  border: 1px dashed var(--color-border); border-radius: 8px; padding: 10px;
+}
+
+/* Pipeline stage bars are buttons now (click to expand candidate list) */
+button.adm-pipeline-stage {
+  background: none; border: none; font: inherit; cursor: pointer;
+  padding: 6px 4px; border-radius: 8px;
+}
+button.adm-pipeline-stage:hover { background: var(--color-soft); }
+button.adm-pipeline-stage.active { background: var(--color-soft); outline: 1.5px solid var(--color-accent); }
+.adm-stagelist { border-top: 1px solid var(--color-border); }
+.adm-stagelist-head {
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--color-muted); padding: 10px 18px 6px;
+}
+.adm-stagelist-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 18px; border-bottom: 1px solid var(--color-soft);
+}
+.adm-stagelist-row:last-child { border-bottom: none; }
+.adm-stagelist-body { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+.adm-stagelist-empty { font-size: 11.5px; color: var(--color-muted); padding: 8px 18px 14px; }
+.adm-tbl-empty { font-size: 12px; color: var(--color-muted); text-align: center; padding: 20px 12px; }
+
+/* Leaving list — reason chip for real leaver rows */
+.adm-leaving-reason-chip {
+  font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  background: var(--color-soft); color: var(--color-ink);
+  border-radius: 20px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Retention summary — print (the modal's Download button) */
+@media print {
+  body.adm-printing * { visibility: hidden; }
+  body.adm-printing .adm-print-area, body.adm-printing .adm-print-area * { visibility: visible; }
+  body.adm-printing .adm-print-area {
+    position: absolute; inset: 0; margin: 0; max-width: 100%; max-height: none;
+    box-shadow: none; overflow: visible;
+  }
+  body.adm-printing .adm-no-print { display: none !important; }
+}
+
 /* =========================================================================
    One-Tap Attendance  (.tap-)
    ========================================================================= */
