@@ -54,7 +54,12 @@ Dashboard schedule strip + `/student/schedule` richer visual with per-class "wha
 
 ## 7. Manual-verify checklist (please do a pass on the Vercel preview)
 
-The build agents **could not reach the live DB** (no anon key locally), so all write paths are **code-verified against the live schema but not click-tested**. Please click-through on the PR preview (or the PM will, and note results):
+**PM verification status (2026-07-21):**
+- ✅ **CI green** — "Lint, test, build" SUCCESS; ✅ **Vercel build + deploy** SUCCESS; ✅ `apps/portal next build` passes locally.
+- ✅ **Static write-path audit passed** — every migration-020-dependent write (`students.{final_enrollment_date,leaver_reason,leaver_comment}`, `applications.university_id`, `lessons.{plan_notes,pre_class_checklist}`, `lesson_followups.section_id`, `study_blocks.is_done`, `booking_requests`, `student_test_scores`) uses the exact column names 020 created. The not-yet-typed 020 objects are handled with deliberate `(db as any)` casts (build-safe; the generated types just need regenerating — §9).
+- ⚠️ **Interactive click-through NOT done** — the Vercel preview is behind deployment-protection (redirects to a Vercel login), and there's no local `.env` / demo password to drive a local dev server headlessly. So the checklist below still needs a **human pass** (Elias's own Vercel login gets past the wall):
+
+The build agents **could not reach the live DB** (no anon key locally), so all write paths are **code-verified against the live schema but not click-tested end-to-end**. Please click-through on the PR preview:
 - **Admin:** Faculty filter/top-10; Students → Export list downloads an XLSX of the filter; Admissions → Add applicant (with parent search + create-new), Confirm-No-Re-enrollment, CSV; Reports → generate R1 (renders), internal report (charts), Recent-submission download.
 - **Teacher (Swart):** One-tap attendance → tap some absent → **Submit → reload → absences persisted** (the bug that was fixed); Rubric → pick section → score → save → reload; Class hub → Next week → save plan + checklist; Add follow-up → appears; check the substitute sheet shows it.
 - **Parent (Azrin):** Reply-to-school; Permission slip Save/Sign; Invoice Download PDF.
