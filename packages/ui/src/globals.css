@@ -529,6 +529,17 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
 .bclens-lens-pill:focus-visible {
   outline: 2px solid var(--color-accent); outline-offset: 2px;
 }
+.bclens-lens-pill.soon {
+  cursor: default; color: var(--color-muted); opacity: 0.85;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.bclens-lens-pill.soon:hover { color: var(--color-muted); }
+.bclens-lens-ribbon {
+  font-size: 8.5px; font-weight: 800; letter-spacing: .04em;
+  text-transform: uppercase; line-height: 1;
+  padding: 2px 5px; border-radius: var(--radius-2xl);
+  background: var(--color-warning-soft); color: var(--color-warning-text);
+}
 
 /* =========================================================================
    Filter chip row — shared
@@ -3295,23 +3306,50 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
 .fac-badge.exp3   { background: #FEE2E2; color: #C53030; }
 .fac-badge.exp6   { background: #FEF3C7; color: #92400E; }
 .fac-badge.renew  { background: #EDE9FE; color: #5B21B6; }
+.fac-badge.none   { background: var(--color-surface-subtle); color: var(--color-muted); }
 
 /* ---- Block 1: DepartmentBreakdown ---- */
 .fac-dept-card {
   background: var(--color-surface); border: 1px solid var(--color-border);
   border-radius: 12px; padding: 18px 20px; margin-bottom: 14px;
 }
-.fac-dept-list { display: flex; flex-direction: column; gap: 10px; }
+.fac-dept-list { display: flex; flex-direction: column; }
+.fac-dept-item { border-bottom: 1px solid var(--color-border); }
+.fac-dept-item:last-child { border-bottom: none; }
 .fac-dept-row {
   display: grid;
-  grid-template-columns: 1.8fr 0.5fr 2fr 1fr;
+  grid-template-columns: 16px 1.8fr 0.5fr 2fr 1fr;
   gap: 10px;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  padding: 9px 6px;
+  border: 0; border-radius: var(--radius-md);
+  background: transparent; text-align: left; cursor: pointer;
+  font-family: inherit; color: inherit;
 }
-.fac-dept-row:last-child { border-bottom: none; }
+.fac-dept-row:hover { background: var(--color-bg); }
+.fac-dept-row.open { background: var(--color-surface-subtle); }
+.fac-dept-row:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.fac-dept-caret {
+  font-size: 10px; color: var(--color-muted); justify-self: center;
+}
 .fac-dept-name { display: flex; flex-direction: column; gap: 2px; }
+.fac-dept-bucket {
+  padding: 4px 6px 12px 32px;
+}
+.fac-dept-bucket-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.fac-dept-bucket-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1.6fr 1fr auto;
+  gap: 10px; align-items: center;
+  padding: 5px 8px; border-radius: var(--radius-sm);
+  font-size: 11.5px;
+}
+.fac-dept-bucket-row:hover { background: var(--color-bg); }
+.fac-dept-bucket-name { font-weight: 600; color: var(--color-ink); }
+.fac-dept-bucket-subj { color: var(--color-muted); }
+.fac-dept-bucket-load { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.fac-dept-bucket-empty { font-size: 11.5px; color: var(--color-muted); padding: 6px 8px; }
 .fac-dept-label { font-size: 12.5px; font-weight: 700; color: var(--color-ink); }
 .fac-dept-head  { font-size: 10px; color: var(--color-muted); }
 .fac-dept-count { display: flex; align-items: baseline; gap: 3px; }
@@ -3336,11 +3374,24 @@ h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
   min-width: 680px;
 }
 .fac-roster-tbl th {
-  text-align: left; padding: 7px 10px;
+  text-align: left; padding: 0;
   font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em;
   color: var(--color-muted); font-weight: 700;
   border-bottom: 1px solid var(--color-border); white-space: nowrap;
 }
+.fac-th-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  width: 100%; padding: 7px 10px;
+  font: inherit; font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em;
+  font-weight: 700; color: var(--color-muted);
+  background: transparent; border: 0; cursor: pointer;
+}
+.fac-th-btn.num { justify-content: flex-end; }
+.fac-th-btn:hover { color: var(--color-ink); }
+.fac-th-btn.active { color: var(--color-primary); }
+.fac-th-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+.fac-th-arrow { font-size: 8.5px; opacity: 0.7; }
+.fac-th-btn:not(.active) .fac-th-arrow { opacity: 0.35; }
 .fac-roster-tbl td {
   padding: 7px 10px; border-bottom: 1px solid var(--color-border);
   vertical-align: middle;

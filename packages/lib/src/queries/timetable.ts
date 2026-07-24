@@ -196,6 +196,34 @@ export async function getTeacherDailyLoads(academicYearId: string): Promise<Teac
     .sort((a, b) => b.total - a.total);
 }
 
+/**
+ * Distinct-section count per teacher for the effective timetable year — the
+ * "Sections" column on the admin Faculty roster. Uses the same year-resolution
+ * as per-teacher load so the two columns agree.
+ */
+export async function getTeacherSectionCounts(academicYearId: string): Promise<Map<string, number>> {
+  const db = await serverClient();
+  const yearId = await resolveTimetableYearId(db, academicYearId);
+  const { data, error } = await db
+    .from("timetable_slots")
+    .select("teacher_id, section_id")
+    .eq("academic_year_id", yearId)
+    .not("teacher_id", "is", null)
+    .not("section_id", "is", null);
+  if (error) throw new Error(error.message);
+
+  const sectionsByTeacher = new Map<string, Set<string>>();
+  for (const row of data ?? []) {
+    if (!row.teacher_id || !row.section_id) continue;
+    const set = sectionsByTeacher.get(row.teacher_id) ?? new Set<string>();
+    set.add(row.section_id);
+    sectionsByTeacher.set(row.teacher_id, set);
+  }
+  const counts = new Map<string, number>();
+  for (const [teacherId, set] of sectionsByTeacher) counts.set(teacherId, set.size);
+  return counts;
+}
+
 export async function getSchoolTimetable(academicYearId: string) {
   const db = await serverClient();
   const { data, error } = await db

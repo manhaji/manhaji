@@ -1,5 +1,5 @@
 import { serverClient } from "../supabase";
-import { getTeacherDailyLoads } from "./timetable";
+import { getTeacherDailyLoads, getTeacherSectionCounts } from "./timetable";
 
 export type TeacherWithLoad = {
   id: string;
@@ -10,6 +10,10 @@ export type TeacherWithLoad = {
   employment_status: string | null;
   weekly_period_cap: number | null;
   weekly_period_assigned: number | null;
+  /** Distinct sections taught in the effective timetable year. */
+  weekly_sections: number;
+  /** Whether a teacher_contracts row exists for the current year. */
+  has_contract: boolean;
 };
 
 /**
@@ -54,7 +58,7 @@ export async function getTeachersWithLoad(academicYearId: string): Promise<Teach
   // Read the roster from `teachers` (all 105) rather than `teacher_contracts`
   // (which only covers ~69 and caps the roster). Contracts are left-joined in
   // code for the weekly cap; per-teacher load comes from the timetable.
-  const [teachersRes, contractsRes, loads] = await Promise.all([
+  const [teachersRes, contractsRes, loads, sectionCounts] = await Promise.all([
     db
       .from("teachers")
       .select("id, full_name, display_name, primary_dept, primary_subject_text, employment_status")
@@ -64,6 +68,7 @@ export async function getTeachersWithLoad(academicYearId: string): Promise<Teach
       .select("teacher_id, weekly_period_cap")
       .eq("academic_year_id", academicYearId),
     getTeacherDailyLoads(academicYearId).catch(() => []),
+    getTeacherSectionCounts(academicYearId).catch(() => new Map<string, number>()),
   ]);
   if (teachersRes.error) throw new Error(teachersRes.error.message);
   if (contractsRes.error) throw new Error(contractsRes.error.message);
@@ -85,6 +90,8 @@ export async function getTeachersWithLoad(academicYearId: string): Promise<Teach
     employment_status: t.employment_status,
     weekly_period_cap: capByTeacher.get(t.id) ?? null,
     weekly_period_assigned: loadByTeacher.get(t.id) ?? 0,
+    weekly_sections: sectionCounts.get(t.id) ?? 0,
+    has_contract: capByTeacher.has(t.id),
   }));
 }
 
