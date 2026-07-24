@@ -14,7 +14,9 @@ import { AiBriefingHeader } from "@manhaj/ui";
 import { BreadcrumbLensBar, type Lens } from "@manhaj/ui";
 import { FilterChipRow, type Chip } from "@manhaj/ui";
 
-import DepartmentBreakdown  from "./components/DepartmentBreakdown";
+import DepartmentBreakdown, {
+  computeDeptRows, ALL_KEY, OVER_KEY, CONTRACTS_KEY,
+} from "./components/DepartmentBreakdown";
 import FacultyRoster        from "./components/FacultyRoster";
 import ContractsDashboard   from "./components/ContractsDashboard";
 import OnboardingFunnel     from "./components/OnboardingFunnel";
@@ -39,19 +41,26 @@ export default function FacultyPageClient({ teachers }: { teachers: TeacherWithL
   const [lens, setLens]   = useState<Lens>("principal");
   const [active, setActive] = useState<string | null>(null);
 
+  // Build department chips from the same grouping the breakdown renders, so the
+  // chip list always matches the real departments present in the data.
+  const deptRows = computeDeptRows(source ?? undefined);
+  const contractsDue = source
+    ? source.filter(t => !t.has_contract).length
+    : deptRows.reduce((s, d) => s + d.contracts_due_count, 0);
+
+  const isAll = active === null || active === ALL_KEY;
   const chips: Chip[] = [
-    { key: "all",        label: "All departments",                          tone: "neutral", active: active === "all" },
-    { key: "math",       label: "Mathematics",                              tone: "neutral", active: active === "math" },
-    { key: "sciences",   label: "Sciences",                                 tone: "neutral", active: active === "sciences" },
-    { key: "languages",  label: "Languages",                                tone: "neutral", active: active === "languages" },
-    { key: "humanities", label: "Humanities",                               tone: "neutral", active: active === "humanities" },
-    { key: "arts",       label: "Arts",                                     tone: "neutral", active: active === "arts" },
-    { key: "pe",         label: "PE",                                       tone: "neutral", active: active === "pe" },
-    { key: "primary",    label: "Primary",                                  tone: "neutral", active: active === "primary" },
-    { key: "kg",         label: "KG",                                       tone: "neutral", active: active === "kg" },
-    { key: "over",       label: `Over capacity · ${overCapacity}`,          tone: "bad",     active: active === "over" },
-    { key: "contracts",  label: `Contracts due · 0`,                        tone: "warn",    active: active === "contracts" },
+    { key: ALL_KEY, label: "All departments", tone: "neutral", active: isAll },
+    ...deptRows.map(d => ({
+      key: d.id, label: d.label, tone: "neutral" as const, active: active === d.id,
+    })),
+    { key: OVER_KEY,      label: `Over capacity · ${overCapacity}`,   tone: "bad" as const,  active: active === OVER_KEY },
+    { key: CONTRACTS_KEY, label: `Contracts due · ${contractsDue}`,   tone: "warn" as const, active: active === CONTRACTS_KEY },
   ];
+
+  function onChip(key: string) {
+    setActive(prev => (key === ALL_KEY || prev === key ? null : key));
+  }
 
   return (
     <div className="container">
@@ -62,6 +71,8 @@ export default function FacultyPageClient({ teachers }: { teachers: TeacherWithL
         ]}
         lens={lens}
         onLensChange={setLens}
+        lenses={["principal", "advisor"]}
+        comingSoon={["advisor"]}
       />
 
       <h1>Faculty</h1>
@@ -102,9 +113,9 @@ export default function FacultyPageClient({ teachers }: { teachers: TeacherWithL
         </div>
       </div>
 
-      <FilterChipRow chips={chips} onToggle={k => setActive(prev => prev === k ? null : k)} />
+      <FilterChipRow chips={chips} onToggle={onChip} />
 
-      <DepartmentBreakdown teachers={source ?? undefined} />
+      <DepartmentBreakdown key={active ?? "all"} teachers={source ?? undefined} active={active} />
       <FacultyRoster teachers={source ?? undefined} />
 
       <ContractsDashboard />

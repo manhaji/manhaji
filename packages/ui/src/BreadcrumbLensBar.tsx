@@ -4,8 +4,10 @@
  * Breadcrumb + lens-toggle bar used at the top of every Phase 2 admin tab.
  *
  * The breadcrumb is a static visual chain (steps[].active marks the current
- * step). The lens toggle is interactive — three pills (Principal / Student
- * Advisor / Teacher) — and calls onLensChange.
+ * step). The lens toggle is interactive — a set of pills the caller chooses
+ * via `lenses` (defaults to all three). Any lens listed in `comingSoon` is
+ * rendered as an inert pill with a "Soon" ribbon: it does not call
+ * onLensChange and cannot become the active view.
  */
 
 export type BreadcrumbStep = { label: string; href?: string; active?: boolean };
@@ -17,13 +19,20 @@ const LENS_LABELS: Record<Lens, string> = {
   teacher:   "Teacher",
 };
 
+const DEFAULT_LENSES: Lens[] = ["principal", "advisor", "teacher"];
+
 export default function BreadcrumbLensBar({
-  steps, lens, onLensChange,
+  steps, lens, onLensChange, lenses = DEFAULT_LENSES, comingSoon = [],
 }: {
   steps:        BreadcrumbStep[];
   lens:         Lens;
   onLensChange: (next: Lens) => void;
+  /** Which lens pills to render, in order. Defaults to all three. */
+  lenses?:      Lens[];
+  /** Lenses shown but inert, carrying a "Soon" ribbon. */
+  comingSoon?:  Lens[];
 }) {
+  const soon = new Set(comingSoon);
   return (
     <>
       <nav aria-label="Breadcrumb" className="bclens-crumb">
@@ -35,18 +44,25 @@ export default function BreadcrumbLensBar({
         ))}
       </nav>
       <div role="tablist" aria-label="Switch lens" className="bclens-lens">
-        {(["principal", "advisor", "teacher"] as Lens[]).map(l => (
-          <button
-            key={l}
-            type="button"
-            role="tab"
-            aria-selected={l === lens}
-            onClick={() => onLensChange(l)}
-            className={`bclens-lens-pill ${l === lens ? "active" : ""}`}
-          >
-            {LENS_LABELS[l]}
-          </button>
-        ))}
+        {lenses.map(l => {
+          const isSoon = soon.has(l);
+          return (
+            <button
+              key={l}
+              type="button"
+              role="tab"
+              aria-selected={!isSoon && l === lens}
+              aria-disabled={isSoon || undefined}
+              disabled={isSoon}
+              title={isSoon ? `${LENS_LABELS[l]} — coming soon` : undefined}
+              onClick={() => { if (!isSoon) onLensChange(l); }}
+              className={`bclens-lens-pill ${!isSoon && l === lens ? "active" : ""} ${isSoon ? "soon" : ""}`}
+            >
+              {LENS_LABELS[l]}
+              {isSoon && <span className="bclens-lens-ribbon">Soon</span>}
+            </button>
+          );
+        })}
       </div>
     </>
   );

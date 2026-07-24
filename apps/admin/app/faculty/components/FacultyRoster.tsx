@@ -44,12 +44,66 @@ const STATUS_OPTIONS: Array<{ value: "all" | TeacherStatus; label: string }> = [
   { value: "under", label: "Slack" },
 ];
 
+type SortKey = "name" | "dept" | "subject" | "sections" | "periods" | "status" | "contract";
+type SortDir = "asc" | "desc";
+
+const STATUS_RANK: Record<TeacherStatus, number> = { under: 0, ok: 1, over: 2 };
+
+/** Comparable value for a teacher under a given sort column. */
+function sortValue(t: TeacherWithLoad, key: SortKey): string | number {
+  switch (key) {
+    case "name":     return t.full_name.toLowerCase();
+    case "dept":     return (t.primary_dept ?? "").toLowerCase();
+    case "subject":  return (t.primary_subject_text ?? "").toLowerCase();
+    case "sections": return t.weekly_sections;
+    case "periods":  return t.weekly_period_assigned ?? 0;
+    case "status":   return STATUS_RANK[loadStatus(t)];
+    case "contract": return t.has_contract ? 1 : 0;
+  }
+}
+
+function SortHeader({
+  col, label, num, sortKey, sortDir, onSort,
+}: {
+  col: SortKey;
+  label: string;
+  num?: boolean;
+  sortKey: SortKey | null;
+  sortDir: SortDir;
+  onSort: (key: SortKey) => void;
+}) {
+  const activeSort = sortKey === col;
+  const arrow = !activeSort ? "↕" : sortDir === "asc" ? "▲" : "▼";
+  const aria = !activeSort ? "none" : sortDir === "asc" ? "ascending" : "descending";
+  return (
+    <th className={num ? "fac-tbl-num" : undefined} aria-sort={aria}>
+      <button
+        type="button"
+        className={`fac-th-btn${num ? " num" : ""}${activeSort ? " active" : ""}`}
+        onClick={() => onSort(col)}
+      >
+        <span>{label}</span>
+        <span className="fac-th-arrow" aria-hidden="true">{arrow}</span>
+      </button>
+    </th>
+  );
+}
+
 export default function FacultyRoster({ teachers }: { teachers?: TeacherWithLoad[] }) {
   const [nameQ,   setNameQ]   = useState("");
   const [deptF,   setDeptF]   = useState("all");
   const [subjF,   setSubjF]   = useState("all");
   const [statusF, setStatusF] = useState<"all" | TeacherStatus>("all");
   const [expanded, setExpanded] = useState(false);
+  const [sortKey, setSortKey] = useState<SortKey | null>(null);
+  const [sortDir, setSortDir] = useState<SortDir>("asc");
+
+  // 3-state header sort: 1st click asc → 2nd desc → 3rd back to default order.
+  function onSort(key: SortKey) {
+    if (sortKey !== key) { setSortKey(key); setSortDir("asc"); return; }
+    if (sortDir === "asc") { setSortDir("desc"); return; }
+    setSortKey(null); setSortDir("asc");
+  }
 
   const depts = useMemo(
     () => [...new Set((teachers ?? []).map(t => t.primary_dept).filter((d): d is string => !!d))].sort(),
@@ -60,16 +114,23 @@ export default function FacultyRoster({ teachers }: { teachers?: TeacherWithLoad
     [teachers],
   );
 
-  const filtered = useMemo(
-    () => (teachers ?? []).filter(t => {
+  const filtered = useMemo(() => {
+    const rows = (teachers ?? []).filter(t => {
       if (nameQ && !t.full_name.toLowerCase().includes(nameQ.trim().toLowerCase())) return false;
       if (deptF   !== "all" && t.primary_dept !== deptF) return false;
       if (subjF   !== "all" && t.primary_subject_text !== subjF) return false;
       if (statusF !== "all" && loadStatus(t) !== statusF) return false;
       return true;
-    }),
-    [teachers, nameQ, deptF, subjF, statusF],
-  );
+    });
+    if (!sortKey) return rows;
+    const dir = sortDir === "asc" ? 1 : -1;
+    return [...rows].sort((a, b) => {
+      const av = sortValue(a, sortKey);
+      const bv = sortValue(b, sortKey);
+      if (typeof av === "string" && typeof bv === "string") return av.localeCompare(bv) * dir;
+      return ((av as number) - (bv as number)) * dir;
+    });
+  }, [teachers, nameQ, deptF, subjF, statusF, sortKey, sortDir]);
 
   const hasFilters = nameQ !== "" || deptF !== "all" || subjF !== "all" || statusF !== "all";
 
@@ -80,13 +141,15 @@ export default function FacultyRoster({ teachers }: { teachers?: TeacherWithLoad
     setStatusF("all");
   }
 
+  const sortProps = { sortKey, sortDir, onSort };
+
   if (teachers && teachers.length > 0) {
     const visible = expanded ? filtered : filtered.slice(0, SHOW_DEFAULT);
     return (
       <section className="fac-roster-card" aria-label="Faculty roster">
         <header className="fac-section-head">
           <h3>Faculty roster · {teachers.length} teachers</h3>
-          <p className="fac-section-sub">Name · department · primary subject · periods per week · load status.</p>
+          <p className="fac-section-sub">Name · department · primary subject · sections · periods per week · load status · contract. Click a header to sort.</p>
         </header>
         <div className="fac-filter-row" role="group" aria-label="Filter roster">
           <input
@@ -133,11 +196,13 @@ export default function FacultyRoster({ teachers }: { teachers?: TeacherWithLoad
           <table className="fac-roster-tbl">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Primary subject</th>
-                <th className="fac-tbl-num">Periods/wk</th>
-                <th>Status</th>
+                <SortHeader col="name"     label="Name"            {...sortProps} />
+                <SortHeader col="dept"     label="Department"      {...sortProps} />
+                <SortHeader col="subject"  label="Primary subject" {...sortProps} />
+                <SortHeader col="sections" label="Sections" num    {...sortProps} />
+                <SortHeader col="periods"  label="Periods/wk" num  {...sortProps} />
+                <SortHeader col="status"   label="Status"          {...sortProps} />
+                <SortHeader col="contract" label="Contract"        {...sortProps} />
               </tr>
             </thead>
             <tbody>
@@ -146,13 +211,19 @@ export default function FacultyRoster({ teachers }: { teachers?: TeacherWithLoad
                   <td className="fac-tbl-name">{t.full_name}</td>
                   <td className="fac-tbl-dept">{t.primary_dept ?? "—"}</td>
                   <td className="fac-tbl-subj">{t.primary_subject_text ?? "—"}</td>
+                  <td className="fac-tbl-num">{t.weekly_sections}</td>
                   <td className="fac-tbl-num">{t.weekly_period_assigned ?? "—"}</td>
                   <td><StatusPill status={loadStatus(t)} /></td>
+                  <td>
+                    {t.has_contract
+                      ? <span className="fac-badge active">On file</span>
+                      : <span className="fac-badge none">Not on file</span>}
+                  </td>
                 </tr>
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="fac-roster-empty">
+                  <td colSpan={7} className="fac-roster-empty">
                     No teachers match the current filters.{" "}
                     <button type="button" className="fac-link-btn" onClick={clearFilters}>Clear filters</button>
                   </td>
