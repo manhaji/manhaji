@@ -3,15 +3,31 @@
   "repo": "manhaji/manhaji",
   "database": "qntmzazndkcdgkwmrhae",
   "database_note": "APP STILL POINTS AT OLD ref dxrkbjftkfhlddqefmaq (emouawad2). Cutover is Sprint 1 S0.2. Two live clones in sync \u2014 drift risk.",
-  "updated": "2026-07-19",
-  "active_sprint": "sprint-1.5",
+  "updated": "2026-07-24",
+  "active_sprint": "sprint-1.6",
   "sprints": [
+    {
+      "id": "sprint-1.6",
+      "title": "Post-1.5 review feedback (Admin Dashboard first)",
+      "status": "in_progress",
+      "branch": "sprint-1.6",
+      "pr": null,
+      "waves": {
+        "A": "Admin: role tabs (A1) \u00b7 dept chips+breakdown bucketing (A2/A3) \u00b7 roster header-sort + real Sections/Contract cols (A4/A4b) \u2014 real data",
+        "B": "Admin: contract preview/download popup w/ committed sample PDF (A5)",
+        "C": "Admin: hiring-pipeline bucketing+edit+status-comments+history+add-candidate (A6) \u2014 needs new migration (Elias-approved to draft) + live-write approval"
+      },
+      "decisions": "real faculty data for A2-A6; draft A6 status-history table; A1 remove Teacher+Advisor coming-soon; A5 committed sample PDF",
+      "triage": "docs/pm/reviews/2026-07-24-admin-dashboard-1.5-feedback.md",
+      "plan": "docs/pm/sprints/sprint-1.6-plan.md"
+    },
     {
       "id": "sprint-1.5",
       "title": "Phase 1 finish + Elias review feedback",
-      "status": "in_progress",
+      "status": "merged",
       "branch": "sprint-1.5",
       "pr": 12,
+      "merged": "2026-07-24",
       "waves": {
         "1": "researcher MoE reports \u00b7 schema gap\u2192mig 020 \u00b7 FE quick-wins",
         "2": "admissions/teacher/parent/student wiring (post-020)",
