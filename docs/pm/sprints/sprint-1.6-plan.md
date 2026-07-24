@@ -9,6 +9,7 @@
 2. **A1** — remove the **Teacher** tab; keep **Student Advisor** with a "coming soon" ribbon; **Principal** stays default. *(confirmed)*
 3. **A5** — a **committed sample placeholder PDF** (served statically, no live Storage write) is acceptable for the demo. *(confirmed)*
 4. **A6** — approved to **draft a new migration** for an applicant status-history / comments table. The migration and any live `job_applicants` writes come back to Elias for explicit approval before being applied.
+5. **"Contracts due" (2026-07-24)** — keep the interim definition "teacher has no current-year contract on file" (`has_contract === false`). Matches the shipped A4b build → no rework. Revisit to date-based once contract expiry data exists.
 
 ## Task table
 
